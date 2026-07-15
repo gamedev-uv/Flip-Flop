@@ -26,8 +26,13 @@ A half adder is a logic circuit that adds two single-bit binary inputs (A and B)
 | 1 | 0 |  1  |   0   |
 | 1 | 1 |  0  |   1   |
 
-**Sum** = $ A \oplus B$
-**Carry** = $ A \cdot B$
+```math
+\text{Sum} = A \oplus B\newline
+```
+
+```math
+\text{Carry} = A \cdot B
+```
 
 ##### VHDL Module
 ```vhdl
@@ -68,8 +73,13 @@ A full adder is a logic circuit that adds 3 single-bit binary inputs (A, B, and 
 | 1 | 1 | 0 |  0  |   1   |
 | 1 | 1 | 1 |  1  |   1   |
 
-**Sum** = $ A \oplus B \oplus C$
-**Carry** = $ (A \cdot B) + (B \cdot C) + (A \cdot C)$
+```math
+\text{Sum} = A \oplus B \oplus C
+```
+
+```math
+\text{Carry} = (A \cdot B) + (B \cdot C) + (A \cdot C)
+```
 
 ##### VHDL Module
 ```vhdl
@@ -111,8 +121,13 @@ A half adder is a logic circuit that subtracts two single-bit binary inputs (A a
 | 1 | 0 |  1   |   0   |
 | 1 | 1 |  0   |   0   |
 
-**Sum** = $ A \oplus B$
-**Carry** = $ A' \cdot B$
+```math
+\text{Difference} = A \oplus B
+```
+
+```math
+\text{Borrow} = A' \cdot B
+```
 
 ##### VHDL Module
 ```vhdl
@@ -153,8 +168,13 @@ A full subtractor is a logic circuit that subtracts 3 single-bit binary inputs (
 | 1 | 1 | 0 |  0   |   0   |
 | 1 | 1 | 1 |  1   |   1   |
 
-**Sum** = $ A \oplus B \oplus C$
-**Carry** = $ (A' \cdot B) + (B \cdot C) + (A' \cdot C)$
+```math
+\text{Difference} = A \oplus B \oplus C
+```
+
+```math
+\text{Borrow} = (A' \cdot B) + (B \cdot C) + (A' \cdot C)
+```
 
 ##### VHDL Module
 ```vhdl
