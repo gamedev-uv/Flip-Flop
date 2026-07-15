@@ -1,0 +1,1 @@
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/simpleSubtractors" -intstyle ise -ifn halfSubtractors.xst -ofn halfSubtractors.syr

@@ -1,0 +1,6 @@
+EN fullsubtractor NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/fullSubtractor.vhd" sub00/vhpl02 1784136791
+AR fullsubtractor behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/fullSubtractor.vhd" sub00/vhpl03 1784136792
+AR halfsubtractors behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/halfSubtractors.vhd" sub00/vhpl01 1784139266
+AR halfsubtractor behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/halfSubtractors.vhd" sub00/vhpl05 1784139490
+EN halfsubtractor NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/halfSubtractors.vhd" sub00/vhpl04 1784139489
+EN halfsubtractors NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/halfSubtractors.vhd" sub00/vhpl00 1784139265

@@ -1,0 +1,10 @@
+AR fulladder behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/fullAdder.vhd" sub00/vhpl05 1784136299
+EN halfadder NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/halfAdder.vhd" sub00/vhpl08 1784138303
+EN fulladderwave NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/fullAdderWave.ant" sub00/vhpl06 1784138285
+EN fulladder NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/fullAdder.vhd" sub00/vhpl04 1784136298
+AR halfadderwave testbench_arch "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/halfAdderWave.ant" sub00/vhpl03 1784138306
+AR halfadders behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/halfAdders.vhd" sub00/vhpl01 1784135858
+AR halfadder behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/halfAdder.vhd" sub00/vhpl09 1784138304
+AR fulladderwave testbench_arch "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/fullAdderWave.ant" sub00/vhpl07 1784138286
+EN halfadderwave NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/halfAdderWave.ant" sub00/vhpl02 1784138305
+EN halfadders NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/halfAdders.vhd" sub00/vhpl00 1784135857

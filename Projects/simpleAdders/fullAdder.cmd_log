@@ -1,0 +1,2 @@
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/simpleAdders" -intstyle ise -ifn fullAdder.xst -ofn fullAdder.syr
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/simpleAdders" -intstyle ise -ifn fullAdder.xst -ofn fullAdder.syr

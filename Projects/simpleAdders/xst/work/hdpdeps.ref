@@ -1,0 +1,17 @@
+V3 6
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/halfAdder.vhd" 2026/07/15.23:27:32 I.24
+EN work/halfAdder 1784138307 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/halfAdder.vhd" \
+      PB ieee/std_logic_1164 1131108373 PB ieee/std_logic_arith 1131108375 \
+      PB ieee/STD_LOGIC_UNSIGNED 1131108379
+AR work/halfAdder/Behavioral 1784138308 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/halfAdder.vhd" \
+      EN work/halfAdder 1784138307
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/fullAdder.vhd" 2026/07/15.22:17:45 I.24
+EN work/fullAdder 1784138317 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/fullAdder.vhd" \
+      PB ieee/std_logic_1164 1131108373 PB ieee/std_logic_arith 1131108375 \
+      PB ieee/STD_LOGIC_UNSIGNED 1131108379
+AR work/fullAdder/Behavioral 1784138318 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/fullAdder.vhd" \
+      EN work/fullAdder 1784138317

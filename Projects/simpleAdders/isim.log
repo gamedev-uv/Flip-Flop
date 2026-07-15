@@ -1,0 +1,31 @@
+ command line:
+   C:\Projects\Xilinx Projects\Flip-Flop\Projects\simpleAdders\halfAdderWave_tbxr.exe
+     -intstyle  ise
+     -tclbatch  genExpectedResults.cmd
+
+Wed Jul 15 23:28:25 2026
+
+Total Line Count = 743
+
+ Elaboration time 0.015625 sec.
+
+ Estimate current memory usage 73.8509 Meg. 
+
+ Total signals 8
+ Total nets 4
+ Total signal drivers 4
+ Total blocks 7
+ Total primitive blocks 1
+ Total processes 4
+isim batch on 
+run all 
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+quit 
+
+ Simulation time 0.015625 sec.
+
+ Estimate current memory usage 82.4812 Meg. 
+
+Wed Jul 15 23:28:25 2026
+

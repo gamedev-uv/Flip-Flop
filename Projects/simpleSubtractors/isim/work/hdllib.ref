@@ -1,0 +1,10 @@
+EN fullsubtractor NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/fullSubtractor.vhd" sub00/vhpl04 1784134807
+EN fullsubtractorwave NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/fullSubtractorWave.ant" sub00/vhpl06 1784136658
+AR halfsubtractorwave testbench_arch "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/halfSubtractorWave.ant" sub00/vhpl03 1784139487
+AR fullsubtractorwave testbench_arch "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/fullSubtractorWave.ant" sub00/vhpl07 1784136659
+AR fullsubtractor behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/fullSubtractor.vhd" sub00/vhpl05 1784134808
+AR halfsubtractors behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/halfSubtractors.vhd" sub00/vhpl01 1784134424
+AR halfsubtractor behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/halfSubtractors.vhd" sub00/vhpl09 1784139485
+EN halfsubtractorwave NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/halfSubtractorWave.ant" sub00/vhpl02 1784139486
+EN halfsubtractor NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/halfSubtractors.vhd" sub00/vhpl08 1784139484
+EN halfsubtractors NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/halfSubtractors.vhd" sub00/vhpl00 1784134423

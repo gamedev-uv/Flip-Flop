@@ -1,0 +1,37 @@
+V3 17
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/fullSubtractorWave.ant" 2026/07/15.23:00:57 I.24
+EN work/fullSubtractorWave 1784136658 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/fullSubtractorWave.ant" \
+      PB ieee/std_logic_1164 1132105529 PB ieee/std_logic_arith 1132105531 \
+      PB ieee/STD_LOGIC_UNSIGNED 1132105537 PB ieee/STD_LOGIC_TEXTIO 1132105539 \
+      PB std/textio 1132105521
+AR work/fullSubtractorWave/testbench_arch 1784136659 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/fullSubtractorWave.ant" \
+      EN work/fullSubtractorWave 1784136658 CP fullSubtractor \
+      PB ieee/STD_LOGIC_TEXTIO 1132105539
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/halfSubtractors.vhd" 2026/07/15.23:47:09 I.24
+EN work/halfSubtractor 1784139484 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/halfSubtractors.vhd" \
+      PB ieee/std_logic_1164 1132105529 PB ieee/std_logic_arith 1132105531 \
+      PB ieee/STD_LOGIC_UNSIGNED 1132105537
+AR work/halfSubtractor/Behavioral 1784139485 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/halfSubtractors.vhd" \
+      EN work/halfSubtractor 1784139484
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/halfSubtractorWave.ant" 2026/07/15.23:48:04 I.24
+EN work/halfSubtractorWave 1784139486 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/halfSubtractorWave.ant" \
+      PB ieee/std_logic_1164 1132105529 PB ieee/std_logic_arith 1132105531 \
+      PB ieee/STD_LOGIC_UNSIGNED 1132105537 PB ieee/STD_LOGIC_TEXTIO 1132105539 \
+      PB std/textio 1132105521
+AR work/halfSubtractorWave/testbench_arch 1784139487 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/halfSubtractorWave.ant" \
+      EN work/halfSubtractorWave 1784139486 CP halfSubtractor \
+      PB ieee/STD_LOGIC_TEXTIO 1132105539
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/fullSubtractor.vhd" 2026/07/15.22:26:46 I.24
+EN work/fullSubtractor 1784134807 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/fullSubtractor.vhd" \
+      PB ieee/std_logic_1164 1132105529 PB ieee/std_logic_arith 1132105531 \
+      PB ieee/STD_LOGIC_UNSIGNED 1132105537
+AR work/fullSubtractor/Behavioral 1784134808 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleSubtractors/fullSubtractor.vhd" \
+      EN work/fullSubtractor 1784134807

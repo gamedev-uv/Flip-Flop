@@ -1,0 +1,3 @@
+MODULE fullSubtractorWave
+SUBMODULE fullSubtractor
+INSTANCE UUT

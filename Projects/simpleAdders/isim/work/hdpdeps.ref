@@ -1,0 +1,43 @@
+V3 18
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/fullAdderWave.ant" 2026/07/15.23:28:05 I.24
+EN work/fullAdderWave 1784138285 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/fullAdderWave.ant" \
+      PB ieee/std_logic_1164 1132105529 PB ieee/std_logic_arith 1132105531 \
+      PB ieee/STD_LOGIC_UNSIGNED 1132105537 PB ieee/STD_LOGIC_TEXTIO 1132105539 \
+      PB std/textio 1132105521
+AR work/fullAdderWave/testbench_arch 1784138286 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/fullAdderWave.ant" \
+      EN work/fullAdderWave 1784138285 CP fullAdder PB ieee/STD_LOGIC_TEXTIO 1132105539
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/halfAdder.vhd" 2026/07/15.23:27:32 I.24
+EN work/halfAdder 1784138303 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/halfAdder.vhd" \
+      PB ieee/std_logic_1164 1132105529 PB ieee/std_logic_arith 1132105531 \
+      PB ieee/STD_LOGIC_UNSIGNED 1132105537
+AR work/halfAdder/Behavioral 1784138304 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/halfAdder.vhd" \
+      EN work/halfAdder 1784138303
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/fullAdder.vhd" 2026/07/15.22:17:45 I.24
+EN work/fullAdder 1784136298 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/fullAdder.vhd" \
+      PB ieee/std_logic_1164 1132105529 PB ieee/std_logic_arith 1132105531 \
+      PB ieee/STD_LOGIC_UNSIGNED 1132105537
+AR work/fullAdder/Behavioral 1784136299 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/fullAdder.vhd" \
+      EN work/fullAdder 1784136298
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/halfAdders.vhd" 2026/07/15.22:17:36 I.24
+EN work/halfAdders 1784135857 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/halfAdders.vhd" \
+      PB ieee/std_logic_1164 1132105529 PB ieee/std_logic_arith 1132105531 \
+      PB ieee/STD_LOGIC_UNSIGNED 1132105537
+AR work/halfAdders/Behavioral 1784135858 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/halfAdders.vhd" \
+      EN work/halfAdders 1784135857
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/halfAdderWave.ant" 2026/07/15.23:28:23 I.24
+EN work/halfAdderWave 1784138305 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/halfAdderWave.ant" \
+      PB ieee/std_logic_1164 1132105529 PB ieee/std_logic_arith 1132105531 \
+      PB ieee/STD_LOGIC_UNSIGNED 1132105537 PB ieee/STD_LOGIC_TEXTIO 1132105539 \
+      PB std/textio 1132105521
+AR work/halfAdderWave/testbench_arch 1784138306 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/simpleAdders/halfAdderWave.ant" \
+      EN work/halfAdderWave 1784138305 CP halfAdder PB ieee/STD_LOGIC_TEXTIO 1132105539
