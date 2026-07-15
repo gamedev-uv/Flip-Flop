@@ -1,55 +1,105 @@
-# Prerequisites
-*.d
+# gitignore template for Xilinx Vivado Design Suite
+# website: https://www.xilinx.com/support/download.html
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+# [home]
+*.jou
+*.log
+*.debug
+*.str
+*.zip
+*.tmp
+*.rst
+*.os
+*.js
+*.pb
+*.dcp
+*.hwdef
+*.vds
+*.veo
+*.wdf
+*.vdi
+*.dmp
+*.rpx
+*.rpt
+*_stub.v
+*_stub.vhdl
+*_funcsim.v
+*_funcsim.vhdl
+.project
 
-# Linker output
-*.ilk
-*.map
-*.exp
+# [dir]
+*.cache
+.metadata
+*.data
+*.ipdefs
+.Xil
+*.sdk
+*.hw
+*.ip_user_files
 
-# Precompiled Headers
-*.gch
-*.pch
+### IP synth
+*_synth_*
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+.jobs
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+### project synth
+*/*.runs/synth*/*.xml
+*/*.runs/synth*/*.txt
+*/*.runs/synth*/*.sh
+*/*.runs/synth*/*.tcl
+*/*.runs/synth*/*.bat
+*/*.runs/synth*/*.xdc
+!*/*.runs/synth*/*utilization*.rpt
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+*.runs/synth*/*.xml
+*.runs/synth*/*.txt
+*.runs/synth*/*.sh
+*.runs/synth*/*.tcl
+*.runs/synth*/*.bat
+*.runs/synth*/*.xdc
+!*.runs/synth*/*utilization*.rpt
 
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
+### project impl
+*/*.runs/impl*/*.xml
+*/*.runs/impl*/*.html
+*/*.runs/impl*/*.txt
+*/*.runs/impl*/*.sh
+*/*.runs/impl*/*.tcl
+*/*.runs/impl*/*.bat
+!*/*.runs/impl*/*utilization*.rpt
 
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+*.runs/impl*/*.xml
+*.runs/impl*/*.html
+*.runs/impl*/*.txt
+*.runs/impl*/*.sh
+*.runs/impl*/*.tcl
+*.runs/impl*/*.bat
+!*.runs/impl*/*utilization*.rpt
 
-# debug information files
-*.dwo
+### block design
+*/*/bd/*/hdl
+*/*/*/bd/*/hdl
+
+*/*/bd/*/*.xdc
+*/*/*/bd/*/*.xdc
+
+*/*/bd/*/ip/*/*.xdc
+*/*/*/bd/*/ip/*/*.xdc
+
+*/*/bd/*/ip/*/*/
+*/*/*/bd/*/ip/*/*/
+
+*/*/bd/*/ip/*/*.vhd
+*/*/*/bd/*/ip/*/*.vhd
+
+*/*/bd/*/ip/*/*.xml
+*/*/*/bd/*/ip/*/*.xml
+
+*.c
+*.h
+*.vho
+*.html
+*/*/bd/*/ip/*/*.tcl
+*/*/*/bd/*/ip/*/*.tcl
+hw_handoff
+ipshared
