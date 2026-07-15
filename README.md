@@ -9,7 +9,7 @@ Computer Architecture assignments and lab work completed as part of my undergrad
 |Sl. No.| Experiment                          | Link|
 |:-     | :-:                                 | :-: |
 | 1.    | Half and Full Adders                | [Link](#1-half-and-full-adders)   | 
-| 2.    | Half and Full Subtractors           | [Link](#1-half-and-full-adders)    |
+| 2.    | Half and Full Subtractors           | [Link](#2-half-and-full-subtractors)    |
 
 ### 1. Half and Full Adders
 Create a Xilinx project and create and test a half adder and a full adder. Use VHDL Modules.
@@ -112,7 +112,7 @@ Create a Xilinx project and create and test a half subtractor and a full subtrac
 The Xilinx project can be found [here](/Projects/simpleSubtractors).
 
 #### Half Subtractor
-A half adder is a logic circuit that subtracts two single-bit binary inputs (A and B). It produces two outputs: a Difference bit and a Borrow bit.
+A half subtractor is a logic circuit that subtracts two single-bit binary inputs (A and B). It produces two outputs: a Difference bit and a Borrow bit.
 
 | A | B | DIFF | BORR  |
 |:-:|:-:| :-:  |  :-:  |
