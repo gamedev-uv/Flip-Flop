@@ -1,0 +1,6 @@
+EN halfadder NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/basicStructural/halfAdder.vhd" sub00/vhpl00 1784222565
+AR halfadder behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/basicStructural/halfAdder.vhd" sub00/vhpl01 1784222566
+AR fulladdercomponents behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/basicStructural/fullAdderComponents.vhd" sub00/vhpl03 1784221128
+EN fulladdercomponents NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/basicStructural/fullAdderComponents.vhd" sub00/vhpl02 1784221127
+EN fulladdersimplified NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/basicStructural/fullAdderSimplified.vhd" sub00/vhpl04 1784222567
+AR fulladdersimplified behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/basicStructural/fullAdderSimplified.vhd" sub00/vhpl05 1784222568

@@ -1,0 +1,22 @@
+V3 11
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/basicStructural/fullAdderComponents.vhd" 2026/07/16.21:58:01 I.24
+EN work/fullAdderComponents 1784221127 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/basicStructural/fullAdderComponents.vhd" \
+      PB ieee/std_logic_1164 1131108373
+AR work/fullAdderComponents/Behavioral 1784221128 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/basicStructural/fullAdderComponents.vhd" \
+      EN work/fullAdderComponents 1784221127 CP halfAdder
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/basicStructural/halfAdder.vhd" 2026/07/16.21:56:10 I.24
+EN work/halfAdder 1784222565 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/basicStructural/halfAdder.vhd" \
+      PB ieee/std_logic_1164 1131108373
+AR work/halfAdder/Behavioral 1784222566 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/basicStructural/halfAdder.vhd" \
+      EN work/halfAdder 1784222565
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/basicStructural/fullAdderSimplified.vhd" 2026/07/16.22:27:24 I.24
+EN work/fullAdderSimplified 1784222567 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/basicStructural/fullAdderSimplified.vhd" \
+      PB ieee/std_logic_1164 1131108373
+AR work/fullAdderSimplified/Behavioral 1784222568 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/basicStructural/fullAdderSimplified.vhd" \
+      EN work/fullAdderSimplified 1784222567 CP work/halfAdder

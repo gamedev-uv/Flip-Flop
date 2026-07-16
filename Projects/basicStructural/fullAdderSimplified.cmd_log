@@ -1,0 +1,1 @@
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/basicStructural/basicStructural" -intstyle ise -ifn fullAdderSimplified.xst -ofn fullAdderSimplified.syr

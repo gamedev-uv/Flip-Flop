@@ -1,0 +1,3 @@
+vhdl work "halfAdder.vhd"
+vhdl work "fullAdderSimplified.vhd"
+vhdl work fullAdderSimplifiedWave.ant
