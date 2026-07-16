@@ -280,7 +280,8 @@ begin
 end Behavioral;
 ```
 
-> [!NOTE] Then we can create the Full Adder in several ways. 2 ways have been showcased below. 
+> [!NOTE] 
+> Then we can create the Full Adder in several ways. 2 ways have been showcased below. 
 
 #### Full Adder VHDL Module (Component Instantiation)
 ```vhdl
