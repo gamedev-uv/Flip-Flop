@@ -1,0 +1,3 @@
+vhdl work "norGate.vhd"
+vhdl work "orUsingNor.vhd"
+vhdl work orUsingNorWave.ant

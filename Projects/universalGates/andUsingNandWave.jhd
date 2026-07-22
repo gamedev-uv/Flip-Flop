@@ -1,0 +1,3 @@
+MODULE andUsingNandWave
+SUBMODULE andUsingNand
+INSTANCE UUT

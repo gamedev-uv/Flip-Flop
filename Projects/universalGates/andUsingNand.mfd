@@ -1,0 +1,12 @@
+MDF Database:  version 1.0
+MDF_INFO | andUsingNand | XA2C32A-6-VQ44
+MACROCELL | 0 | 0 | Z_MC
+ATTRIBUTES | 1074004738 | 0
+INPUTS | 2 | B  | A
+INPUTP | 2 | 3 | 4
+EQ | 1 | 
+   Z = B & A;	// (1 pt, 2 inp)
+
+PIN | A | 64 | 16 | LVCMOS18 | 4 | 1 | 0 | 0
+PIN | B | 64 | 16 | LVCMOS18 | 3 | 1 | 0 | 0
+PIN | Z | 536871040 | 0 | LVCMOS18 | 5

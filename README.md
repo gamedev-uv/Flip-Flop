@@ -11,6 +11,7 @@ Computer Architecture assignments and lab work completed as part of my undergrad
 | 1.    | Half and Full Adders                | [Link](#1-half-and-full-adders)   | 
 | 2.    | Half and Full Subtractors           | [Link](#2-half-and-full-subtractors)    |
 | 3.    | Full Adder using Half Adders        | [Link](#3-full-adder-using-half-adder)    |
+| 4.    | Universal Gates                     | [Link](#4-universal-gates)    |
 
 ### 1. Half and Full Adders
 Create a Xilinx project and create and test a half adder and a full adder. Use VHDL Modules.
@@ -334,3 +335,125 @@ end Behavioral;
 
 ####  Test Bench Output
 ![](.README/fullAdderUsingHalf/fullAdderUsingHalfAddersWave.jpg)
+
+### 4. Universal Gates
+Create the AND and OR gates using only the universal gates (NOR, NAND). Use VHDL modules in Xilinx. 
+The project can be found [here](/Projects/universalGates/).
+
+#### Universal Gates
+The NAND and NOR gates are often called the Universal gates as they can be used to recreate all the other gates. 
+
+The NAND gate is the negation of the output of a NAND gate.
+| A | B | AND | NAND |
+|:-:|:-:| :-: |  :-: |
+| 0 | 0 |  0  |   1  |
+| 0 | 1 |  0  |   1  |
+| 1 | 0 |  0  |   1  |
+| 1 | 1 |  1  |   0  |
+
+```math
+A \text{ NAND } B = (A \cdot B)' = A' + B'
+```
+
+The NOR gate is the negation of the output of a OR gate.
+| A | B | OR  |  NOR |
+|:-:|:-:| :-: |  :-: |
+| 0 | 0 |  0  |   1  |
+| 0 | 1 |  1  |   0  |
+| 1 | 0 |  1  |   0  |
+| 1 | 1 |  1  |   0  |
+
+```math
+A \text{ NOR } B = (A + B)' = A' \cdot B'
+```
+
+#### AND using NAND VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity andUsingNand is
+    Port ( A, B : in  STD_LOGIC;
+           Z : out  STD_LOGIC);
+end andUsingNand;
+
+architecture Behavioral of andUsingNand is
+SIGNAL O_1 : STD_LOGIC;
+begin
+	NAND1 : entity work.nandGate Port Map(A => A, B => B, Z => O_1);
+	NAND2 : entity work.nandGate Port Map(A => O_1, B => O_1, Z => Z); 
+end Behavioral;
+```
+$$
+O_1 = (A \cdot B)' \\
+Z = (O_1 \cdot O_1)' = (O_1)' = ((A \cdot B)')' = A \cdot B
+$$
+
+#### AND using NOR VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity andUsingNor is
+    Port ( A, B : in  STD_LOGIC;
+           Z : out  STD_LOGIC);
+end andUsingNor;
+
+architecture Behavioral of andUsingNor is
+SIGNAL notA, notB : STD_LOGIC;
+begin
+	NOR1 : entity work.norGate Port Map(A => A, B => A, Z => notA);
+	NOR2 : entity work.norGate Port Map(A => B, B => B, Z => notB);
+	NOR3 : entity work.norGate Port Map(A => notA, B => notB, Z => Z);
+end Behavioral;
+```
+
+$$
+Z = (A' + B')' = A'' \cdot B'' = A \cdot B
+$$
+
+#### OR using NAND VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity orUsingNand is
+    Port ( A, B : in  STD_LOGIC;
+           Z : out  STD_LOGIC);
+end orUsingNand;
+
+architecture Behavioral of orUsingNand is
+SIGNAL notA, notB, STD_LOGIC;
+begin
+	NAND1: entity work.nandGate Port Map(A => A, B => A, Z => notA);
+	NAND2: entity work.nandGate Port Map(A => B, B => B, Z => notB);
+	NAND3: entity work.nandGate Port Map(A => notA, B => notB, Z => Z);
+end Behavioral;
+```
+
+$$
+Z = (A' \cdot B')' = A'' + B'' = A + B
+$$
+
+#### OR using NOR VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity orUsingNor is
+    Port ( A, B : in  STD_LOGIC;
+           Z : out  STD_LOGIC);
+end orUsingNor;
+
+architecture Behavioral of orUsingNor is
+SIGNAL O_1 : STD_LOGIC;
+begin
+	NOR1 : entity work.norGate Port Map(A => A, B => B, Z => O_1);
+	NOR2 : entity work.norGate Port Map(A => O_1, B => O_1, Z => Z);
+end Behavioral;
+```
+
+$$
+O_1 = (A + B)' \\
+Z = (O_1 + O_1)' = (O_1)' = ((A + B)')' = A + B
+$$

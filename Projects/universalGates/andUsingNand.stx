@@ -1,0 +1,23 @@
+Release 8.1i - xst I.24
+Copyright (c) 1995-2005 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to ./xst/projnav.tmp
+CPU : 0.00 / 0.22 s | Elapsed : 0.00 / 1.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/nandGate.vhd" in Library work.
+Architecture behavioral of Entity nandgate is up to date.
+Compiling vhdl file "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/andUsingNand.vhd" in Library work.
+Architecture behavioral of Entity andusingnand is up to date.
+CPU : 0.10 / 0.32 s | Elapsed : 0.00 / 1.00 s
+ 
+--> 
+
+Total memory usage is 154172 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

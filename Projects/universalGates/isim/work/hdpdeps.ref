@@ -1,0 +1,79 @@
+V3 36
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/norGate.vhd" 2026/07/22.21:17:36 I.24
+EN work/norGate 1784746034 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/norGate.vhd" \
+      PB ieee/std_logic_1164 1132105529
+AR work/norGate/Behavioral 1784746035 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/norGate.vhd" \
+      EN work/norGate 1784746034
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/orUsingNorWave.ant" 2026/07/23.00:17:35 I.24
+EN work/orUsingNorWave 1784746055 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/orUsingNorWave.ant" \
+      PB ieee/std_logic_1164 1132105529 PB ieee/STD_LOGIC_TEXTIO 1132105539 \
+      PB ieee/std_logic_arith 1132105531 PB ieee/STD_LOGIC_UNSIGNED 1132105537 \
+      PB std/textio 1132105521
+AR work/orUsingNorWave/testbench_arch 1784746056 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/orUsingNorWave.ant" \
+      EN work/orUsingNorWave 1784746055 CP orUsingNor PB ieee/STD_LOGIC_TEXTIO 1132105539
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/andUsingNandWave.ant" 2026/07/19.18:53:47 I.24
+EN work/andUsingNandWave 1784467427 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/andUsingNandWave.ant" \
+      PB ieee/std_logic_1164 1132105529 PB ieee/STD_LOGIC_TEXTIO 1132105539 \
+      PB ieee/std_logic_arith 1132105531 PB ieee/STD_LOGIC_UNSIGNED 1132105537 \
+      PB std/textio 1132105521
+AR work/andUsingNandWave/testbench_arch 1784467428 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/andUsingNandWave.ant" \
+      EN work/andUsingNandWave 1784467427 CP andUsingNand PB ieee/STD_LOGIC_TEXTIO 1132105539
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/andUsingNand.vhd" 2026/07/18.17:13:24 I.24
+EN work/andUsingNand 1784375095 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/andUsingNand.vhd" \
+      PB ieee/std_logic_1164 1132105529
+AR work/andUsingNand/Behavioral 1784375096 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/andUsingNand.vhd" \
+      EN work/andUsingNand 1784375095 CP work/nandGate
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/orUsingNandWave.ant" 2026/07/19.00:03:58 I.24
+EN work/orUsingNandWave 1784399641 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/orUsingNandWave.ant" \
+      PB ieee/std_logic_1164 1132105529 PB ieee/STD_LOGIC_TEXTIO 1132105539 \
+      PB ieee/std_logic_arith 1132105531 PB ieee/STD_LOGIC_UNSIGNED 1132105537 \
+      PB std/textio 1132105521
+AR work/orUsingNandWave/testbench_arch 1784399642 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/orUsingNandWave.ant" \
+      EN work/orUsingNandWave 1784399641 CP orUsingNand PB ieee/STD_LOGIC_TEXTIO 1132105539
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/andUsingNorWave.ant" 2026/07/23.00:25:54 I.24
+EN work/andUsingNorWave 1784746557 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/andUsingNorWave.ant" \
+      PB ieee/std_logic_1164 1132105529 PB ieee/STD_LOGIC_TEXTIO 1132105539 \
+      PB ieee/std_logic_arith 1132105531 PB ieee/STD_LOGIC_UNSIGNED 1132105537 \
+      PB std/textio 1132105521
+AR work/andUsingNorWave/testbench_arch 1784746558 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/andUsingNorWave.ant" \
+      EN work/andUsingNorWave 1784746557 CP andUsingNor PB ieee/STD_LOGIC_TEXTIO 1132105539
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/andUsingNor.vhd" 2026/07/23.00:25:36 I.24
+EN work/andUsingNor 1784746555 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/andUsingNor.vhd" \
+      PB ieee/std_logic_1164 1132105529
+AR work/andUsingNor/Behavioral 1784746556 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/andUsingNor.vhd" \
+      EN work/andUsingNor 1784746555 CP work/norGate
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/nandGate.vhd" 2026/07/18.17:11:12 I.24
+EN work/nandGate 1784375093 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/nandGate.vhd" \
+      PB ieee/std_logic_1164 1132105529
+AR work/nandGate/Behavioral 1784375094 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/nandGate.vhd" \
+      EN work/nandGate 1784375093
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/orUsingNand.vhd" 2026/07/18.23:54:13 I.24
+EN work/orUsingNand 1784399639 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/orUsingNand.vhd" \
+      PB ieee/std_logic_1164 1132105529
+AR work/orUsingNand/Behavioral 1784399640 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/orUsingNand.vhd" \
+      EN work/orUsingNand 1784399639 CP work/nandGate
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/orUsingNor.vhd" 2026/07/22.21:20:40 I.24
+EN work/orUsingNor 1784746036 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/orUsingNor.vhd" \
+      PB ieee/std_logic_1164 1132105529
+AR work/orUsingNor/Behavioral 1784746037 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/orUsingNor.vhd" \
+      EN work/orUsingNor 1784746036 CP work/norGate

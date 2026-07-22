@@ -1,0 +1,3 @@
+MODULE orUsingNorWave
+SUBMODULE orUsingNor
+INSTANCE UUT

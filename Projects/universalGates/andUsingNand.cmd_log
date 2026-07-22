@@ -1,0 +1,9 @@
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/universalGates" -intstyle ise -ifn andUsingNand.xst -ofn andUsingNand.syr
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/universalGates" -intstyle ise -ifn andUsingNand.xst -ofn andUsingNand.syr
+ngdbuild -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/universalGates" -intstyle ise -dd _ngo -i -p acr2 andUsingNand.ngc andUsingNand.ngd
+cpldfit -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/universalGates" -intstyle ise -p xa2c*-*-* -ofmt vhdl -optimize density -htmlrpt -loc on -slew fast -init low -inputs 32 -inreg on -blkfanin 38 -pterms 28 -unused keeper -terminate keeper -iostd LVCMOS18 andUsingNand.ngd
+XSLTProcess -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/universalGates" andUsingNand_build.xml
+tsim -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/universalGates" -intstyle ise andUsingNand andUsingNand.nga
+taengine -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/universalGates" -intstyle ise -f andUsingNand -w --format html1 -l C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/andUsingNand_html/tim/timing_report.htm
+hprep6 -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/universalGates" -s IEEE1149 -i andUsingNand
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/universalGates" -intstyle ise -ifn andUsingNand.xst -ofn andUsingNand.syr

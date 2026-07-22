@@ -1,0 +1,12 @@
+AR nandgate behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/nandGate.vhd" sub00/vhpl01 1784747254
+EN orusingnand NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/orUsingNand.vhd" sub00/vhpl04 1784735042
+EN andusingnand NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/andUsingNand.vhd" sub00/vhpl02 1784747255
+AR norgate behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/norGate.vhd" sub00/vhpl08 1784747530
+EN andusingnor NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/andUsingNor.vhd" sub00/vhpl06 1784747323
+AR andusingnand behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/andUsingNand.vhd" sub00/vhpl03 1784747256
+AR andusingnor behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/andUsingNor.vhd" sub00/vhpl11 1784747324
+AR orusingnor behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/orUsingNor.vhd" sub00/vhpl10 1784746087
+EN orusingnor NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/orUsingNor.vhd" sub00/vhpl09 1784746086
+AR orusingnand behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/orUsingNand.vhd" sub00/vhpl05 1784735043
+EN norgate NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/norGate.vhd" sub00/vhpl07 1784747529
+EN nandgate NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/nandGate.vhd" sub00/vhpl00 1784747253
