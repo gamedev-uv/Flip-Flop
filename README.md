@@ -385,8 +385,10 @@ begin
 end Behavioral;
 ```
 $$
-O_1 = (A \cdot B)' \\
-Z = (O_1 \cdot O_1)' = (O_1)' = ((A \cdot B)')' = A \cdot B
+\begin{aligned}
+O_1 &= (A \cdot B)' \\
+Z &= (O_1 \cdot O_1)' = (O_1)' = ((A \cdot B)')' = A \cdot B
+\end{aligned}
 $$
 
 #### AND using NOR VHDL Module
@@ -452,8 +454,9 @@ begin
 	NOR2 : entity work.norGate Port Map(A => O_1, B => O_1, Z => Z);
 end Behavioral;
 ```
-
 $$
-O_1 = (A + B)' \\
-Z = (O_1 + O_1)' = (O_1)' = ((A + B)')' = A + B
+\begin{aligned}
+O_1 &= (A + B)' \\
+Z &= (O_1 + O_1)' = (O_1)' = ((A + B)')' = A + B
+\end{aligned}
 $$
