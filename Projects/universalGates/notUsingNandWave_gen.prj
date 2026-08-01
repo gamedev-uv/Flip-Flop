@@ -1,0 +1,3 @@
+vhdl work "nandGate.vhd"
+vhdl work "notUsingNand.vhd"
+vhdl work notUsingNandWave.ant

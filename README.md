@@ -11,7 +11,8 @@ Computer Architecture assignments and lab work completed as part of my undergrad
 | 1.    | Half and Full Adders                | [Link](#1-half-and-full-adders)   | 
 | 2.    | Half and Full Subtractors           | [Link](#2-half-and-full-subtractors)    |
 | 3.    | Full Adder using Half Adders        | [Link](#3-full-adder-using-half-adder)    |
-| 4.    | Universal Gates                     | [Link](#4-universal-gates)    |
+| 3.    | Full Subtrator using Half Subtractors        | [Link](#4-full-subtractor-using-half-subtractor)    |
+| 4.    | Universal Gates                     | [Link](#5-universal-gates)    |
 
 ### 1. Half and Full Adders
 Create a Xilinx project and create and test a half adder and a full adder. Use VHDL Modules.
@@ -330,13 +331,83 @@ begin
 end Behavioral;
 ```
 
+> [!TIP]
+> When mapping the ports the inputs can be written directly (similar to how methods are called).
+> So instead of: 
+> ```vhdl
+> Port Map(A => A, B => B, SUM => S1, CARRY => C1);
+> ```
+> We can also just write:
+> ```vhdl
+> Port Map(A, B, S1, C1);
+> ```
+> But I prefer writing the name of the ports so it is clear to the reader what is being passed as input, as Xilinx doesn't have any built-in method peek functionality.
+
 ####  RTL Circuit
 ![](.README/fullAdderUsingHalf/fullAdderUsingHalfAddersCircuit.jpg)
 
 ####  Test Bench Output
 ![](.README/fullAdderUsingHalf/fullAdderUsingHalfAddersWave.jpg)
 
-### 4. Universal Gates
+### 4. Full Subtractor using Half Subtractor
+Create a Xilinx project and create and test a full subtractor which will be made using 2 half subtractor.
+
+The Xilinx project can be found [here](/Projects/basicStructural/).
+
+We already proved how a full adder can be created with 2 half adders and an OR gate, we can similarly use 2 half subtrators along with an OR gate to create a full subtractor.
+
+#### Full Subtractor VHDL Module (Component Instantiation)
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity fullSubtractorComponents is
+    Port ( A, B, C : in  STD_LOGIC;
+           DIFF, BORR : out  STD_LOGIC);
+end fullSubtractorComponents;
+
+architecture Behavioral of fullSubtractorComponents is
+
+Component halfSubtractor
+	    Port ( A, B : in  STD_LOGIC;
+           DIFF, BORR : out  STD_LOGIC);
+end Component;
+SIGNAL D1, B1, B2 : STD_LOGIC;
+begin
+	HS1 : entity halfSubtractor Port Map(A => A, B => B, DIFF => D1, BORR => B1);
+	HS2 : entity halfSubtractor Port Map(A => D1, B => C, DIFF => DIFF, BORR => B2);
+	BORR <= B1 OR B2;
+end Behavioral;
+```
+
+#### Full Subtractor VHDL Module (Direct Entity Instantiation)
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity fulllSubtractorSimplified is
+    Port ( A, B, C : in  STD_LOGIC;
+           DIFF, BORR : out  STD_LOGIC);
+end fulllSubtractorSimplified;
+
+architecture Behavioral of fulllSubtractorSimplified is
+SIGNAL D1, B1, B2 : STD_LOGIC;
+begin
+	HS1 : entity work.halfSubtractor Port Map(A => A, B => B, DIFF => D1, BORR => B1);
+	HS2 : entity work.halfSubtractor Port Map(A => D1, B => C, DIFF => DIFF, BORR => B2);
+	BORR <= B1 OR B2;
+end Behavioral; 
+```
+#### RTL Circuit
+![](.README/fullSubtractorUsingHalf/fullSubtractorUsingHalfCircuits.jpg)
+
+#### Test Bench Output
+![](.README/fullSubtractorUsingHalf/fullSubtractorUsingHalfWave.jpg)
+
+> [!NOTE]
+> Even though both methods have been showcased here, I'll be using Direct Entity Instantiation from now on.
+
+### 5. Universal Gates
 Create the AND and OR gates using only the universal gates (NOR, NAND). Use VHDL modules in Xilinx. 
 The project can be found [here](/Projects/universalGates/).
 
@@ -366,6 +437,50 @@ The NOR gate is the negation of the output of a OR gate.
 ```math
 A \text{ NOR } B = (A + B)' = A' \cdot B'
 ```
+
+#### NOT using NAND VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity notUsingNand is
+    Port ( A : in  STD_LOGIC;
+           ANOT : out  STD_LOGIC);
+end notUsingNand;
+
+architecture Behavioral of notUsingNand is
+begin
+		NAND1: entity work.nandGate Port Map(A => A, B => A, Z => ANOT);
+end Behavioral;
+```
+
+$$
+\begin{aligned}
+ANOT &= (A \cdot A)' = (A)' = A'
+\end{aligned}
+$$
+
+#### NOT using NOR VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity notUsingNor is
+    Port ( A : in  STD_LOGIC;
+           ANOT : out  STD_LOGIC);
+end notUsingNor;
+
+architecture Behavioral of notUsingNor is
+begin
+	NOR1 : entity work.norGate Port Map(A => A, B => A, Z => ANOT);
+end Behavioral;
+```
+
+$$
+\begin{aligned}
+ANOT &= (A + A)' = (A)' = A'
+\end{aligned}
+$$
 
 #### AND using NAND VHDL Module
 ```vhdl

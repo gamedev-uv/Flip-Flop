@@ -1,0 +1,8 @@
+[Inputs]
+A
+B
+C
+[Outputs]
+DIFF
+BORR
+[BiDir]

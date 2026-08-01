@@ -1,4 +1,4 @@
-V3 20
+V3 26
 FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/norGate.vhd" 2026/07/22.21:17:36 I.24
 EN work/norGate 1784747529 \
       FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/norGate.vhd" \
@@ -6,13 +6,20 @@ EN work/norGate 1784747529 \
 AR work/norGate/Behavioral 1784747530 \
       FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/norGate.vhd" \
       EN work/norGate 1784747529
-FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/andUsingNand.vhd" 2026/07/23.00:26:48 I.24
-EN work/andUsingNand 1784747255 \
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/notUsingNand.vhd" 2026/08/01.21:07:35 I.24
+EN work/notUsingNand 1785598695 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/notUsingNand.vhd" \
+      PB ieee/std_logic_1164 1131108373
+AR work/notUsingNand/Behavioral 1785598696 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/notUsingNand.vhd" \
+      EN work/notUsingNand 1785598695 CP work/nandGate
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/andUsingNand.vhd" 2026/07/23.00:38:38 I.24
+EN work/andUsingNand 1785598847 \
       FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/andUsingNand.vhd" \
       PB ieee/std_logic_1164 1131108373
-AR work/andUsingNand/Behavioral 1784747256 \
+AR work/andUsingNand/Behavioral 1785598848 \
       FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/andUsingNand.vhd" \
-      EN work/andUsingNand 1784747255 CP work/nandGate
+      EN work/andUsingNand 1785598847 CP work/nandGate
 FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/andUsingNor.vhd" 2026/07/23.00:25:36 I.24
 EN work/andUsingNor 1784747323 \
       FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/andUsingNor.vhd" \
@@ -27,6 +34,13 @@ EN work/nandGate 1784747253 \
 AR work/nandGate/Behavioral 1784747254 \
       FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/nandGate.vhd" \
       EN work/nandGate 1784747253
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/notUsingNor.vhd" 2026/08/01.21:10:18 I.24
+EN work/notUsingNor 1785598866 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/notUsingNor.vhd" \
+      PB ieee/std_logic_1164 1131108373
+AR work/notUsingNor/Behavioral 1785598867 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/notUsingNor.vhd" \
+      EN work/notUsingNor 1785598866 CP work/norGate
 FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/orUsingNand.vhd" 2026/07/18.23:54:13 I.24
 EN work/orUsingNand 1784735042 \
       FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/universalGates/orUsingNand.vhd" \

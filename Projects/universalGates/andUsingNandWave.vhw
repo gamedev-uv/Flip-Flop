@@ -8,7 +8,7 @@
 -- \   \   \/     Version : 8.1i
 --  \   \         Application : ISE
 --  /   /         Filename : andUsingNandWave.vhw
--- /___/   /\     Timestamp : Sun Jul 19 18:54:13 2026
+-- /___/   /\     Timestamp : Sat Aug 01 21:11:02 2026
 -- \   \  /  \ 
 --  \___\/\___\ 
 --

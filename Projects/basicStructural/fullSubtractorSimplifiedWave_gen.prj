@@ -1,0 +1,3 @@
+vhdl work "halfSubtractor.vhd"
+vhdl work "fulllSubtractorSimplified.vhd"
+vhdl work fullSubtractorSimplifiedWave.ant
