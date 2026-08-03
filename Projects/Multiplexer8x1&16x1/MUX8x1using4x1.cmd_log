@@ -1,0 +1,5 @@
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplexer8x1/Multiplexer8x1" -intstyle ise -ifn MUX8x1using4x1.xst -ofn MUX8x1using4x1.syr
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplexer8x1/Multiplexer8x1" -intstyle ise -ifn MUX8x1using4x1.xst -ofn MUX8x1using4x1.syr
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplexer8x1/Multiplexer8x1" -intstyle ise -ifn MUX8x1using4x1.xst -ofn MUX8x1using4x1.syr
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplexer8x1/Multiplexer8x1" -intstyle ise -ifn MUX8x1using4x1.xst -ofn MUX8x1using4x1.syr
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplexer8x1&16x1/Multiplexer8x1" -intstyle ise -ifn MUX8x1using4x1.xst -ofn MUX8x1using4x1.syr

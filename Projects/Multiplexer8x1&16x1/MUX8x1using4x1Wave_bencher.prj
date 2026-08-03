@@ -1,0 +1,2 @@
+vhdl work "4x1MUX.vhd"
+vhdl work "MUX8x1using4x1.vhd"

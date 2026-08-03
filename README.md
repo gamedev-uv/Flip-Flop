@@ -14,6 +14,7 @@ Computer Architecture assignments and lab work completed as part of my undergrad
 | 3.    | Full Subtrator using Half Subtractors        | [Link](#4-full-subtractor-using-half-subtractor)    |
 | 4.    | Universal Gates                     | [Link](#5-universal-gates)    |
 | 5.    | MUX 4x1                             | [Link](#6-muliplexer)    |
+| 6.    | Structural MUX                      | [Link](#7-structural-multiplexer)    |
 
 ### 1. Half and Full Adders
 Create a Xilinx project and create and test a half adder and a full adder. Use VHDL Modules.
@@ -716,3 +717,181 @@ end Behavioral;
 
 > [!NOTE]
 > As conditional statements and case statements are executed sequentially unlike they must be enclosed within a `process`.
+
+####  RTL Circuit
+Using normal gates we get -
+![](.README/structuralMultiplexers/mux4x1Normal.jpg)
+
+Whereas using any of the other 3 methods we get a similar RTL Circuit
+![](.README/structuralMultiplexers/mux4x1Others.jpg)
+
+####  Test Bench Output
+![](.README/structuralMultiplexers/mux4x1Wave.jpg)
+But of course all of them produce the same output.
+
+### 7. Structural Multiplexer
+Using only 4x1 MUX and 2x1 MUX at a time create 
+- 8x1 MUX
+- 16x1 MUX
+
+Use VHDL Modules in Xilinx.
+
+The project can be found [here](/Projects/Multiplexer8x1&16x1/).
+
+### Theory
+We can divide the selection process and keep in the MUX in "layers" which will help select a smaller part of the currently selected inputs. We will use the same mental model throughout all the problems, even if the final implementation will be different.
+
+#### Creating 8x1 MUX
+##### Using 4x1 MUX
+
+![](.README/structuralMultiplexers/8x1using4x1.png)
+
+Here we have used 2 4x1 MUX to select between the 2 groups (Using $S_0$ and $S_1$). Wheras the final selection between these output of these 2 groups is being made by another 4x1 MUX. ($S_2$).
+
+![](.README/structuralMultiplexers/8x1using4x1%20Table.png)
+Here we can see that the columns B and C are repeating. And they have 4 unique combinations which can be used to select one between the 2 groups each having 4 inputs. And then we can simply choose one from there using the column A which is represented by $S_2$.
+
+#### VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity MUX8x1using4x1 is
+    Port ( I : in  STD_LOGIC_VECTOR (7 downto 0);
+           S : in  STD_LOGIC_VECTOR (2 downto 0);
+           Y : out  STD_LOGIC);
+end MUX8x1using4x1;
+
+architecture Behavioral of MUX8x1using4x1 is
+SIGNAL L0Y : STD_LOGIC_VECTOR (1 downto 0);
+
+begin
+	L0M0 : entity work.MUX4x1 Port Map(I => I(3 downto 0), S => S(1 downto 0), Y => L0Y(0));
+	L0M1 : entity work.MUX4x1 Port Map(I => I(7 downto 4), S => S(1 downto 0), Y => L0Y(1));
+	L1M1 : entity work.MUX4x1 Port Map(I(0) => L0Y(0), I(1) =>  L0Y(1), I(2) => '0', I(3) => '0',
+												  S(0) => S(2), S(1) => '0', Y => Y);
+end Behavioral;
+```
+> [!TIP]
+> In the code `L0Y` is used store the outputs from the MUX which are layer 0. Through this experiment we will be using `L{i}Y` which will be the output of the `i`th layer. 
+>
+> Similarly `L{i}M{j}` represents the `j`th MUX in the `i`th layer.  
+> Here we are using vectors (basically an array of `STD_LOGIC`). But one can also replicate the same behaviour using raw `STD_LOGIC` as outputs.  
+>
+> Using the same logic we can build the others.
+
+####  RTL Circuit
+![](.README/structuralMultiplexers/8x1using4x1Circuit.jpg)
+
+#### Using 2x1 MUX
+![](.README/structuralMultiplexers/8x1using2x1.png)
+
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity MUX8x1using2x1 is
+    Port ( I : in  STD_LOGIC_VECTOR (7 downto 0);
+           S : in  STD_LOGIC_VECTOR (2 downto 0);
+           Y : out  STD_LOGIC);
+end MUX8x1using2x1;
+
+architecture Behavioral of MUX8x1using2x1 is
+
+SIGNAL L0Y : STD_LOGIC_VECTOR (3 downto 0);
+SIGNAL L1Y : STD_LOGIC_VECTOR (1 downto 0);
+
+begin
+	L0MUX0 : entity work.MUX2x1 Port Map(I => I(1 downto 0), S => S(0), Y => L0Y(0));
+	L0MUX1 : entity work.MUX2x1 Port Map(I => I(3 downto 2), S => S(0), Y => L0Y(1));
+	L0MUX2 : entity work.MUX2x1 Port Map(I => I(5 downto 4), S => S(0), Y => L0Y(2));
+	L0MUX3 : entity work.MUX2x1 Port Map(I => I(7 downto 6), S => S(0), Y => L0Y(3));
+	
+	L1MUX0 : entity work.MUX2x1 Port Map(I => L0Y(1 downto 0), S => S(1), Y => L1Y(0));
+	L1MUX1 : entity work.MUX2x1 Port Map(I => L0Y(3 downto 2), S => S(1), Y => L1Y(1));
+	
+	L2MUX0 : entity work.MUX2x1 Port Map(I => L1Y(1 downto 0), S => S(2), Y => Y);
+end Behavioral;
+```
+
+####  RTL Circuit
+![](.README/structuralMultiplexers/8x1using2x1Circuit.jpg)
+
+####  Test Bench Output for 8x1 MUX
+![](.README/structuralMultiplexers/mux8x1Wave.jpg)
+
+#### Creating 16x1 MUX
+##### Using 4x1 MUX
+
+![](.README/structuralMultiplexers/16x1using4x1.png)
+
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity MUX16x1using4x1 is
+    Port ( I : in  STD_LOGIC_VECTOR (15 downto 0);
+           S : in  STD_LOGIC_VECTOR (3 downto 0);
+           Y : out  STD_LOGIC);
+end MUX16x1using4x1;
+
+architecture Behavioral of MUX16x1using4x1 is
+SIGNAL L0Y : STD_LOGIC_VECTOR (3 downto 0);
+begin
+	L0M0 : entity work.MUX4x1 Port Map(I => I(3 downto 0),   S => S(1 downto 0), Y => L0Y(0));
+	L0M1 : entity work.MUX4x1 Port Map(I => I(7 downto 4),   S => S(1 downto 0), Y => L0Y(1));
+	L0M2 : entity work.MUX4x1 Port Map(I => I(11 downto 8),  S => S(1 downto 0), Y => L0Y(2));
+	L0M3 : entity work.MUX4x1 Port Map(I => I(15 downto 12), S => S(1 downto 0), Y => L0Y(3));
+	
+	L1M0 : entity work.MUX4x1 Port Map(I => L0Y(3 downto 0), S(0) => S(2), S(1) => '0', Y => Y);
+end Behavioral;
+```
+
+####  RTL Circuit
+![](.README/structuralMultiplexers/16x1using4x1Circuit.jpg)
+
+##### Using 2x1 MUX
+
+![](.README/structuralMultiplexers/16x1using2x1.png)
+
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity MUX16x1using2x1 is
+    Port ( I : in  STD_LOGIC_VECTOR (15 downto 0);
+           S : in  STD_LOGIC_VECTOR (3 downto 0);
+           Y : out  STD_LOGIC);
+end MUX16x1using2x1;
+
+architecture Behavioral of MUX16x1using2x1 is
+SIGNAL L0Y : STD_LOGIC_VECTOR (7 downto 0);
+SIGNAL L1Y : STD_LOGIC_VECTOR (3 downto 0);
+SIGNAL L2Y : STD_LOGIC_VECTOR (1 downto 0);
+begin
+	L0MUX0 : entity work.MUX2x1 Port Map(I => I( 1 downto 0),  S => S(0), Y => L0Y(0));
+	L0MUX1 : entity work.MUX2x1 Port Map(I => I( 3 downto 2),  S => S(0), Y => L0Y(1));
+	L0MUX2 : entity work.MUX2x1 Port Map(I => I( 5 downto 4),  S => S(0), Y => L0Y(2));
+	L0MUX3 : entity work.MUX2x1 Port Map(I => I( 7 downto 6),  S => S(0), Y => L0Y(3));
+	L0MUX4 : entity work.MUX2x1 Port Map(I => I( 9 downto 8),  S => S(0), Y => L0Y(4));
+	L0MUX5 : entity work.MUX2x1 Port Map(I => I(11 downto 10), S => S(0), Y => L0Y(5));
+	L0MUX6 : entity work.MUX2x1 Port Map(I => I(13 downto 12), S => S(0), Y => L0Y(6));
+	L0MUX7 : entity work.MUX2x1 Port Map(I => I(15 downto 14), S => S(0), Y => L0Y(7));
+	
+	L1MUX0 : entity work.MUX2x1 Port Map(I => L0Y(1 downto 0), S => S(1), Y => L1Y(0));
+	L1MUX1 : entity work.MUX2x1 Port Map(I => L0Y(3 downto 2), S => S(1), Y => L1Y(1));
+	L1MUX2 : entity work.MUX2x1 Port Map(I => L0Y(5 downto 4), S => S(1), Y => L1Y(2));
+	L1MUX3 : entity work.MUX2x1 Port Map(I => L0Y(7 downto 6), S => S(1), Y => L1Y(3));
+	
+	L2MUX0 : entity work.MUX2x1 Port Map(I => L1Y(1 downto 0), S => S(2), Y => L2Y(0));
+	L2MUX1 : entity work.MUX2x1 Port Map(I => L1Y(3 downto 2), S => S(2), Y => L2Y(1));
+	
+	L3MUX1 : entity work.MUX2x1 Port Map(I => L2Y(1 downto 0), S => S(3), Y => Y);
+end Behavioral;
+```
+
+####  RTL Circuit
+![](.README/structuralMultiplexers/16x1using2x1Circuit.jpg)
+
+####  Test Bench Output for 16x1 MUX
+![](.README/structuralMultiplexers/mux16x1Wave.jpg)

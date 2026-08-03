@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="warning" file="HDLParsers" num="3215" delta="unknown" >Unit <arg fmt="%s" index="1">work/MUX2x1</arg> is now defined in a different file: was <arg fmt="%s" index="2">C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplexer8x1/MUX2x1.vhd</arg>, now is <arg fmt="%s" index="3">C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplexer8x1&amp;16x1/MUX2x1.vhd</arg>
+</msg>
+
+<msg type="warning" file="HDLParsers" num="3215" delta="unknown" >Unit <arg fmt="%s" index="1">work/MUX2x1/Behavioral</arg> is now defined in a different file: was <arg fmt="%s" index="2">C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplexer8x1/MUX2x1.vhd</arg>, now is <arg fmt="%s" index="3">C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplexer8x1&amp;16x1/MUX2x1.vhd</arg>
+</msg>
+
+<msg type="warning" file="Xst" num="1355" delta="unknown" >Unit <arg fmt="%s" index="1">MUX2x1</arg> is merged (low complexity)
+</msg>
+
+</messages>

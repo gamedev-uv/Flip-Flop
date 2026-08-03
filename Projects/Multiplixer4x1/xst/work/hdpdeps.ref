@@ -6,13 +6,13 @@ EN work/mux4x1UsingConditional 1785662864 \
 AR work/mux4x1UsingConditional/Behavioral 1785662865 \
       FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplixer4x1/mux4x1UsingConditional.vhd" \
       EN work/mux4x1UsingConditional 1785662864
-FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplixer4x1/mux4x1usingSelect.vhd" 2026/08/02.14:49:21 I.24
-EN work/mux4x1usingSelect 1785662365 \
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplixer4x1/mux4x1usingSelect.vhd" 2026/08/02.14:58:30 I.24
+EN work/mux4x1usingSelect 1785760138 \
       FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplixer4x1/mux4x1usingSelect.vhd" \
       PB ieee/std_logic_1164 1131108373
-AR work/mux4x1usingSelect/Behavioral 1785662366 \
+AR work/mux4x1usingSelect/Behavioral 1785760139 \
       FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplixer4x1/mux4x1usingSelect.vhd" \
-      EN work/mux4x1usingSelect 1785662365
+      EN work/mux4x1usingSelect 1785760138
 FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplixer4x1/mux4x1UsingCase.vhd" 2026/08/02.14:54:18 I.24
 EN work/mux4x1UsingCase 1785662886 \
       FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplixer4x1/mux4x1UsingCase.vhd" \
@@ -20,10 +20,10 @@ EN work/mux4x1UsingCase 1785662886 \
 AR work/mux4x1UsingCase/Behavioral 1785662887 \
       FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplixer4x1/mux4x1UsingCase.vhd" \
       EN work/mux4x1UsingCase 1785662886
-FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplixer4x1/mux4x1.vhd" 2026/08/02.14:43:50 I.24
-EN work/mux4x1 1785662039 \
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplixer4x1/mux4x1.vhd" 2026/08/02.14:45:26 I.24
+EN work/mux4x1 1785760110 \
       FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplixer4x1/mux4x1.vhd" \
       PB ieee/std_logic_1164 1131108373
-AR work/mux4x1/Behavioral 1785662040 \
+AR work/mux4x1/Behavioral 1785760111 \
       FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplixer4x1/mux4x1.vhd" \
-      EN work/mux4x1 1785662039
+      EN work/mux4x1 1785760110

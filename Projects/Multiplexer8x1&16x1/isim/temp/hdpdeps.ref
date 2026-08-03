@@ -1,0 +1,8 @@
+V3 6
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplexer8x1/MUX2x1.vhd" 2026/08/02.15:03:33 I.24
+EN isim_temp/MUX2x1 1785733997 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplexer8x1/MUX2x1.vhd" \
+      PB ieee/std_logic_1164 1132105529
+AR isim_temp/MUX2x1/Behavioral 1785733998 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplexer8x1/MUX2x1.vhd" \
+      EN isim_temp/MUX2x1 1785733997

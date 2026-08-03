@@ -1,0 +1,22 @@
+Release 8.1i - xst I.24
+Copyright (c) 1995-2005 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to ./xst/projnav.tmp
+CPU : 0.00 / 0.13 s | Elapsed : 0.00 / 1.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplexer8x1/4x1MUX.vhd" in Library work.
+ERROR:HDLParsers:164 - "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplexer8x1/4x1MUX.vhd" Line 4. parse error, unexpected INTEGER_LITERAL, expecting IDENTIFIER
+WARNING:HDLParsers:3481 - Library work has no units. Did not save reference file "xst/work/hdllib.ref" for it.
+CPU : 0.04 / 0.17 s | Elapsed : 0.00 / 1.00 s
+ 
+--> 
+
+Total memory usage is 154740 kilobytes
+
+Number of errors   :    1 (   0 filtered)
+Number of warnings :    1 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

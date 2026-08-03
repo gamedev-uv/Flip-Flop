@@ -1,0 +1,3 @@
+vhdl work "MUX2x1.vhd"
+vhdl work "MUX8x1using2x1.vhd"
+vhdl work MUX8x1using2x1Wave.ant
