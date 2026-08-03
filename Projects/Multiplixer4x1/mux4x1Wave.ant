@@ -1,0 +1,114 @@
+--------------------------------------------------------------------------------
+-- Copyright (c) 1995-2003 Xilinx, Inc.
+-- All Right Reserved.
+--------------------------------------------------------------------------------
+--   ____  ____ 
+--  /   /\/   / 
+-- /___/  \  /    Vendor: Xilinx 
+-- \   \   \/     Version : 8.1i
+--  \   \         Application : ISE
+--  /   /         Filename : mux4x1Wave.ant
+-- /___/   /\     Timestamp : Sun Aug 02 14:46:19 2026
+-- \   \  /  \ 
+--  \___\/\___\ 
+--
+--Command: 
+--Design Name: mux4x1Wave
+--Device: Xilinx
+--
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_TEXTIO.ALL;
+USE IEEE.STD_LOGIC_ARITH.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+USE STD.TEXTIO.ALL;
+
+ENTITY mux4x1Wave IS
+END mux4x1Wave;
+
+ARCHITECTURE testbench_arch OF mux4x1Wave IS
+    FILE RESULTS: TEXT OPEN WRITE_MODE IS "C:\Projects\Xilinx Projects\Flip-Flop\Projects\Multiplixer4x1\mux4x1Wave.ano";
+
+    COMPONENT mux4x1
+        PORT (
+            I : In std_logic_vector (3 DownTo 0);
+            S : In std_logic_vector (1 DownTo 0);
+            Y : Out std_logic
+        );
+    END COMPONENT;
+
+    SIGNAL I : std_logic_vector (3 DownTo 0) := "1010";
+    SIGNAL S : std_logic_vector (1 DownTo 0) := "00";
+    SIGNAL Y : std_logic := '0';
+
+    SHARED VARIABLE TX_ERROR : INTEGER := 0;
+    SHARED VARIABLE TX_OUT : LINE;
+
+    BEGIN
+        UUT : mux4x1
+        PORT MAP (
+            I => I,
+            S => S,
+            Y => Y
+        );
+
+        PROCESS    -- Annotation process
+            VARIABLE TX_TIME : INTEGER := 0;
+
+            PROCEDURE ANNOTATE_Y(
+                TX_TIME : INTEGER
+            ) IS
+                VARIABLE TX_STR : String(1 to 4096);
+                VARIABLE TX_LOC : LINE;
+            BEGIN
+                STD.TEXTIO.write(TX_LOC, string'("Annotate["));
+                STD.TEXTIO.write(TX_LOC, TX_TIME);
+                STD.TEXTIO.write(TX_LOC, string'(", Y, "));
+                IEEE.STD_LOGIC_TEXTIO.write(TX_LOC, Y);
+                STD.TEXTIO.write(TX_LOC, string'("]"));
+                TX_STR(TX_LOC.all'range) := TX_LOC.all;
+                STD.TEXTIO.writeline(RESULTS, TX_LOC);
+                STD.TEXTIO.Deallocate(TX_LOC);
+            END;
+        BEGIN
+            WAIT for 1 fs;
+            ANNOTATE_Y(0);
+            ANNO_LOOP : LOOP
+                WAIT for 10 ns;
+                TX_TIME := TX_TIME + 10;
+                ANNOTATE_Y(TX_TIME);
+                WAIT for 10 ns;
+                TX_TIME := TX_TIME + 10;
+            END LOOP ANNO_LOOP;
+        END PROCESS;
+
+        PROCESS
+            BEGIN
+                -- -------------  Current Time:  40ns
+                WAIT FOR 40 ns;
+                S <= "01";
+                -- -------------------------------------
+                -- -------------  Current Time:  60ns
+                WAIT FOR 20 ns;
+                S <= "10";
+                -- -------------------------------------
+                -- -------------  Current Time:  80ns
+                WAIT FOR 20 ns;
+                S <= "11";
+                -- -------------------------------------
+                -- -------------  Current Time:  100ns
+                WAIT FOR 20 ns;
+                S <= "00";
+                -- -------------------------------------
+                WAIT FOR 400 ns;
+
+                STD.TEXTIO.write(TX_OUT, string'("Total[]"));
+                STD.TEXTIO.writeline(RESULTS, TX_OUT);
+                ASSERT (FALSE) REPORT
+                    "Success! Simulation for annotation completed"
+                    SEVERITY FAILURE;
+            END PROCESS;
+
+    END testbench_arch;
+

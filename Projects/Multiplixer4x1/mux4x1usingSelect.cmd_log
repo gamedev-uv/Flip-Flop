@@ -1,0 +1,1 @@
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplixer4x1/Multiplixer4x1" -intstyle ise -ifn mux4x1usingSelect.xst -ofn mux4x1usingSelect.syr

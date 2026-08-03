@@ -13,6 +13,7 @@ Computer Architecture assignments and lab work completed as part of my undergrad
 | 3.    | Full Adder using Half Adders        | [Link](#3-full-adder-using-half-adder)    |
 | 3.    | Full Subtrator using Half Subtractors        | [Link](#4-full-subtractor-using-half-subtractor)    |
 | 4.    | Universal Gates                     | [Link](#5-universal-gates)    |
+| 5.    | MUX 4x1                             | [Link](#6-muliplexer)    |
 
 ### 1. Half and Full Adders
 Create a Xilinx project and create and test a half adder and a full adder. Use VHDL Modules.
@@ -575,3 +576,143 @@ O_1 &= (A + B)' \\
 Z &= (O_1 + O_1)' = (O_1)' = ((A + B)')' = A + B
 \end{aligned}
 $$
+
+### 6. Muliplexer
+Create a 4x1 MUX using VHDL modules in Xilinx. 
+The project can be found [here](/Projects/Multiplixer4x1/).
+
+#### Multiplexer (MUX)
+A multiplexer is used to select between $2^n$ given inputs by utilizing $n$ selection line inputs.
+
+A general MUX is defined as a $2^n$x1. So a 4x1 MUX has 2 selection line inputs and can be used to select between 4 input values, let's call them $I_0$, $I_1$, $I_2$ and $I_3$ respectively. And the selection line inputs are labelled as $S_0$ and $S_1$.
+
+We can form a truth table which looks like this -
+| $S_1$ | $S_0$ | Output |
+|   :-: | :-:   | :-:    |
+|   0   | 0     | $I_0$  |
+|   0   | 1     | $I_1$  |
+|   1   | 0     | $I_2$  |
+|   1   | 1     | $I_3$  |
+
+So the output can be represented as -
+```math
+\begin{align*}
+\text{Y} &= S_0' \cdot S_1' \cdot I_0\\
+         &+ S_0' \cdot S_1 \cdot I_1\\
+         &+ S_0 \cdot S_1' \cdot I_2\\
+         &+ S_0 \cdot S_1 \cdot I_3\\
+\end{align*}
+```
+
+There are several ways to represent this within VHDL. Some of the ways have been showcased below.
+
+#### VDHL Modules 
+##### Using basic operations
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity mux4x1 is
+    Port ( I : in  STD_LOGIC_VECTOR (03 downto 0);
+           S : in  STD_LOGIC_VECTOR (01 downto 0);
+           Y : out  STD_LOGIC);
+end mux4x1;
+
+architecture Behavioral of mux4x1 is
+begin
+	Y <= ((I(0) AND (NOT S(1)) AND (NOT S(0))) OR
+		   (I(1) AND (NOT S(1)) AND (    S(0))) OR
+		   (I(2) AND (    S(1)) AND (NOT S(0))) OR
+		   (I(3) AND (    S(1)) AND (    S(0))));
+end Behavioral;
+```
+
+##### Using select statement
+
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity mux4x1usingSelect is
+    Port ( I : in  STD_LOGIC_VECTOR (3 downto 0);
+           S : in  STD_LOGIC_VECTOR (1 downto 0);
+           Y : out  STD_LOGIC);
+end mux4x1usingSelect;
+
+architecture Behavioral of mux4x1usingSelect is
+begin
+	with S select
+		Y <= I(0) when "00",
+			  I(1) when "01",
+			  I(2) when "10",
+			  I(3) when "11",
+			  '0'  when others;
+end Behavioral;
+```
+
+##### Using case statements
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity mux4x1UsingCase is
+    Port ( I : in  STD_LOGIC_VECTOR (3 downto 0);
+           S : in  STD_LOGIC_VECTOR (1 downto 0);
+           Y : out  STD_LOGIC);
+end mux4x1UsingCase;
+
+architecture Behavioral of mux4x1UsingCase is
+begin
+	process(I, S)
+		begin
+		
+			case S is 
+				when "00" =>
+					Y <= I(0);
+				when "01" => 
+					Y <= I(1);
+				when "10" => 
+					Y <= I(2);
+				when "11" =>
+					Y <= I(3);
+				when others => 
+					Y <= '0';
+					
+			end case;
+			
+		end process;
+end Behavioral;
+```
+
+##### Using conditional statements
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity mux4x1UsingConditional is
+    Port ( I : in  STD_LOGIC_VECTOR (3 downto 0);
+           S : in  STD_LOGIC_VECTOR (1 downto 0);
+           Y : out  STD_LOGIC);
+end mux4x1UsingConditional;
+
+architecture Behavioral of mux4x1UsingConditional is
+begin
+	process(I, S)
+		begin
+			if S = "00" then
+				Y <= I(0);
+			elsif S = "01" then
+				Y <= I(1);
+			elsif S = "10" then 
+				Y <= I(2);
+			elsif S = "11" then 
+				Y <= I(3);
+			else
+				Y <= '0';
+			end if;
+		end process;
+end Behavioral;
+```
+
+> [!NOTE]
+> As conditional statements and case statements are executed sequentially unlike they must be enclosed within a `process`.

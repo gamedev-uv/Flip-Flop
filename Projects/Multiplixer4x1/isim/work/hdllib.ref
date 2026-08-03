@@ -1,0 +1,4 @@
+AR mux4x1wave testbench_arch "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplixer4x1/mux4x1Wave.ant" sub00/vhpl03 1785662038
+EN mux4x1 NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplixer4x1/mux4x1.vhd" sub00/vhpl00 1785662035
+EN mux4x1wave NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplixer4x1/mux4x1Wave.ant" sub00/vhpl02 1785662037
+AR mux4x1 behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Multiplixer4x1/mux4x1.vhd" sub00/vhpl01 1785662036
