@@ -52,11 +52,11 @@ entity halfAdder is
            CARRY : out  STD_LOGIC);
 end halfAdder;
 
-architecture Behavioral of halfAdder is
+architecture Dataflow of halfAdder is
 begin
 	SUM <= A XOR B;
 	CARRY <= A AND B;
-end Behavioral;
+end Dataflow;
 ```
 ####  RTL Circuit
 ![](.README/simpleAdders/halfAdderCircuit.jpg)
@@ -99,11 +99,11 @@ entity fullAdder is
            CARRY : out  STD_LOGIC);
 end fullAdder;
 
-architecture Behavioral of fullAdder is
+architecture Dataflow of fullAdder is
 begin
 	SUM <= A XOR B XOR C;
 	CARRY <= (A AND B) OR (B AND C) OR (A AND C); 
-end Behavioral;
+end Dataflow;
 ```
 ####  RTL Circuit
 ![](.README/simpleAdders/fullAdderCircuit.jpg)
@@ -147,11 +147,11 @@ entity halfSubtractor is
            BORR : out  STD_LOGIC);
 end halfSubtractor;
 
-architecture Behavioral of halfSubtractor is
+architecture Dataflow of halfSubtractor is
 begin
 	DIFF <= A XOR B;
 	BORR <= ((NOT A) AND B);
-end Behavioral;
+end Dataflow;
 ```
 ####  RTL Circuit
 ![](.README/simpleSubtractors/halfSubtractorCircuit.jpg)
@@ -194,11 +194,11 @@ entity fullSubtractor is
            BORR : out  STD_LOGIC);
 end fullSubtractor;
 
-architecture Behavioral of fullSubtractor is
+architecture Dataflow of fullSubtractor is
 begin
 	DIFF <= A XOR B XOR C;
 	BORR <= (NOT(A) AND B) OR (B AND C) OR (NOT(A) AND C); 
-end Behavioral;
+end Dataflow;
 ```
 ####  RTL Circuit
 ![](.README/simpleSubtractors/fullSubtractorCircuit.jpg)
@@ -277,11 +277,11 @@ entity halfAdder is
            SUM, CARRY : out  STD_LOGIC);
 end halfAdder;
 
-architecture Behavioral of halfAdder is
+architecture Dataflow of halfAdder is
 begin
 	SUM <= A XOR B;
 	CARRY <= A AND B;
-end Behavioral;
+end Dataflow;
 ```
 
 > [!NOTE] 
@@ -298,7 +298,7 @@ entity fullAdderComponents is
            CARRY : out  STD_LOGIC);
 end fullAdderComponents;
 
-architecture Behavioral of fullAdderComponents is
+architecture Structural of fullAdderComponents is
 
 Component halfAdder
 	    Port ( A, B : in  STD_LOGIC;
@@ -310,7 +310,7 @@ begin
 	H1: halfAdder Port Map(A => A, B => B, SUM => S1, CARRY => C1);
 	H2: halfAdder Port Map(A => S1, B => C, SUM => SUM, CARRY => C2);
 	CARRY <= C1 OR C2;
-end Behavioral;
+end Structural;
 ```
 
 #### Full Adder VHDL Module (Direct Entity Instantiation)
@@ -323,14 +323,14 @@ entity fullAdderSimplified is
            SUM, CARRY : out  STD_LOGIC);
 end fullAdderSimplified;
 
-architecture Behavioral of fullAdderSimplified is
+architecture Structural of fullAdderSimplified is
 
 SIGNAL S1, C1, C2 : STD_LOGIC;
 begin
 	H1: entity work.halfAdder Port Map(A => A, B => B, SUM => S1, CARRY => C1);
 	H2: entity work.halfAdder Port Map(A => S1, B => C, SUM => SUM, CARRY => C2);
 	CARRY <= C1 OR C2;
-end Behavioral;
+end Structural;
 ```
 
 > [!TIP]
@@ -368,7 +368,7 @@ entity fullSubtractorComponents is
            DIFF, BORR : out  STD_LOGIC);
 end fullSubtractorComponents;
 
-architecture Behavioral of fullSubtractorComponents is
+architecture Structural of fullSubtractorComponents is
 
 Component halfSubtractor
 	    Port ( A, B : in  STD_LOGIC;
@@ -379,7 +379,7 @@ begin
 	HS1 : entity halfSubtractor Port Map(A => A, B => B, DIFF => D1, BORR => B1);
 	HS2 : entity halfSubtractor Port Map(A => D1, B => C, DIFF => DIFF, BORR => B2);
 	BORR <= B1 OR B2;
-end Behavioral;
+end Structural;
 ```
 
 #### Full Subtractor VHDL Module (Direct Entity Instantiation)
@@ -392,13 +392,13 @@ entity fulllSubtractorSimplified is
            DIFF, BORR : out  STD_LOGIC);
 end fulllSubtractorSimplified;
 
-architecture Behavioral of fulllSubtractorSimplified is
+architecture Structural of fulllSubtractorSimplified is
 SIGNAL D1, B1, B2 : STD_LOGIC;
 begin
 	HS1 : entity work.halfSubtractor Port Map(A => A, B => B, DIFF => D1, BORR => B1);
 	HS2 : entity work.halfSubtractor Port Map(A => D1, B => C, DIFF => DIFF, BORR => B2);
 	BORR <= B1 OR B2;
-end Behavioral; 
+end Structural; 
 ```
 #### RTL Circuit
 ![](.README/fullSubtractorUsingHalf/fullSubtractorUsingHalfCircuits.jpg)
@@ -450,10 +450,10 @@ entity notUsingNand is
            ANOT : out  STD_LOGIC);
 end notUsingNand;
 
-architecture Behavioral of notUsingNand is
+architecture Structural of notUsingNand is
 begin
 		NAND1: entity work.nandGate Port Map(A => A, B => A, Z => ANOT);
-end Behavioral;
+end Structural;
 ```
 
 $$
@@ -472,10 +472,10 @@ entity notUsingNor is
            ANOT : out  STD_LOGIC);
 end notUsingNor;
 
-architecture Behavioral of notUsingNor is
+architecture Structural of notUsingNor is
 begin
 	NOR1 : entity work.norGate Port Map(A => A, B => A, Z => ANOT);
-end Behavioral;
+end Structural;
 ```
 
 $$
@@ -494,12 +494,12 @@ entity andUsingNand is
            Z : out  STD_LOGIC);
 end andUsingNand;
 
-architecture Behavioral of andUsingNand is
+architecture Structural of andUsingNand is
 SIGNAL O_1 : STD_LOGIC;
 begin
 	NAND1 : entity work.nandGate Port Map(A => A, B => B, Z => O_1);
 	NAND2 : entity work.nandGate Port Map(A => O_1, B => O_1, Z => Z); 
-end Behavioral;
+end Structural;
 ```
 $$
 \begin{aligned}
@@ -518,13 +518,13 @@ entity andUsingNor is
            Z : out  STD_LOGIC);
 end andUsingNor;
 
-architecture Behavioral of andUsingNor is
+architecture Structural of andUsingNor is
 SIGNAL notA, notB : STD_LOGIC;
 begin
 	NOR1 : entity work.norGate Port Map(A => A, B => A, Z => notA);
 	NOR2 : entity work.norGate Port Map(A => B, B => B, Z => notB);
 	NOR3 : entity work.norGate Port Map(A => notA, B => notB, Z => Z);
-end Behavioral;
+end Structural;
 ```
 
 $$
@@ -541,13 +541,13 @@ entity orUsingNand is
            Z : out  STD_LOGIC);
 end orUsingNand;
 
-architecture Behavioral of orUsingNand is
+architecture Structural of orUsingNand is
 SIGNAL notA, notB, STD_LOGIC;
 begin
 	NAND1: entity work.nandGate Port Map(A => A, B => A, Z => notA);
 	NAND2: entity work.nandGate Port Map(A => B, B => B, Z => notB);
 	NAND3: entity work.nandGate Port Map(A => notA, B => notB, Z => Z);
-end Behavioral;
+end Structural;
 ```
 
 $$
@@ -564,12 +564,12 @@ entity orUsingNor is
            Z : out  STD_LOGIC);
 end orUsingNor;
 
-architecture Behavioral of orUsingNor is
+architecture Structural of orUsingNor is
 SIGNAL O_1 : STD_LOGIC;
 begin
 	NOR1 : entity work.norGate Port Map(A => A, B => B, Z => O_1);
 	NOR2 : entity work.norGate Port Map(A => O_1, B => O_1, Z => Z);
-end Behavioral;
+end Structural;
 ```
 $$
 \begin{aligned}
@@ -619,13 +619,13 @@ entity mux4x1 is
            Y : out  STD_LOGIC);
 end mux4x1;
 
-architecture Behavioral of mux4x1 is
+architecture Dataflow of mux4x1 is
 begin
 	Y <= ((I(0) AND (NOT S(1)) AND (NOT S(0))) OR
 		   (I(1) AND (NOT S(1)) AND (    S(0))) OR
 		   (I(2) AND (    S(1)) AND (NOT S(0))) OR
 		   (I(3) AND (    S(1)) AND (    S(0))));
-end Behavioral;
+end Dataflow;
 ```
 
 ##### Using select statement
@@ -640,7 +640,7 @@ entity mux4x1usingSelect is
            Y : out  STD_LOGIC);
 end mux4x1usingSelect;
 
-architecture Behavioral of mux4x1usingSelect is
+architecture Dataflow of mux4x1usingSelect is
 begin
 	with S select
 		Y <= I(0) when "00",
@@ -648,7 +648,7 @@ begin
 			  I(2) when "10",
 			  I(3) when "11",
 			  '0'  when others;
-end Behavioral;
+end Dataflow;
 ```
 
 ##### Using case statements
@@ -762,7 +762,7 @@ entity MUX8x1using4x1 is
            Y : out  STD_LOGIC);
 end MUX8x1using4x1;
 
-architecture Behavioral of MUX8x1using4x1 is
+architecture Structural of MUX8x1using4x1 is
 SIGNAL L0Y : STD_LOGIC_VECTOR (1 downto 0);
 
 begin
@@ -770,7 +770,7 @@ begin
 	L0M1 : entity work.MUX4x1 Port Map(I => I(7 downto 4), S => S(1 downto 0), Y => L0Y(1));
 	L1M1 : entity work.MUX4x1 Port Map(I(0) => L0Y(0), I(1) =>  L0Y(1), I(2) => '0', I(3) => '0',
 												  S(0) => S(2), S(1) => '0', Y => Y);
-end Behavioral;
+end Structural;
 ```
 > [!TIP]
 > In the code `L0Y` is used store the outputs from the MUX which are layer 0. Through this experiment we will be using `L{i}Y` which will be the output of the `i`th layer. 
@@ -796,7 +796,7 @@ entity MUX8x1using2x1 is
            Y : out  STD_LOGIC);
 end MUX8x1using2x1;
 
-architecture Behavioral of MUX8x1using2x1 is
+architecture Structural of MUX8x1using2x1 is
 
 SIGNAL L0Y : STD_LOGIC_VECTOR (3 downto 0);
 SIGNAL L1Y : STD_LOGIC_VECTOR (1 downto 0);
@@ -811,7 +811,7 @@ begin
 	L1MUX1 : entity work.MUX2x1 Port Map(I => L0Y(3 downto 2), S => S(1), Y => L1Y(1));
 	
 	L2MUX0 : entity work.MUX2x1 Port Map(I => L1Y(1 downto 0), S => S(2), Y => Y);
-end Behavioral;
+end Structural;
 ```
 
 ####  RTL Circuit
@@ -835,7 +835,7 @@ entity MUX16x1using4x1 is
            Y : out  STD_LOGIC);
 end MUX16x1using4x1;
 
-architecture Behavioral of MUX16x1using4x1 is
+architecture Structural of MUX16x1using4x1 is
 SIGNAL L0Y : STD_LOGIC_VECTOR (3 downto 0);
 begin
 	L0M0 : entity work.MUX4x1 Port Map(I => I(3 downto 0),   S => S(1 downto 0), Y => L0Y(0));
@@ -844,7 +844,7 @@ begin
 	L0M3 : entity work.MUX4x1 Port Map(I => I(15 downto 12), S => S(1 downto 0), Y => L0Y(3));
 	
 	L1M0 : entity work.MUX4x1 Port Map(I => L0Y(3 downto 0), S(0) => S(2), S(1) => '0', Y => Y);
-end Behavioral;
+end Structural;
 ```
 
 ####  RTL Circuit
@@ -864,7 +864,7 @@ entity MUX16x1using2x1 is
            Y : out  STD_LOGIC);
 end MUX16x1using2x1;
 
-architecture Behavioral of MUX16x1using2x1 is
+architecture Structural of MUX16x1using2x1 is
 SIGNAL L0Y : STD_LOGIC_VECTOR (7 downto 0);
 SIGNAL L1Y : STD_LOGIC_VECTOR (3 downto 0);
 SIGNAL L2Y : STD_LOGIC_VECTOR (1 downto 0);
@@ -887,7 +887,7 @@ begin
 	L2MUX1 : entity work.MUX2x1 Port Map(I => L1Y(3 downto 2), S => S(2), Y => L2Y(1));
 	
 	L3MUX1 : entity work.MUX2x1 Port Map(I => L2Y(1 downto 0), S => S(3), Y => Y);
-end Behavioral;
+end Structural;
 ```
 
 ####  RTL Circuit

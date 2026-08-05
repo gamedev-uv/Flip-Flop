@@ -7,10 +7,10 @@ entity MUX2x1 is
            Y : out  STD_LOGIC);
 end MUX2x1;
 
-architecture Behavioral of MUX2x1 is
+architecture Dataflow of MUX2x1 is
 begin
 	with S select 
 		Y <= I(0) when '0',
 			  I(1) when '1',
 			  '0'  when others;
-end Behavioral;
+end Dataflow;

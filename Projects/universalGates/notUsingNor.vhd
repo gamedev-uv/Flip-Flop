@@ -6,7 +6,7 @@ entity notUsingNor is
            ANOT : out  STD_LOGIC);
 end notUsingNor;
 
-architecture Behavioral of notUsingNor is
+architecture Structural of notUsingNor is
 begin
 	NOR1 : entity work.norGate Port Map(A => A, B => A, Z => ANOT);
-end Behavioral;
+end Structural;

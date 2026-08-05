@@ -6,7 +6,7 @@ entity fullSubtractorComponents is
            DIFF, BORR : out  STD_LOGIC);
 end fullSubtractorComponents;
 
-architecture Behavioral of fullSubtractorComponents is
+architecture Structural of fullSubtractorComponents is
 
 Component halfSubtractor
 	    Port ( A, B : in  STD_LOGIC;
@@ -17,4 +17,4 @@ begin
 	HS1 : entity halfSubtractor Port Map(A => A, B => B, DIFF => D1, BORR => B1);
 	HS2 : entity halfSubtractor Port Map(A => D1, B => C, DIFF => DIFF, BORR => B2);
 	BORR <= B1 OR B2;
-end Behavioral;
+end Structural;

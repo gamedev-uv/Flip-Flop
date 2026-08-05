@@ -7,7 +7,7 @@ entity fullAdderComponents is
            CARRY : out  STD_LOGIC);
 end fullAdderComponents;
 
-architecture Behavioral of fullAdderComponents is
+architecture Structural of fullAdderComponents is
 
 Component halfAdder
 	    Port ( A, B : in  STD_LOGIC;
@@ -19,4 +19,4 @@ begin
 	H1: halfAdder Port Map(A => A, B => B, SUM => S1, CARRY => C1);
 	H2: halfAdder Port Map(A => S1, B => C, SUM => SUM, CARRY => C2);
 	CARRY <= C1 OR C2;
-end Behavioral;
+end Structural;

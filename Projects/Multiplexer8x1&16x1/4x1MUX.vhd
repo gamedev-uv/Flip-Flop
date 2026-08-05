@@ -7,7 +7,7 @@ entity MUX4x1 is
            Y : out  STD_LOGIC);
 end MUX4x1;
 
-architecture Behavioral of MUX4x1 is
+architecture Dataflow of MUX4x1 is
 begin
 	with S select 
 		Y <= I(0) when "00",
@@ -15,4 +15,4 @@ begin
 			  I(2) when "10",
 			  I(3) when "11",
 			  '0'  when others;
-end Behavioral;
+end Dataflow;

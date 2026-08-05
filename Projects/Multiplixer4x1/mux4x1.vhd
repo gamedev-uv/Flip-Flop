@@ -7,10 +7,10 @@ entity mux4x1 is
            Y : out  STD_LOGIC);
 end mux4x1;
 
-architecture Behavioral of mux4x1 is
+architecture Dataflow of mux4x1 is
 begin
 	Y <= ((I(0) AND (NOT S(1)) AND (NOT S(0))) OR
 		   (I(1) AND (NOT S(1)) AND (    S(0))) OR
 		   (I(2) AND (    S(1)) AND (NOT S(0))) OR
 		   (I(3) AND (    S(1)) AND (    S(0))));
-end Behavioral;
+end Dataflow;

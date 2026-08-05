@@ -9,8 +9,8 @@ entity halfSubtractor is
            BORR : out  STD_LOGIC);
 end halfSubtractor;
 
-architecture Behavioral of halfSubtractor is
+architecture Dataflow of halfSubtractor is
 begin
 	DIFF <= A XOR B;
 	BORR <= ((NOT A) AND B);
-end Behavioral;
+end Dataflow;

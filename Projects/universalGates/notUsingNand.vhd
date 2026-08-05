@@ -6,7 +6,7 @@ entity notUsingNand is
            ANOT : out  STD_LOGIC);
 end notUsingNand;
 
-architecture Behavioral of notUsingNand is
+architecture Structural of notUsingNand is
 begin
 		NAND1: entity work.nandGate Port Map(A => A, B => A, Z => ANOT);
-end Behavioral;
+end Structural;

@@ -7,7 +7,7 @@ entity MUX16x1using2x1 is
            Y : out  STD_LOGIC);
 end MUX16x1using2x1;
 
-architecture Behavioral of MUX16x1using2x1 is
+architecture Structural of MUX16x1using2x1 is
 SIGNAL L0Y : STD_LOGIC_VECTOR (7 downto 0);
 SIGNAL L1Y : STD_LOGIC_VECTOR (3 downto 0);
 SIGNAL L2Y : STD_LOGIC_VECTOR (1 downto 0);
@@ -30,4 +30,4 @@ begin
 	L2MUX1 : entity work.MUX2x1 Port Map(I => L1Y(3 downto 2), S => S(2), Y => L2Y(1));
 	
 	L3MUX1 : entity work.MUX2x1 Port Map(I => L2Y(1 downto 0), S => S(3), Y => Y);
-end Behavioral;
+end Structural;

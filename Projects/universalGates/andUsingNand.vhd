@@ -6,9 +6,9 @@ entity andUsingNand is
            Z : out  STD_LOGIC);
 end andUsingNand;
 
-architecture Behavioral of andUsingNand is
+architecture Structural of andUsingNand is
 SIGNAL O_1 : STD_LOGIC;
 begin
 	NAND1 : entity work.nandGate Port Map(A => A, B => B, Z => O_1);
 	NAND2 : entity work.nandGate Port Map(A => O_1, B => O_1, Z => Z); 
-end Behavioral;
+end Structural;

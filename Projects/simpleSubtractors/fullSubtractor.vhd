@@ -9,8 +9,8 @@ entity fullSubtractor is
            BORR : out  STD_LOGIC);
 end fullSubtractor;
 
-architecture Behavioral of fullSubtractor is
+architecture Dataflow of fullSubtractor is
 begin
 	DIFF <= A XOR B XOR C;
 	BORR <= (NOT(A) AND B) OR (B AND C) OR (NOT(A) AND C); 
-end Behavioral;
+end Dataflow;

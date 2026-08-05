@@ -9,8 +9,8 @@ entity halfAdder is
            CARRY : out  STD_LOGIC);
 end halfAdder;
 
-architecture Behavioral of halfAdder is
+architecture Dataflow of halfAdder is
 begin
 	SUM <= A XOR B;
 	CARRY <= A AND B;
-end Behavioral;
+end Dataflow;

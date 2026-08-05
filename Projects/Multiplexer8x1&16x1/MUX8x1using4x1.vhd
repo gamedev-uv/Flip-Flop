@@ -7,7 +7,7 @@ entity MUX8x1using4x1 is
            Y : out  STD_LOGIC);
 end MUX8x1using4x1;
 
-architecture Behavioral of MUX8x1using4x1 is
+architecture Structural of MUX8x1using4x1 is
 SIGNAL L0Y : STD_LOGIC_VECTOR (1 downto 0);
 
 begin
@@ -15,4 +15,4 @@ begin
 	L0M1 : entity work.MUX4x1 Port Map(I => I(7 downto 4), S => S(1 downto 0), Y => L0Y(1));
 	L1M1 : entity work.MUX4x1 Port Map(I(0) => L0Y(0), I(1) =>  L0Y(1), I(2) => '0', I(3) => '0',
 												  S(0) => S(2), S(1) => '0', Y => Y);
-end Behavioral;
+end Structural;

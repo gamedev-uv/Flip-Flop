@@ -9,8 +9,8 @@ entity fullAdder is
            CARRY : out  STD_LOGIC);
 end fullAdder;
 
-architecture Behavioral of fullAdder is
+architecture Dataflow of fullAdder is
 begin
 	SUM <= A XOR B XOR C;
 	CARRY <= (A AND B) OR (B AND C) OR (A AND C); 
-end Behavioral;
+end Dataflow;

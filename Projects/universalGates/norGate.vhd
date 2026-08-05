@@ -6,7 +6,7 @@ entity norGate is
            Z : out  STD_LOGIC);
 end norGate;
 
-architecture Behavioral of norGate is
+architecture Dataflow of norGate is
 begin
 	Z <= A NOR B;
-end Behavioral;
+end Dataflow;

@@ -6,11 +6,11 @@ entity fullAdderSimplified is
            SUM, CARRY : out  STD_LOGIC);
 end fullAdderSimplified;
 
-architecture Behavioral of fullAdderSimplified is
+architecture Structural of fullAdderSimplified is
 
 SIGNAL S1, C1, C2 : STD_LOGIC;
 begin
 	H1: entity work.halfAdder Port Map(A => A, B => B, SUM => S1, CARRY => C1);
 	H2: entity work.halfAdder Port Map(A => S1, B => C, SUM => SUM, CARRY => C2);
 	CARRY <= C1 OR C2;
-end Behavioral;
+end Structural;

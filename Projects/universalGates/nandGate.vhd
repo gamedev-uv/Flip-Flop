@@ -6,7 +6,7 @@ entity nandGate is
            Z : out  STD_LOGIC);
 end nandGate;
 
-architecture Behavioral of nandGate is
+architecture Dataflow of nandGate is
 begin
 	Z <= A NAND B;
-end Behavioral;
+end Dataflow;
