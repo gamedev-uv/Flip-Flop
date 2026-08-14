@@ -741,6 +741,51 @@ The project can be found [here](/Projects/Multiplexer8x1&16x1/).
 ### Theory
 We can divide the selection process and keep in the MUX in "layers" which will help select a smaller part of the currently selected inputs. We will use the same mental model throughout all the problems, even if the final implementation will be different.
 
+#### 2x1 and 4x1 MUX 
+I have created these modules using Select but one can definetely create them using the other methods discussed above
+
+##### 2x1 MUX 
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity MUX2x1 is
+    Port ( I : in  STD_LOGIC_VECTOR (1 downto 0);
+           S : in  STD_LOGIC;
+           Y : out  STD_LOGIC);
+end MUX2x1;
+
+architecture Dataflow of MUX2x1 is
+begin
+	with S select 
+		Y <= I(0) when '0',
+			  I(1) when '1',
+			  '0'  when others;
+end Dataflow;
+```
+
+##### 4x1 MUX 
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity MUX4x1 is
+    Port ( I : in  STD_LOGIC_VECTOR (3 downto 0);
+           S : in  STD_LOGIC_VECTOR (1 downto 0);
+           Y : out  STD_LOGIC);
+end MUX4x1;
+
+architecture Dataflow of MUX4x1 is
+begin
+	with S select 
+		Y <= I(0) when "00",
+		     I(1) when "01",
+			  I(2) when "10",
+			  I(3) when "11",
+			  '0'  when others;
+end Dataflow;
+```
+
 #### Creating 8x1 MUX
 ##### Using 4x1 MUX
 
