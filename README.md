@@ -1011,7 +1011,10 @@ end Behavioral;
 > 
 > Just how we divided the truth table into several parts and then linked them up we can do something similar and create these bigger DEMUX.
 
-#### 1x8 DEMUX using 1x4 VHDL Module
+#### 1x8 DEMUX using 1x4 
+![](.README/demux/1x8using1x4.png)
+
+##### VHDL Module
 ```vhdl
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -1039,7 +1042,10 @@ end Structural;
 #### Test Bench Waveform
 ![](.README/demux/1x8Wave.jpg)
 
-#### 1x16 DEMUX using 1x4 VHDL Module
+#### 1x16 DEMUX using 1x4 
+![](.README/demux/1x16using1x4.png)
+
+##### VHDL Module
 ```vhdl
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
