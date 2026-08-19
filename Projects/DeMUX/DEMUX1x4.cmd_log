@@ -1,0 +1,2 @@
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/DeMUX/DeMUX" -intstyle ise -ifn DEMUX1x4.xst -ofn DEMUX1x4.syr
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/DeMUX/DeMUX" -intstyle ise -ifn DEMUX1x4.xst -ofn DEMUX1x4.syr

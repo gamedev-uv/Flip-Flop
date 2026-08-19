@@ -11,10 +11,11 @@ Computer Architecture assignments and lab work completed as part of my undergrad
 | 1.    | Half and Full Adders                | [Link](#1-half-and-full-adders)   | 
 | 2.    | Half and Full Subtractors           | [Link](#2-half-and-full-subtractors)    |
 | 3.    | Full Adder using Half Adders        | [Link](#3-full-adder-using-half-adder)    |
-| 3.    | Full Subtrator using Half Subtractors        | [Link](#4-full-subtractor-using-half-subtractor)    |
-| 4.    | Universal Gates                     | [Link](#5-universal-gates)    |
-| 5.    | MUX 4x1                             | [Link](#6-muliplexer)    |
-| 6.    | Structural MUX                      | [Link](#7-structural-multiplexer)    |
+| 4.    | Full Subtrator using Half Subtractors        | [Link](#4-full-subtractor-using-half-subtractor)    |
+| 5.    | Universal Gates                     | [Link](#5-universal-gates)    |
+| 6.    | MUX 4x1                             | [Link](#6-muliplexer)    |
+| 7.    | Structural MUX                      | [Link](#7-structural-multiplexer)    |
+| 8.    | Demultiplexers                      | [Link](#8-demultiplexers)    |
 
 ### 1. Half and Full Adders
 Create a Xilinx project and create and test a half adder and a full adder. Use VHDL Modules.
@@ -940,3 +941,132 @@ end Structural;
 
 ####  Test Bench Output for 16x1 MUX
 ![](.README/structuralMultiplexers/mux16x1Wave.jpg)
+
+### 8. Demultiplexers
+Create a 1x4 DEMUX and use it to create 1x8 and 1x16 DE-MUX using VHDL module(s) in Xilinx.
+
+The Xilinx project can be found [here](/Projects/DeMUX/).
+
+### Theory
+A demultiplexer is used to redirect a given input I between $2^n$ given output lines by utilizing n selection line inputs. A general DEMUX is defined as a 1x$2^n$. So, a 1x4 DEMUX has 2 selection line inputs and can be used to redirect the input between 4 output lines, let's call them $S_0$ | $O_0$ , $O_1$ , $O_2$ , $O_3$ respectively. And the selection line inputs are labelled as $S_0$ and $S_1$. We can form a truth table which looks like this –
+
+| $S_1$  | $S_0$ | $O_0$ | $O_1$ | $O_2$ | $O_3$ | 
+| :-: | :-: | :-: | :-: | :-: | :-: |
+| 0 | 0	| I | 0 | 0 | 0 | 
+| 0 | 1	| 0	| I | 0 | 0 | 	
+| 1 | 0	| 0	| 0 | I | 0 | 
+| 1 | 1	| 0	| 0 | 0 | I | 
+
+Which gives the formulas expressions for the 4 outputs - 
+```math
+\begin{align*}
+O_0 = S_1'S_0'I \\
+O_1 = S_1'S_0I \\
+O_2 = S_1S_0'I \\
+O_3 = S_1S_0I \\
+\end{align*}
+```
+
+As discussed before there are several ways to represent this within VHDL. We have used case statements.
+
+#### 1x4 DEMUX VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity DEMUX1x4 is
+    Port ( I : in  STD_LOGIC;
+           S : in  STD_LOGIC_VECTOR (1 downto 0);
+           Y : out  STD_LOGIC_VECTOR (3 downto 0));
+end DEMUX1x4;
+
+architecture Behavioral of DEMUX1x4 is
+begin
+	process(I, S)
+		begin
+			Y <= "0000";
+			case S is 
+				when "00" =>
+					Y(0) <= I;
+				when "01" => 
+					Y(1) <= I;
+				when "10" =>
+					Y(2) <= I;
+				when "11" =>
+					Y(3) <= I;
+				when others =>
+					Y <= "0000";
+			end case;
+		end process;
+end Behavioral;
+```
+####  RTL Circuit
+![](.README/demux/1x4RTL.jpg)
+
+#### Test Bench Waveform
+![](.README/demux/1x4Wave.jpg)
+
+> [!NOTE]
+> Similarly the `1x8` DEMUX and `1x16` DEMUX are used to direct a single input in between 8 and 16 output lines respectively. And just how we could create a bigger MUX using smaller MUX we can craete bigger DEMUX using smaller DEMUX. 
+> 
+> Just how we divided the truth table into several parts and then linked them up we can do something similar and create these bigger DEMUX.
+
+#### 1x8 DEMUX using 1x4 VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity DEMUX1x8 is
+    Port ( I : in  STD_LOGIC;
+           S : in  STD_LOGIC_VECTOR (2 downto 0);
+           Y : out  STD_LOGIC_VECTOR (7 downto 0));
+end DEMUX1x8;
+
+architecture Structural of DEMUX1x8 is
+SIGNAL I_0, I_1 : STD_LOGIC;
+begin
+	I_0 <= I AND NOT(S(2)); 
+	I_1 <= I AND S(2); 
+	
+	DMUX0 : entity work.DEMUX1x4 Port Map(I => I_0, S => S(1 downto 0), Y => Y(3 downto 0));
+	DMUX1 : entity work.DEMUX1x4 Port Map(I => I_1, S => S(1 downto 0), Y => Y(7 downto 4));
+end Structural;
+```
+
+####  RTL Circuit
+![](.README/demux/1x8RTL.jpg)
+
+#### Test Bench Waveform
+![](.README/demux/1x8Wave.jpg)
+
+#### 1x16 DEMUX using 1x4 VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity DEMUX1x16 is
+    Port ( I : in  STD_LOGIC;
+           S : in  STD_LOGIC_VECTOR (3 downto 0);
+           Y : out  STD_LOGIC_VECTOR (15 downto 0));
+end DEMUX1x16;
+
+architecture Structural of DEMUX1x16 is
+SIGNAL I_N : STD_LOGIC_VECTOR (3 downto 0);
+begin
+	I_N(0) <= I AND NOT(S(3)) AND NOT(S(2));
+	I_N(1) <= I AND NOT(S(3)) AND    (S(2));
+	I_N(2) <= I AND    (S(3)) AND NOT(S(2));
+	I_N(3) <= I AND    (S(3)) AND    (S(2));
+	
+	DMUX0 : entity work.DEMUX1x4 Port Map(I => I_N(0), S => S(1 downto 0), Y => Y( 3 downto 0));
+	DMUX1 : entity work.DEMUX1x4 Port Map(I => I_N(1), S => S(1 downto 0), Y => Y( 7 downto 4));
+	DMUX2 : entity work.DEMUX1x4 Port Map(I => I_N(2), S => S(1 downto 0), Y => Y(11 downto 8));
+	DMUX3 : entity work.DEMUX1x4 Port Map(I => I_N(3), S => S(1 downto 0), Y => Y(15 downto 12));
+end Structural;
+```
+
+####  RTL Circuit
+![](.README/demux/1x16RTL.jpg)
+
+#### Test Bench Waveform
+![](.README/demux/1x16Wave.jpg)
