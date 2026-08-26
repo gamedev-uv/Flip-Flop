@@ -1104,9 +1104,11 @@ For example an $8$ to $3$ encoder encodes numbers from $0-7$ to binary numbers e
 
 The expressions for the outputs can be written as - 
 ```math
-O_0 = I_1 + I_3 + I_5 + I_7 \\
-O_1 = I_2 + I_3 + I_6 + I_7 \\
-O_2 = I_4 + I_5 + I_6 + I_7 \\
+\begin{align*}
+O_0 &= I_1 + I_3 + I_5 + I_7 \\
+O_1 &= I_2 + I_3 + I_6 + I_7 \\
+O_2 &= I_4 + I_5 + I_6 + I_7 \\
+\end{align*}
 ```
 
 ##### Decoder 
@@ -1128,14 +1130,16 @@ For example an $3$ to $8$ decoder decodes 3-bit binary numbers to 8 decimal numb
 The expressions for the outputs can be written as - 
 
 ```math
-O_0 = I_2' \cdot I_1' \cdot I_0' \\
-O_1 = I_2' \cdot I_1' \cdot I_0 \\
-O_2 = I_2' \cdot I_1 \cdot I_0' \\
-O_3 = I_2' \cdot I_1 \cdot I_0 \\
-O_4 = I_2 \cdot I_1' \cdot I_0' \\
-O_5 = I_2 \cdot I_1' \cdot I_0 \\
-O_6 = I_2 \cdot I_1 \cdot I_0' \\
-O_7 = I_2 \cdot I_1 \cdot I_0 \\
+\begin{align*}
+O_0 &= I_2' \cdot I_1' \cdot I_0' \\
+O_1 &= I_2' \cdot I_1' \cdot I_0 \\
+O_2 &= I_2' \cdot I_1 \cdot I_0' \\
+O_3 &= I_2' \cdot I_1 \cdot I_0 \\
+O_4 &= I_2 \cdot I_1' \cdot I_0' \\
+O_5 &= I_2 \cdot I_1' \cdot I_0 \\
+O_6 &= I_2 \cdot I_1 \cdot I_0' \\
+O_7 &= I_2 \cdot I_1 \cdot I_0 \\
+\end{align*}
 ```
 
 #### Encoder VHDL Module
