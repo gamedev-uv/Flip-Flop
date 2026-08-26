@@ -1,0 +1,8 @@
+V3 3
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Comparator/Comparator2Bit.vhd" 2026/08/20.17:01:21 I.24
+EN work/Comparator2Bit 1787226865 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Comparator/Comparator2Bit.vhd" \
+      PB ieee/std_logic_1164 1131108373
+AR work/Comparator2Bit/Behavioral 1787226866 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Comparator/Comparator2Bit.vhd" \
+      EN work/Comparator2Bit 1787226865

@@ -1,0 +1,3 @@
+MODULE Decoder3to8Wave
+SUBMODULE Decoder3to8
+INSTANCE UUT

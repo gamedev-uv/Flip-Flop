@@ -1,0 +1,3 @@
+MODULE Comparator2BitWave
+SUBMODULE Comparator2Bit
+INSTANCE UUT

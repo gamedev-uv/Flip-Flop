@@ -1,0 +1,1 @@
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/Comparator/Comparator" -intstyle ise -ifn Comparator2Bit.xst -ofn Comparator2Bit.syr

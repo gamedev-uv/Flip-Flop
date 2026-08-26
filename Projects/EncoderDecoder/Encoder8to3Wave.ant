@@ -1,0 +1,131 @@
+--------------------------------------------------------------------------------
+-- Copyright (c) 1995-2003 Xilinx, Inc.
+-- All Right Reserved.
+--------------------------------------------------------------------------------
+--   ____  ____ 
+--  /   /\/   / 
+-- /___/  \  /    Vendor: Xilinx 
+-- \   \   \/     Version : 8.1i
+--  \   \         Application : ISE
+--  /   /         Filename : Encoder8to3Wave.ant
+-- /___/   /\     Timestamp : Thu Aug 20 16:57:57 2026
+-- \   \  /  \ 
+--  \___\/\___\ 
+--
+--Command: 
+--Design Name: Encoder8to3Wave
+--Device: Xilinx
+--
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_TEXTIO.ALL;
+USE IEEE.STD_LOGIC_ARITH.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+USE STD.TEXTIO.ALL;
+
+ENTITY Encoder8to3Wave IS
+END Encoder8to3Wave;
+
+ARCHITECTURE testbench_arch OF Encoder8to3Wave IS
+    FILE RESULTS: TEXT OPEN WRITE_MODE IS "C:\Projects\Xilinx Projects\Flip-Flop\Projects\EncoderDecoder\Encoder8to3Wave.ano";
+
+    COMPONENT Encoder8to3
+        PORT (
+            I : In std_logic_vector (7 DownTo 0);
+            O : Out std_logic_vector (2 DownTo 0)
+        );
+    END COMPONENT;
+
+    SIGNAL I : std_logic_vector (7 DownTo 0) := "00000000";
+    SIGNAL O : std_logic_vector (2 DownTo 0) := "000";
+
+    SHARED VARIABLE TX_ERROR : INTEGER := 0;
+    SHARED VARIABLE TX_OUT : LINE;
+
+    BEGIN
+        UUT : Encoder8to3
+        PORT MAP (
+            I => I,
+            O => O
+        );
+
+        PROCESS    -- Annotation process
+            VARIABLE TX_TIME : INTEGER := 0;
+
+            PROCEDURE ANNOTATE_O(
+                TX_TIME : INTEGER
+            ) IS
+                VARIABLE TX_STR : String(1 to 4096);
+                VARIABLE TX_LOC : LINE;
+            BEGIN
+                STD.TEXTIO.write(TX_LOC, string'("Annotate["));
+                STD.TEXTIO.write(TX_LOC, TX_TIME);
+                STD.TEXTIO.write(TX_LOC, string'(", O, "));
+                IEEE.STD_LOGIC_TEXTIO.write(TX_LOC, O);
+                STD.TEXTIO.write(TX_LOC, string'("]"));
+                TX_STR(TX_LOC.all'range) := TX_LOC.all;
+                STD.TEXTIO.writeline(RESULTS, TX_LOC);
+                STD.TEXTIO.Deallocate(TX_LOC);
+            END;
+        BEGIN
+            WAIT for 1 fs;
+            ANNOTATE_O(0);
+            ANNO_LOOP : LOOP
+                WAIT for 10 ns;
+                TX_TIME := TX_TIME + 10;
+                ANNOTATE_O(TX_TIME);
+                WAIT for 10 ns;
+                TX_TIME := TX_TIME + 10;
+            END LOOP ANNO_LOOP;
+        END PROCESS;
+
+        PROCESS
+            BEGIN
+                -- -------------  Current Time:  20ns
+                WAIT FOR 20 ns;
+                I <= "00000001";
+                -- -------------------------------------
+                -- -------------  Current Time:  40ns
+                WAIT FOR 20 ns;
+                I <= "00000010";
+                -- -------------------------------------
+                -- -------------  Current Time:  60ns
+                WAIT FOR 20 ns;
+                I <= "00000100";
+                -- -------------------------------------
+                -- -------------  Current Time:  80ns
+                WAIT FOR 20 ns;
+                I <= "00001000";
+                -- -------------------------------------
+                -- -------------  Current Time:  100ns
+                WAIT FOR 20 ns;
+                I <= "00010000";
+                -- -------------------------------------
+                -- -------------  Current Time:  120ns
+                WAIT FOR 20 ns;
+                I <= "00100000";
+                -- -------------------------------------
+                -- -------------  Current Time:  140ns
+                WAIT FOR 20 ns;
+                I <= "01000000";
+                -- -------------------------------------
+                -- -------------  Current Time:  160ns
+                WAIT FOR 20 ns;
+                I <= "10000000";
+                -- -------------------------------------
+                -- -------------  Current Time:  180ns
+                WAIT FOR 20 ns;
+                I <= "00000000";
+                -- -------------------------------------
+                WAIT FOR 820 ns;
+
+                STD.TEXTIO.write(TX_OUT, string'("Total[]"));
+                STD.TEXTIO.writeline(RESULTS, TX_OUT);
+                ASSERT (FALSE) REPORT
+                    "Success! Simulation for annotation completed"
+                    SEVERITY FAILURE;
+            END PROCESS;
+
+    END testbench_arch;
+

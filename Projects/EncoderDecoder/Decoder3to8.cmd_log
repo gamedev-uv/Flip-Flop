@@ -1,0 +1,2 @@
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/EncoderDecoder/EncoderDecoder" -intstyle ise -ifn Decoder3to8.xst -ofn Decoder3to8.syr
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/EncoderDecoder/EncoderDecoder" -intstyle ise -ifn Decoder3to8.xst -ofn Decoder3to8.syr

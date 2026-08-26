@@ -1,0 +1,4 @@
+EN decoder3to8 NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/EncoderDecoder/Decoder8to3.vhd" sub00/vhpl02 1787227940
+AR encoder8to3 dataflow "C:/Projects/Xilinx Projects/Flip-Flop/Projects/EncoderDecoder/Encoder8to3.vhd" sub00/vhpl01 1787227975
+AR decoder3to8 dataflow "C:/Projects/Xilinx Projects/Flip-Flop/Projects/EncoderDecoder/Decoder8to3.vhd" sub00/vhpl03 1787227941
+EN encoder8to3 NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/EncoderDecoder/Encoder8to3.vhd" sub00/vhpl00 1787227974

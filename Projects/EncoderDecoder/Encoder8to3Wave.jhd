@@ -1,0 +1,3 @@
+MODULE Encoder8to3Wave
+SUBMODULE Encoder8to3
+INSTANCE UUT

@@ -1,0 +1,24 @@
+Release 8.1i - xst I.24
+Copyright (c) 1995-2005 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to ./xst/projnav.tmp
+CPU : 0.00 / 0.22 s | Elapsed : 0.00 / 0.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+WARNING:HDLParsers:3215 - Unit work/Encoder8to3 is now defined in a different file: was C:/Users/UV/Downloads/20th August 2026/20th August 2026/EncoderDecoder/Encoder8to3.vhd, now is C:/Projects/Xilinx Projects/Flip-Flop/Projects/EncoderDecoder/Encoder8to3.vhd
+WARNING:HDLParsers:3215 - Unit work/Encoder8to3/Dataflow is now defined in a different file: was C:/Users/UV/Downloads/20th August 2026/20th August 2026/EncoderDecoder/Encoder8to3.vhd, now is C:/Projects/Xilinx Projects/Flip-Flop/Projects/EncoderDecoder/Encoder8to3.vhd
+Compiling vhdl file "C:/Projects/Xilinx Projects/Flip-Flop/Projects/EncoderDecoder/Encoder8to3.vhd" in Library work.
+Entity <encoder8to3> compiled.
+Entity <encoder8to3> (Architecture <dataflow>) compiled.
+CPU : 0.05 / 0.27 s | Elapsed : 0.00 / 0.00 s
+ 
+--> 
+
+Total memory usage is 154636 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    2 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

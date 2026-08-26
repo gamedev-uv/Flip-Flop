@@ -16,6 +16,8 @@ Computer Architecture assignments and lab work completed as part of my undergrad
 | 6.    | MUX 4x1                             | [Link](#6-muliplexer)    |
 | 7.    | Structural MUX                      | [Link](#7-structural-multiplexer)    |
 | 8.    | Demultiplexers                      | [Link](#8-demultiplexers)    |
+| 9.    | Encoder Decoder                      | [Link](#9-encoder--decoder)    |
+| 10.    | 2-bit Comparator                      | [Link](#10-2-bit-comparator)    |
 
 ### 1. Half and Full Adders
 Create a Xilinx project and create and test a half adder and a full adder. Use VHDL Modules.
@@ -1076,3 +1078,207 @@ end Structural;
 
 #### Test Bench Waveform
 ![](.README/demux/1x16Wave.jpg)
+
+### 9. Encoder & Decoder
+Create a 8 to 3 Encoder and a 3 to 8 Decoder using VHDL module(s) in Xilinx.
+
+The Xilinx project can be found [here](/Projects/EncoderDecoder/).
+
+#### Theory
+
+##### Encoder
+An encoder is used a to decimal number into binary bits. A generic encoder is of the form $2^n$ to $n$, which means it can convert numbers from $0$ to $2^n-1$ to $2^n$ $n$ bit numbers.
+
+For example an $8$ to $3$ encoder encodes numbers from $0-7$ to binary numbers each having $3$ bits. The truth table for the following is - 
+
+| Decimal   |$I_0$|$I_1$|$I_2$|$I_3$|$I_4$|$I_5$|$I_6$|$I_7$|$O_2$|$O_1$|$O_0$|
+|  :-:| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+|	    0	|  1  |  0  |  0  |  0  |  0  |  0  |  0  |  0  | 0 | 0 | 0 |    
+|	    1	|  0  |  1  |  0  |  0  |  0  |  0  |  0  |  0  | 0 | 0 | 1 |    
+|	    2	|  0  |  0  |  1  |  0  |  0  |  0  |  0  |  0  | 0 | 1 | 0 |    
+|	    3	|  0  |  0  |  0  |  1  |  0  |  0  |  0  |  0  | 0 | 1 | 1 |    
+|	    4	|  0  |  0  |  0  |  0  |  1  |  0  |  0  |  0  | 1 | 0 | 0 |    
+|	    5	|  0  |  0  |  0  |  0  |  0  |  1  |  0  |  0  | 1 | 0 | 1 |    
+|	    6	|  0  |  0  |  0  |  0  |  0  |  0  |  1  |  0  | 1 | 1 | 0 |    
+|	    7	|  0  |  0  |  0  |  0  |  0  |  0  |  0  |  1  | 1 | 1 | 1 |    
+
+The expressions for the outputs can be written as - 
+```math
+O_0 = I_1 + I_3 + I_5 + I_7 \\
+O_1 = I_2 + I_3 + I_6 + I_7 \\
+O_2 = I_4 + I_5 + I_6 + I_7 \\
+```
+
+##### Decoder 
+A decoder is just the opposite of an encoder. A $n$ to $2^n$ bit decoder maps $2^n$ binary numbers (each having $n$ bits) to decimal numbers from $0$ to $2^n-1$.
+
+For example an $3$ to $8$ decoder decodes 3-bit binary numbers to 8 decimal numbers. The truth table is the same as the encoder with the inputs and outputs swapped.
+
+| $I_2$ | $I_1$ |$I_0$| $O_0$|$O_1$|$O_2$|$O_3$|$O_4$|$O_5$|$O_6$|$O_7$| Decimal|
+|:-:    |:-:    |:-:  |  :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |  :-:   |
+| 0     | 0     | 0   |   1  |  0  |  0  |  0  |  0  |  0  |  0  |  0  |   0	|
+| 0     | 0     | 1   |   0  |  1  |  0  |  0  |  0  |  0  |  0  |  0  |   1	|
+| 0     | 1     | 0   |   0  |  0  |  1  |  0  |  0  |  0  |  0  |  0  |   2	|
+| 0     | 1     | 1   |   0  |  0  |  0  |  1  |  0  |  0  |  0  |  0  |   3	|
+| 1     | 0     | 0   |   0  |  0  |  0  |  0  |  1  |  0  |  0  |  0  |   4	|
+| 1     | 0     | 1   |   0  |  0  |  0  |  0  |  0  |  1  |  0  |  0  |   5	|
+| 1     | 1     | 0   |   0  |  0  |  0  |  0  |  0  |  0  |  1  |  0  |   6	|
+| 1     | 1     | 1   |   0  |  0  |  0  |  0  |  0  |  0  |  0  |  1  |   7	|
+
+The expressions for the outputs can be written as - 
+
+```math
+O_0 = I_2' \cdot I_1' \cdot I_0' \\
+O_1 = I_2' \cdot I_1' \cdot I_0 \\
+O_2 = I_2' \cdot I_1 \cdot I_0' \\
+O_3 = I_2' \cdot I_1 \cdot I_0 \\
+O_4 = I_2 \cdot I_1' \cdot I_0' \\
+O_5 = I_2 \cdot I_1' \cdot I_0 \\
+O_6 = I_2 \cdot I_1 \cdot I_0' \\
+O_7 = I_2 \cdot I_1 \cdot I_0 \\
+```
+
+#### Encoder VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+entity Encoder8to3 is
+    Port ( I : in  STD_LOGIC_VECTOR (7 downto 0);
+           O : out  STD_LOGIC_VECTOR (2 downto 0));
+end Encoder8to3;
+
+architecture Dataflow of Encoder8to3 is
+begin
+	O(0) <= I(1) OR I(3) OR I(5) OR I(7);
+	O(1) <= I(2) OR I(3) OR I(6) OR I(7);
+	O(2) <= I(4) OR I(5) OR I(6) OR I(7);
+end Dataflow;
+``` 
+
+####  RTL Circuit
+![](.README/encoderDecoder/encoder3to8Circuit.jpg)
+
+#### Test Bench Waveform
+![](.README/encoderDecoder/encoder3to8Wave.jpg)
+
+
+#### Decoder VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity Decoder3to8 is
+    Port ( I : in  STD_LOGIC_VECTOR (2 downto 0);
+           O : out  STD_LOGIC_VECTOR (7 downto 0));
+end Decoder3to8;
+
+architecture Behavioural of Decoder3to8 is
+begin
+	process(I)
+		begin
+		O <= "00000000";
+			case I is
+				when "000" => O(0) <= '1';
+				when "001" => O(1) <= '1';
+				when "010" => O(2) <= '1';
+				when "011" => O(3) <= '1';
+				when "100" => O(4) <= '1';
+				when "101" => O(5) <= '1';
+				when "110" => O(6) <= '1';
+				when "111" => O(7) <= '1';
+				when others => O   <= "00000000";
+			end case;
+		end process;
+end Behavioural;
+```
+
+####  RTL Circuit
+![](.README/encoderDecoder/decoder8to3Circuit.jpg)
+
+#### Test Bench Waveform
+![](.README/encoderDecoder/decoder8to3Wave.jpg)
+
+### 10. 2 Bit Comparator 
+Create a 2 bit comparator using VHDL module(s) in Xilinx.
+
+The Xilinx project can be found [here](/Projects/Comparator/).
+
+#### Theory 
+A 2 bit comparator is used to compare 2 given 2 bit binary numbers. $A$ and $B$ are the 2 binary numbers which are represented as $A_1A_0$ and $B_1B_0$. The comparision outputs are $A>B$, $A=B$ and $A<B$.
+
+|$A_1$|$A_0$|$B_1$|$B_0$|$A<B$|$A=B$|$A>B$|
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+|  0  |  0  |  0  |  0  |  0  |  1  |  0  |
+|  0  |  0  |  0  |  1  |  1  |  0  |  0  |
+|  0  |  0  |  1  |  0  |  1  |  0  |  0  |
+|  0  |  0  |  1  |  1  |  1  |  0  |  0  |
+|  0  |  1  |  0  |  0  |  0  |  0  |  1  |
+|  0  |  1  |  0  |  1  |  0  |  1  |  0  |
+|  0  |  1  |  1  |  0  |  1  |  0  |  0  |
+|  0  |  1  |  1  |  1  |  1  |  0  |  0  |
+|  1  |  0  |  0  |  0  |  0  |  0  |  1  |
+|  1  |  0  |  0  |  1  |  0  |  0  |  1  |
+|  1  |  0  |  1  |  0  |  0  |  1  |  0  |
+|  1  |  0  |  1  |  1  |  1  |  0  |  0  |
+|  1  |  1  |  0  |  0  |  0  |  0  |  1  |
+|  1  |  1  |  0  |  1  |  0  |  0  |  1  |
+|  1  |  1  |  1  |  0  |  0  |  0  |  1  |
+|  1  |  1  |  1  |  1  |  0  |  1  |  0  |
+
+The outputs can be expressions as - 
+```math
+\begin{align*}
+(A < B) &= \Sigma(1, 2, 3, 6, 7, 11)    \\
+(A = B) &= \Sigma(0, 5, 10, 15)         \\
+(A > B) &= \Sigma(4, 8, 9, 12, 13, 14)  \\
+\end{align*}
+```		
+
+Simplying it using K-Maps we get - 
+```math
+\begin{align*}
+(A < B) &= A_1'B_1 + A_1'A_0'B_0 + A_0'B_1B_0   \\
+(A > B) &= A_1B_1' + A_1A_0B_0' + A_0B_1'B_0' \\
+\\
+\text{and } A &= B \text{ can be represented as }\\
+& (A < B)' \cdot (A > B)'
+\end{align*}
+```
+
+#### VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity Comparator2Bit is
+    Port ( A : in  STD_LOGIC_VECTOR (1 downto 0);
+           B : in  STD_LOGIC_VECTOR (1 downto 0);
+           BGREATER : out  STD_LOGIC;
+           EQUAL : out  STD_LOGIC;
+           AGREATER : out  STD_LOGIC);
+end Comparator2Bit;
+
+architecture Behavioral of Comparator2Bit is
+SIGNAL O : STD_LOGIC_VECTOR (2 downto 0);
+begin
+	O(0) <= (NOT(A(1)) AND     B(1))           OR 
+			  (NOT(A(1)) AND NOT(A(0)) AND B(0)) OR
+			  (NOT(A(0)) AND     B(1)  AND B(0));
+					
+	O(2) <= (A(1) AND NOT(B(1))) OR
+			  (A(1) AND A(0) AND NOT(B(0))) OR
+			  (A(0) AND NOT(B(1)) AND NOT(B(0)));
+					
+	O(1)    <=  NOT(O(0)) AND NOT(O(2));
+	
+	BGREATER <= O(0);
+	EQUAL    <= O(1);
+	AGREATER <= O(2);
+end Behavioral;
+```
+
+####  RTL Circuit
+![](.README/comparator2Bit/comparator2BitCircuit.jpg)
+
+#### Test Bench Waveform
+![](.README/comparator2Bit/comparator2BitWave.jpg)
