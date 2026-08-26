@@ -1087,7 +1087,7 @@ The Xilinx project can be found [here](/Projects/EncoderDecoder/).
 #### Theory
 
 ##### Encoder
-An encoder is used a to decimal number into binary bits. A generic encoder is of the form $2^n$ to $n$, which means it can convert numbers from $0$ to $2^n-1$ to $2^n$ $n$ bit numbers.
+An encoder is used to convert a decimal number into binary bits. A generic encoder is of the form $2^n$ to $n$, which means it can convert numbers from $0$ to $2^n-1$ to $2^n$ $n$ bit numbers.
 
 For example an $8$ to $3$ encoder encodes numbers from $0-7$ to binary numbers each having $3$ bits. The truth table for the following is - 
 
