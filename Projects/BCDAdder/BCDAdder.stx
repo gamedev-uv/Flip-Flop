@@ -1,0 +1,26 @@
+Release 8.1i - xst I.24
+Copyright (c) 1995-2005 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to ./xst/projnav.tmp
+CPU : 0.00 / 0.12 s | Elapsed : 0.00 / 0.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/FullAdder.vhd" in Library work.
+Architecture behavioral of Entity fulladder is up to date.
+Compiling vhdl file "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/RippleCarryAdder.vhd" in Library work.
+Architecture behavioral of Entity ripplecarryadder is up to date.
+Compiling vhdl file "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdder.vhd" in Library work.
+Entity <bcdadder> compiled.
+Entity <bcdadder> (Architecture <behavioral>) compiled.
+CPU : 0.08 / 0.20 s | Elapsed : 0.00 / 0.00 s
+ 
+--> 
+
+Total memory usage is 155148 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

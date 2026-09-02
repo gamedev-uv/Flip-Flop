@@ -1,0 +1,3 @@
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/RippleCarryAdder/RippleCarryAdder" -intstyle ise -ifn RippleCarryAdder.xst -ofn RippleCarryAdder.syr
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/RippleCarryAdder/RippleCarryAdder" -intstyle ise -ifn RippleCarryAdder.xst -ofn RippleCarryAdder.syr
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/RippleCarryAdder/RippleCarryAdder" -intstyle ise -ifn RippleCarryAdder.xst -ofn RippleCarryAdder.syr

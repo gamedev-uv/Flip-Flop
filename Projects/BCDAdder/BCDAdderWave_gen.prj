@@ -1,0 +1,4 @@
+vhdl work "FullAdder.vhd"
+vhdl work "RippleCarryAdder.vhd"
+vhdl work "BCDAdder.vhd"
+vhdl work BCDAdderWave.ant

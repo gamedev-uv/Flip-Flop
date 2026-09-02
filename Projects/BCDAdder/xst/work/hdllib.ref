@@ -1,0 +1,6 @@
+AR fulladder behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/FullAdder.vhd" sub00/vhpl02 1788374337
+EN fulladder NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/FullAdder.vhd" sub00/vhpl01 1788374336
+EN ripplecarryadder NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/RippleCarryAdder.vhd" sub00/vhpl03 1788374338
+AR ripplecarryadder behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/RippleCarryAdder.vhd" sub00/vhpl04 1788374339
+AR bcdadder behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdder.vhd" sub00/vhpl05 1788374381
+EN bcdadder NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdder.vhd" sub00/vhpl00 1788374380

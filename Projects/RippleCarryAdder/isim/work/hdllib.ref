@@ -1,0 +1,6 @@
+AR fulladder behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/RippleCarryAdder/FullAdder.vhd" sub00/vhpl01 1787819855
+AR ripplecarryadderwave testbench_arch "C:/Projects/Xilinx Projects/Flip-Flop/Projects/RippleCarryAdder/RippleCarryAdderWave.ant" sub00/vhpl05 1787820001
+EN fulladder NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/RippleCarryAdder/FullAdder.vhd" sub00/vhpl00 1787819854
+EN ripplecarryadder NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/RippleCarryAdder/RippleCarryAdder.vhd" sub00/vhpl02 1787819856
+AR ripplecarryadder behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/RippleCarryAdder/RippleCarryAdder.vhd" sub00/vhpl03 1787819857
+EN ripplecarryadderwave NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/RippleCarryAdder/RippleCarryAdderWave.ant" sub00/vhpl04 1787820000

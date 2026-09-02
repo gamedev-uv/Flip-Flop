@@ -6,18 +6,20 @@ Computer Architecture assignments and lab work completed as part of my undergrad
 ---
 
 ## Experiments
-|Sl. No.| Experiment                          | Link|
-|:-     | :-:                                 | :-: |
-| 1.    | Half and Full Adders                | [Link](#1-half-and-full-adders)   | 
-| 2.    | Half and Full Subtractors           | [Link](#2-half-and-full-subtractors)    |
-| 3.    | Full Adder using Half Adders        | [Link](#3-full-adder-using-half-adder)    |
-| 4.    | Full Subtrator using Half Subtractors        | [Link](#4-full-subtractor-using-half-subtractor)    |
-| 5.    | Universal Gates                     | [Link](#5-universal-gates)    |
-| 6.    | MUX 4x1                             | [Link](#6-muliplexer)    |
-| 7.    | Structural MUX                      | [Link](#7-structural-multiplexer)    |
-| 8.    | Demultiplexers                      | [Link](#8-demultiplexers)    |
-| 9.    | Encoder Decoder                      | [Link](#9-encoder--decoder)    |
-| 10.    | 2-bit Comparator                      | [Link](#10-2-bit-comparator)    |
+|Sl. No.| Experiment                             | Link												|
+|:-     | :-:                                    | :-: 												|
+| 1.    | Half and Full Adders                   | [Link](#1-half-and-full-adders)  				| 
+| 2.    | Half and Full Subtractors              | [Link](#2-half-and-full-subtractors)    			|
+| 3.    | Full Adder using Half Adders           | [Link](#3-full-adder-using-half-adder)    		|
+| 4.    | Full Subtrator using Half Subtractors  | [Link](#4-full-subtractor-using-half-subtractor) |
+| 5.    | Universal Gates                        | [Link](#5-universal-gates)    					|
+| 6.    | MUX 4x1                                | [Link](#6-muliplexer)    						|
+| 7.    | Structural MUX                         | [Link](#7-structural-multiplexer)    			|
+| 8.    | Demultiplexers                         | [Link](#8-demultiplexers)    					|
+| 9.    | Encoder Decoder                        | [Link](#9-encoder--decoder)    					|
+| 10.   | 2-bit Comparator                       | [Link](#10-2-bit-comparator)    					|
+| 11.   | Ripple Carry Adder                     | [Link](#11-ripple-carry-adder)  					|
+| 12.   | BCD Adder                   	         | [Link](#12-bcd-adder)    						|
 
 ### 1. Half and Full Adders
 Create a Xilinx project and create and test a half adder and a full adder. Use VHDL Modules.
@@ -1114,7 +1116,7 @@ O_2 &= I_4 + I_5 + I_6 + I_7 \\
 ##### Decoder 
 A decoder is just the opposite of an encoder. A $n$ to $2^n$ bit decoder maps $2^n$ binary numbers (each having $n$ bits) to decimal numbers from $0$ to $2^n-1$.
 
-For example an $3$ to $8$ decoder decodes 3-bit binary numbers to 8 decimal numbers. The truth table is the same as the encoder with the inputs and outputs swapped.
+For example a $3$ to $8$ decoder decodes 3-bit binary numbers to 8 decimal numbers. The truth table is the same as the encoder with the inputs and outputs swapped.
 
 | $I_2$ | $I_1$ |$I_0$| $O_0$|$O_1$|$O_2$|$O_3$|$O_4$|$O_5$|$O_6$|$O_7$| Decimal|
 |:-:    |:-:    |:-:  |  :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |  :-:   |
@@ -1164,7 +1166,6 @@ end Dataflow;
 
 #### Test Bench Waveform
 ![](.README/encoderDecoder/encoder3to8Wave.jpg)
-
 
 #### Decoder VHDL Module
 ```vhdl
@@ -1286,3 +1287,115 @@ end Behavioral;
 
 #### Test Bench Waveform
 ![](.README/comparator2Bit/comparator2BitWave.jpg)
+
+### 11. Ripple Carry Adder 
+Create a 4 bit ripple carry adder utilizing 4 full adders using VHDL module(s) in Xilinx.
+
+The Xilinx project can be found [here](/Projects/RippleCarryAdder/).
+
+#### Theory
+A ripple carry added is a circuit which is used to add 2 n-bit binary numbers together. It works by propagating or using the carry as a ripple as it goes from the first adder to the next thus the name.
+
+For example the first adder $F.A_0$ takes in the $A_0$, $B_0$ and an optional $C_{in}$ which is often set to 0. So the adder adds the 2 bits and gives the output as the sum $S_0$ and the carry $C_0$. This carry $C_0$ is then passed to the second adder as the 3rd bit. So the second full adder $F.A_1$ takes in $A_1$, $B_1$ and the previous carry which is $C_0$. 
+
+Similarly the $n^{th}$ full adder will take in $A_i$, $B_i$ and $C_{i-1}$ as input. 
+
+#### Full Adder VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity FullAdder is
+    Port ( A, B, C : in  STD_LOGIC;
+           SUM : out  STD_LOGIC;
+           CARRY : out  STD_LOGIC);
+end FullAdder;
+
+architecture Dataflow of FullAdder is
+begin
+	SUM <= A XOR B XOR C;
+	CARRY <= (A AND B) OR (B AND C) OR (C AND A);
+end Dataflow;
+```
+
+#### Ripple Carry Adder VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity RippleCarryAdder is
+    Port ( A : in  STD_LOGIC_VECTOR (3 downto 0);
+           B : in  STD_LOGIC_VECTOR (3 downto 0);
+           SUM : out  STD_LOGIC_VECTOR (3 downto 0);
+           CARRY : out  STD_LOGIC);
+end RippleCarryAdder;
+
+architecture Structural of RippleCarryAdder is
+SIGNAL T : STD_LOGIC_VECTOR(2 downto 0);
+begin
+	FA0 : entity work.FullAdder Port Map(A => A(0), B => B(0), C =>  '0', SUM => SUM(0), CARRY => T(0));
+	FA1 : entity work.FullAdder Port Map(A => A(1), B => B(1), C => T(0), SUM => SUM(1), CARRY => T(1));
+	FA2 : entity work.FullAdder Port Map(A => A(2), B => B(2), C => T(1), SUM => SUM(2), CARRY => T(2));
+	FA3 : entity work.FullAdder Port Map(A => A(3), B => B(3), C => T(2), SUM => SUM(3), CARRY => CARRY);
+end Structural;
+```
+
+####  RTL Circuit
+![](.README/RippleCarryAdder/RippleCarryAdderRTL.jpg)
+
+#### Test Bench Waveform
+![](.README/RippleCarryAdder/RippleCarryAdderWave.jpg)
+
+> [!TIP]
+> As there will be $2^{8} = 256$ combinations we only have a few select sample outputs
+
+### 12. BCD Adder
+Create a BCD Adder utilizing ripple carry adders using VHDL module(s) in Xilinx.
+
+The Xilinx project can be found [here](/Projects/BCDAdder/).
+
+#### Theory
+If $A = A_3A_2A_1A_0$ and $B = B_3B_2B_1B_0$. They are added using a ripple carry adder then the output is to be added with $0110$ if it exceeds $9$. 
+We can check if it exceeds $9$ if $C$ + $S_3S_2$ + $S_3S_1$ yields a $1$.
+
+So using the Ripple Carry Module we created [earlier](#ripple-carry-adder-vhdl-module).
+
+#### BCD Adder VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity BCDAdder is
+    Port ( A : in  STD_LOGIC_VECTOR (3 downto 0);
+           B : in  STD_LOGIC_VECTOR (3 downto 0);
+           SUM : out  STD_LOGIC_VECTOR (3 downto 0);
+           CARRY : out  STD_LOGIC);
+end BCDAdder;
+
+architecture Behavioral of BCDAdder is
+SIGNAL TSUM   : STD_LOGIC_VECTOR (3 downto 0);
+SIGNAL TCARRY : STD_LOGIC;
+SIGNAL EXTRA  : STD_LOGIC_VECTOR (3 downto 0);
+begin
+	RCA0 : entity work.RippleCarryAdder Port Map(A => A(3 downto 0), B => B(3 downto 0), SUM => TSUM, CARRY => TCARRY);
+	
+	EXTRA(0) <= '0';
+	EXTRA(3) <= '0';
+	EXTRA(1) <= (TSUM(3) AND TSUM(2)) OR 
+					(TSUM(3) AND TSUM(1)) OR
+					 TCARRY;
+	EXTRA(2) <= EXTRA(1);
+	
+	RCA1 : entity work.RippleCarryAdder Port Map(A => TSUM(3 downto 0), B => EXTRA(3 downto 0), SUM => SUM);
+	CARRY  <= EXTRA(1);
+end Behavioral;
+```
+
+####  RTL Circuit
+![](.README/BCDAdder/BCDRTL.jpg)
+
+#### Test Bench Waveform
+![](.README/BCDAdder/BCDWave.jpg)
+
+> [!TIP]
+> As there will be $2^{8} = 256$ combinations we only have a few select sample outputs

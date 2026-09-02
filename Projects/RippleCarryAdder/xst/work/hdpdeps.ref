@@ -1,0 +1,15 @@
+V3 7
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/RippleCarryAdder/FullAdder.vhd" 2026/09/02.23:56:15 I.24
+EN work/FullAdder 1788373661 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/RippleCarryAdder/FullAdder.vhd" \
+      PB ieee/std_logic_1164 1131108373
+AR work/FullAdder/Dataflow 1788373662 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/RippleCarryAdder/FullAdder.vhd" \
+      EN work/FullAdder 1788373661
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/RippleCarryAdder/RippleCarryAdder.vhd" 2026/09/02.23:56:25 I.24
+EN work/RippleCarryAdder 1788373740 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/RippleCarryAdder/RippleCarryAdder.vhd" \
+      PB ieee/std_logic_1164 1131108373
+AR work/RippleCarryAdder/Structural 1788373741 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/RippleCarryAdder/RippleCarryAdder.vhd" \
+      EN work/RippleCarryAdder 1788373740 CP work/FullAdder

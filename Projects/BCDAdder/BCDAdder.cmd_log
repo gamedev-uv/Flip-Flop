@@ -1,0 +1,7 @@
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdder" -intstyle ise -ifn BCDAdder.xst -ofn BCDAdder.syr
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdder" -intstyle ise -ifn BCDAdder.xst -ofn BCDAdder.syr
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdder" -intstyle ise -ifn BCDAdder.xst -ofn BCDAdder.syr
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdder" -intstyle ise -ifn BCDAdder.xst -ofn BCDAdder.syr
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdder" -intstyle ise -ifn BCDAdder.xst -ofn BCDAdder.syr
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdder" -intstyle ise -ifn BCDAdder.xst -ofn BCDAdder.syr
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdder" -intstyle ise -ifn BCDAdder.xst -ofn BCDAdder.syr
