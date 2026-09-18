@@ -1,0 +1,3 @@
+MODULE AdderSubtractorWave
+SUBMODULE AdderSubtractor
+INSTANCE UUT

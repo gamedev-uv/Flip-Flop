@@ -1,0 +1,24 @@
+Release 8.1i - xst I.24
+Copyright (c) 1995-2005 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to ./xst/projnav.tmp
+CPU : 0.00 / 0.15 s | Elapsed : 0.00 / 0.00 s
+ 
+--> 
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "C:/Projects/Xilinx Projects/Flip-Flop/Projects/AdderSubtractor/FullAdder.vhd" in Library work.
+Architecture dataflow of Entity fulladder is up to date.
+Compiling vhdl file "C:/Projects/Xilinx Projects/Flip-Flop/Projects/AdderSubtractor/AdderSubtractor.vhd" in Library work.
+Entity <addersubtractor> compiled.
+Entity <AdderSubtractor> (Architecture <Behavioral>) compiled.
+CPU : 0.06 / 0.22 s | Elapsed : 0.00 / 0.00 s
+ 
+--> 
+
+Total memory usage is 154416 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

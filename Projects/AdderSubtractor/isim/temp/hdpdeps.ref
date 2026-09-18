@@ -1,0 +1,7 @@
+V3 6
+EN isim_temp/FullAdder 0 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/AdderSubtractor/FullAdder.vhd" \
+      PB ieee/std_logic_1164 1132105529
+AR isim_temp/FullAdder/Dataflow 0 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/AdderSubtractor/FullAdder.vhd" \
+      EN isim_temp/FullAdder 0

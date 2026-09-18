@@ -1,0 +1,1 @@
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/AdderSubtractor/AdderSubtractor" -intstyle ise -ifn AdderSubtractor.xst -ofn AdderSubtractor.syr

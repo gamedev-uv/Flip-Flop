@@ -20,6 +20,7 @@ Computer Architecture assignments and lab work completed as part of my undergrad
 | 10.   | 2-bit Comparator                       | [Link](#10-2-bit-comparator)    					|
 | 11.   | Ripple Carry Adder                     | [Link](#11-ripple-carry-adder)  					|
 | 12.   | BCD Adder                   	         | [Link](#12-bcd-adder)    						|
+| 13.   | Adder Subtractor                   	 | [Link](#13-adder-subtractor)    				    |
 
 ### 1. Half and Full Adders
 Create a Xilinx project and create and test a half adder and a full adder. Use VHDL Modules.
@@ -1399,3 +1400,81 @@ end Behavioral;
 
 > [!TIP]
 > As there will be $2^{8} = 256$ combinations we only have a few select sample outputs
+
+### 13. Adder Subtractor 
+Create a 4 bit adder subtractor utilizing full adders using VHDL module(s) in Xilinx.
+
+The Xilinx project can be found [here](/Projects/AdderSubtractor/).
+
+#### Theory
+An adder subtractor is a combinational circuit which can be used to both add and subtract given binary numbers. 
+
+So if the numbers ($A$, $B$) are to be added it adds them normally else finds 2's compliment of $B$ and then adds them. This is because 2's compliment of a number $x$ gives $-x$.
+
+It also shrinks the logic of selecting between $B$ and $B'$ using the properties of a XOR gate. 
+
+| $B$ | $B \oplus 0$ | $B \oplus 1$ |
+| :-: |  :-:         |  :-:         |
+| 0   |   	0 	     |   	1 	    |
+| 1   |     0        |     0        |
+
+So using the XOR operator with any binary bit and 0 preserves the original value. where as using 1 negates it.
+
+Proof using Boolean Algebra  - 
+```math
+\begin{align*}
+B \oplus 0 &= B'0 + B0'\\
+&= 0 + B1\\
+&= B 
+\end{align*}
+```
+
+```math
+\begin{align*}
+B \oplus 1 &= B'1 + B1'\\
+&= B' + B0\\
+&= B' 
+\end{align*}
+```
+
+So using this logic an extra input `SUB` (which is `0` for addition and `1` for subtraction) can be used to add or subtract the 2 given numbers. For finding the 2's compliment we simply use a XOR gate for all the bits of $B$ and then we can simply use this extra bit as the initial carry input. (As if 2's compliment is 1's compliment + 1).
+
+![](.README/adderSubtractor/AdderSubtractorCircuit.png)
+
+So using the [VHDL module for the full adder](#full-adder-vhdl-module) we made earlier we can create a VHDL module for a 4 bit adder subtractor.
+
+#### 4 bit Adder Subtractor VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity AdderSubtractor is
+    Port ( A, B : in  STD_LOGIC_VECTOR (3 downto 0);
+           SUB : in  STD_LOGIC;
+           SUM : out  STD_LOGIC_VECTOR (3 downto 0);
+           CARRY : out  STD_LOGIC);
+end AdderSubtractor;
+
+architecture Behavioral of AdderSubtractor is
+SIGNAL C_O : STD_LOGIC_VECTOR (3 downto 0);
+SIGNAL B_C : STD_LOGIC_VECTOR (3 downto 0);
+begin
+	B_C(0) <= B(0) XOR SUB;
+	B_C(1) <= B(1) XOR SUB;
+	B_C(2) <= B(2) XOR SUB;
+	B_C(3) <= B(3) XOR SUB;
+
+	FA0 : entity work.FullAdder Port Map(A => A(0), B => B_C(0), C =>    SUB, CARRY => C_O(0), SUM => SUM(0));
+	FA1 : entity work.FullAdder Port Map(A => A(1), B => B_C(1), C => C_O(0), CARRY => C_O(1), SUM => SUM(1));
+	FA2 : entity work.FullAdder Port Map(A => A(2), B => B_C(2), C => C_O(1), CARRY => C_O(2), SUM => SUM(2));
+	FA3 : entity work.FullAdder Port Map(A => A(3), B => B_C(3), C => C_O(2), CARRY => C_O(3), SUM => SUM(3));
+	
+	CARRY <= NOT(SUB) AND C_O(3); --Optional to prevent carry bit appearing when subtracting
+end Behavioral;
+```
+
+####  RTL Circuit
+![](.README/adderSubtractor/adderSubtractorRTL.jpg)
+
+#### Test Bench Waveform
+![](.README/adderSubtractor/adderSubtractorWave.jpg)
