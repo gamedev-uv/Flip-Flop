@@ -8,7 +8,7 @@
 -- \   \   \/     Version : 8.1i
 --  \   \         Application : ISE
 --  /   /         Filename : AdderSubtractorWave.vhw
--- /___/   /\     Timestamp : Thu Sep 03 11:51:15 2026
+-- /___/   /\     Timestamp : Sat Sep 19 02:35:11 2026
 -- \   \  /  \ 
 --  \___\/\___\ 
 --
@@ -28,8 +28,6 @@ ENTITY AdderSubtractorWave IS
 END AdderSubtractorWave;
 
 ARCHITECTURE testbench_arch OF AdderSubtractorWave IS
-    FILE RESULTS: TEXT OPEN WRITE_MODE IS "results.txt";
-
     COMPONENT AdderSubtractor
         PORT (
             A : In std_logic_vector (3 DownTo 0);
@@ -76,7 +74,6 @@ ARCHITECTURE testbench_arch OF AdderSubtractorWave IS
                     IEEE.STD_LOGIC_TEXTIO.write(TX_LOC, next_CARRY);
                     STD.TEXTIO.write(TX_LOC, string'(" "));
                     TX_STR(TX_LOC.all'range) := TX_LOC.all;
-                    STD.TEXTIO.writeline(RESULTS, TX_LOC);
                     STD.TEXTIO.Deallocate(TX_LOC);
                     ASSERT (FALSE) REPORT TX_STR SEVERITY ERROR;
                     TX_ERROR := TX_ERROR + 1;
@@ -98,52 +95,52 @@ ARCHITECTURE testbench_arch OF AdderSubtractorWave IS
                     IEEE.STD_LOGIC_TEXTIO.write(TX_LOC, next_SUM);
                     STD.TEXTIO.write(TX_LOC, string'(" "));
                     TX_STR(TX_LOC.all'range) := TX_LOC.all;
-                    STD.TEXTIO.writeline(RESULTS, TX_LOC);
                     STD.TEXTIO.Deallocate(TX_LOC);
                     ASSERT (FALSE) REPORT TX_STR SEVERITY ERROR;
                     TX_ERROR := TX_ERROR + 1;
                 END IF;
             END;
             BEGIN
-                -- -------------  Current Time:  100ns
-                WAIT FOR 100 ns;
+                -- -------------  Current Time:  20ns
+                WAIT FOR 20 ns;
                 A <= "1000";
                 B <= "0100";
                 -- -------------------------------------
-                -- -------------  Current Time:  150ns
-                WAIT FOR 50 ns;
-                CHECK_SUM("1100", 150);
+                -- -------------  Current Time:  30ns
+                WAIT FOR 10 ns;
+                CHECK_SUM("1100", 30);
                 -- -------------------------------------
-                -- -------------  Current Time:  200ns
-                WAIT FOR 50 ns;
+                -- -------------  Current Time:  40ns
+                WAIT FOR 10 ns;
                 SUB <= '1';
                 -- -------------------------------------
-                -- -------------  Current Time:  250ns
-                WAIT FOR 50 ns;
-                CHECK_SUM("0100", 250);
+                -- -------------  Current Time:  50ns
+                WAIT FOR 10 ns;
+                CHECK_SUM("1000", 50);
                 -- -------------------------------------
-                -- -------------  Current Time:  300ns
-                WAIT FOR 50 ns;
+                -- -------------  Current Time:  60ns
+                WAIT FOR 10 ns;
                 SUB <= '0';
                 A <= "0101";
                 B <= "0011";
                 -- -------------------------------------
-                -- -------------  Current Time:  350ns
-                WAIT FOR 50 ns;
-                CHECK_SUM("1000", 350);
+                -- -------------  Current Time:  70ns
+                WAIT FOR 10 ns;
+                CHECK_SUM("0000", 70);
                 -- -------------------------------------
-                -- -------------  Current Time:  400ns
-                WAIT FOR 50 ns;
+                -- -------------  Current Time:  80ns
+                WAIT FOR 10 ns;
                 SUB <= '1';
                 -- -------------------------------------
-                -- -------------  Current Time:  450ns
-                WAIT FOR 50 ns;
-                CHECK_SUM("0010", 450);
-                WAIT FOR 50 ns;
+                -- -------------  Current Time:  100ns
+                WAIT FOR 20 ns;
+                SUB <= '0';
+                A <= "0000";
+                B <= "0000";
+                WAIT FOR 900 ns;
 
                 IF (TX_ERROR = 0) THEN
                     STD.TEXTIO.write(TX_OUT, string'("No errors or warnings"));
-                    STD.TEXTIO.writeline(RESULTS, TX_OUT);
                     ASSERT (FALSE) REPORT
                       "Simulation successful (not a failure).  No problems detected."
                       SEVERITY FAILURE;
@@ -151,7 +148,6 @@ ARCHITECTURE testbench_arch OF AdderSubtractorWave IS
                     STD.TEXTIO.write(TX_OUT, TX_ERROR);
                     STD.TEXTIO.write(TX_OUT,
                         string'(" errors found in simulation"));
-                    STD.TEXTIO.writeline(RESULTS, TX_OUT);
                     ASSERT (FALSE) REPORT "Errors found during simulation"
                          SEVERITY FAILURE;
                 END IF;
