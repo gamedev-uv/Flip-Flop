@@ -8,7 +8,7 @@
 -- \   \   \/     Version : 8.1i
 --  \   \         Application : ISE
 --  /   /         Filename : AdderSubtractorWave.vhw
--- /___/   /\     Timestamp : Sat Sep 19 02:35:11 2026
+-- /___/   /\     Timestamp : Sat Sep 19 02:37:11 2026
 -- \   \  /  \ 
 --  \___\/\___\ 
 --
@@ -28,6 +28,8 @@ ENTITY AdderSubtractorWave IS
 END AdderSubtractorWave;
 
 ARCHITECTURE testbench_arch OF AdderSubtractorWave IS
+    FILE RESULTS: TEXT OPEN WRITE_MODE IS "results.txt";
+
     COMPONENT AdderSubtractor
         PORT (
             A : In std_logic_vector (3 DownTo 0);
@@ -74,6 +76,7 @@ ARCHITECTURE testbench_arch OF AdderSubtractorWave IS
                     IEEE.STD_LOGIC_TEXTIO.write(TX_LOC, next_CARRY);
                     STD.TEXTIO.write(TX_LOC, string'(" "));
                     TX_STR(TX_LOC.all'range) := TX_LOC.all;
+                    STD.TEXTIO.writeline(RESULTS, TX_LOC);
                     STD.TEXTIO.Deallocate(TX_LOC);
                     ASSERT (FALSE) REPORT TX_STR SEVERITY ERROR;
                     TX_ERROR := TX_ERROR + 1;
@@ -95,6 +98,7 @@ ARCHITECTURE testbench_arch OF AdderSubtractorWave IS
                     IEEE.STD_LOGIC_TEXTIO.write(TX_LOC, next_SUM);
                     STD.TEXTIO.write(TX_LOC, string'(" "));
                     TX_STR(TX_LOC.all'range) := TX_LOC.all;
+                    STD.TEXTIO.writeline(RESULTS, TX_LOC);
                     STD.TEXTIO.Deallocate(TX_LOC);
                     ASSERT (FALSE) REPORT TX_STR SEVERITY ERROR;
                     TX_ERROR := TX_ERROR + 1;
@@ -116,7 +120,7 @@ ARCHITECTURE testbench_arch OF AdderSubtractorWave IS
                 -- -------------------------------------
                 -- -------------  Current Time:  50ns
                 WAIT FOR 10 ns;
-                CHECK_SUM("1000", 50);
+                CHECK_SUM("0100", 50);
                 -- -------------------------------------
                 -- -------------  Current Time:  60ns
                 WAIT FOR 10 ns;
@@ -126,21 +130,30 @@ ARCHITECTURE testbench_arch OF AdderSubtractorWave IS
                 -- -------------------------------------
                 -- -------------  Current Time:  70ns
                 WAIT FOR 10 ns;
-                CHECK_SUM("0000", 70);
+                CHECK_SUM("1000", 70);
                 -- -------------------------------------
                 -- -------------  Current Time:  80ns
                 WAIT FOR 10 ns;
                 SUB <= '1';
                 -- -------------------------------------
+                -- -------------  Current Time:  90ns
+                WAIT FOR 10 ns;
+                CHECK_SUM("0010", 90);
+                -- -------------------------------------
                 -- -------------  Current Time:  100ns
-                WAIT FOR 20 ns;
+                WAIT FOR 10 ns;
                 SUB <= '0';
                 A <= "0000";
                 B <= "0000";
-                WAIT FOR 900 ns;
+                -- -------------------------------------
+                -- -------------  Current Time:  110ns
+                WAIT FOR 10 ns;
+                CHECK_SUM("0000", 110);
+                WAIT FOR 890 ns;
 
                 IF (TX_ERROR = 0) THEN
                     STD.TEXTIO.write(TX_OUT, string'("No errors or warnings"));
+                    STD.TEXTIO.writeline(RESULTS, TX_OUT);
                     ASSERT (FALSE) REPORT
                       "Simulation successful (not a failure).  No problems detected."
                       SEVERITY FAILURE;
@@ -148,6 +161,7 @@ ARCHITECTURE testbench_arch OF AdderSubtractorWave IS
                     STD.TEXTIO.write(TX_OUT, TX_ERROR);
                     STD.TEXTIO.write(TX_OUT,
                         string'(" errors found in simulation"));
+                    STD.TEXTIO.writeline(RESULTS, TX_OUT);
                     ASSERT (FALSE) REPORT "Errors found during simulation"
                          SEVERITY FAILURE;
                 END IF;
