@@ -1,0 +1,131 @@
+--------------------------------------------------------------------------------
+-- Copyright (c) 1995-2003 Xilinx, Inc.
+-- All Right Reserved.
+--------------------------------------------------------------------------------
+--   ____  ____ 
+--  /   /\/   / 
+-- /___/  \  /    Vendor: Xilinx 
+-- \   \   \/     Version : 8.1i
+--  \   \         Application : ISE
+--  /   /         Filename : ShiftRegisterDFFWave.ant
+-- /___/   /\     Timestamp : Sun Oct 04 03:41:46 2026
+-- \   \  /  \ 
+--  \___\/\___\ 
+--
+--Command: 
+--Design Name: ShiftRegisterDFFWave
+--Device: Xilinx
+--
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_TEXTIO.ALL;
+USE IEEE.STD_LOGIC_ARITH.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+USE STD.TEXTIO.ALL;
+
+ENTITY ShiftRegisterDFFWave IS
+END ShiftRegisterDFFWave;
+
+ARCHITECTURE testbench_arch OF ShiftRegisterDFFWave IS
+    FILE RESULTS: TEXT OPEN WRITE_MODE IS "C:\Projects\Xilinx Projects\Flip-Flop\Projects\SIPO-ShiftRegister\ShiftRegisterDFFWave.ano";
+
+    COMPONENT ShiftRegisterUsingDFF
+        PORT (
+            S_in : In std_logic;
+            Reset : In std_logic;
+            Clk : In std_logic;
+            O : Out std_logic_vector (3 DownTo 0)
+        );
+    END COMPONENT;
+
+    SIGNAL S_in : std_logic := '0';
+    SIGNAL Reset : std_logic := '0';
+    SIGNAL Clk : std_logic := '0';
+    SIGNAL O : std_logic_vector (3 DownTo 0) := "0000";
+
+    SHARED VARIABLE TX_ERROR : INTEGER := 0;
+    SHARED VARIABLE TX_OUT : LINE;
+
+    constant PERIOD : time := 200 ns;
+    constant DUTY_CYCLE : real := 0.5;
+    constant OFFSET : time := 0 ns;
+
+    BEGIN
+        UUT : ShiftRegisterUsingDFF
+        PORT MAP (
+            S_in => S_in,
+            Reset => Reset,
+            Clk => Clk,
+            O => O
+        );
+
+        PROCESS    -- clock process for Clk
+        BEGIN
+            WAIT for OFFSET;
+            CLOCK_LOOP : LOOP
+                Clk <= '0';
+                WAIT FOR (PERIOD - (PERIOD * DUTY_CYCLE));
+                Clk <= '1';
+                WAIT FOR (PERIOD * DUTY_CYCLE);
+            END LOOP CLOCK_LOOP;
+        END PROCESS;
+
+        PROCESS    -- Annotation process for Clk
+            VARIABLE TX_TIME : INTEGER := 0;
+
+            PROCEDURE ANNOTATE_O(
+                TX_TIME : INTEGER
+            ) IS
+                VARIABLE TX_STR : String(1 to 4096);
+                VARIABLE TX_LOC : LINE;
+            BEGIN
+                STD.TEXTIO.write(TX_LOC, string'("Annotate["));
+                STD.TEXTIO.write(TX_LOC, TX_TIME);
+                STD.TEXTIO.write(TX_LOC, string'(", O, "));
+                IEEE.STD_LOGIC_TEXTIO.write(TX_LOC, O);
+                STD.TEXTIO.write(TX_LOC, string'("]"));
+                TX_STR(TX_LOC.all'range) := TX_LOC.all;
+                STD.TEXTIO.writeline(RESULTS, TX_LOC);
+                STD.TEXTIO.Deallocate(TX_LOC);
+            END;
+        BEGIN
+            WAIT for 1 fs;
+            ANNOTATE_O(0);
+            WAIT for OFFSET;
+            TX_TIME := TX_TIME + 0;
+            ANNO_LOOP : LOOP
+                --Rising Edge
+                WAIT for 115 ns;
+                TX_TIME := TX_TIME + 115;
+                ANNOTATE_O(TX_TIME);
+                WAIT for 85 ns;
+                TX_TIME := TX_TIME + 85;
+            END LOOP ANNO_LOOP;
+        END PROCESS;
+
+        PROCESS
+            BEGIN
+                -- -------------  Current Time:  85ns
+                WAIT FOR 85 ns;
+                S_in <= '1';
+                -- -------------------------------------
+                -- -------------  Current Time:  485ns
+                WAIT FOR 400 ns;
+                S_in <= '0';
+                -- -------------------------------------
+                -- -------------  Current Time:  685ns
+                WAIT FOR 200 ns;
+                S_in <= '1';
+                -- -------------------------------------
+                WAIT FOR 515 ns;
+
+                STD.TEXTIO.write(TX_OUT, string'("Total[]"));
+                STD.TEXTIO.writeline(RESULTS, TX_OUT);
+                ASSERT (FALSE) REPORT
+                    "Success! Simulation for annotation completed"
+                    SEVERITY FAILURE;
+            END PROCESS;
+
+    END testbench_arch;
+

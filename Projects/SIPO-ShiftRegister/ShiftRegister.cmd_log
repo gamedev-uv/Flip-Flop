@@ -1,0 +1,1 @@
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/SIPO-ShiftRegister/SIPO-ShiftRegister" -intstyle ise -ifn ShiftRegister.xst -ofn ShiftRegister.syr

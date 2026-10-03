@@ -1,0 +1,6 @@
+EN dflipflop NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/SIPO-ShiftRegister/DFlipFlop.vhd" sub00/vhpl02 1790231655
+AR shiftregister behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/SIPO-ShiftRegister/ShiftRegister.vhd" sub00/vhpl01 1791065598
+AR shiftregisterusingdff structural "C:/Projects/Xilinx Projects/Flip-Flop/Projects/SIPO-ShiftRegister/ShiftRegisterUsingDFF.vhd" sub00/vhpl05 1791065479
+EN shiftregisterusingdff NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/SIPO-ShiftRegister/ShiftRegisterUsingDFF.vhd" sub00/vhpl04 1791065478
+AR dflipflop behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/SIPO-ShiftRegister/DFlipFlop.vhd" sub00/vhpl03 1790231656
+EN shiftregister NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/SIPO-ShiftRegister/ShiftRegister.vhd" sub00/vhpl00 1791065597

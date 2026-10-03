@@ -1,0 +1,3 @@
+MODULE ShiftRegisterWave
+SUBMODULE ShiftRegister
+INSTANCE UUT

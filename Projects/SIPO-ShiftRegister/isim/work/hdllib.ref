@@ -1,0 +1,10 @@
+EN dflipflop NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/SIPO-ShiftRegister/DFlipFlop.vhd" sub00/vhpl04 1790231447
+AR shiftregisterwave testbench_arch "C:/Projects/Xilinx Projects/Flip-Flop/Projects/SIPO-ShiftRegister/ShiftRegisterWave.ant" sub00/vhpl03 1790230067
+AR shiftregister behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/SIPO-ShiftRegister/ShiftRegister.vhd" sub00/vhpl01 1790230065
+AR shiftregisterusingdff structural "C:/Projects/Xilinx Projects/Flip-Flop/Projects/SIPO-ShiftRegister/ShiftRegisterUsingDFF.vhd" sub00/vhpl07 1790231450
+EN shiftregisterusingdff NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/SIPO-ShiftRegister/ShiftRegisterUsingDFF.vhd" sub00/vhpl06 1790231449
+AR shiftregisterdffwave testbench_arch "C:/Projects/Xilinx Projects/Flip-Flop/Projects/SIPO-ShiftRegister/ShiftRegisterDFFWave.ant" sub00/vhpl09 1790231452
+EN shiftregisterdffwave NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/SIPO-ShiftRegister/ShiftRegisterDFFWave.ant" sub00/vhpl08 1790231451
+EN shiftregisterwave NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/SIPO-ShiftRegister/ShiftRegisterWave.ant" sub00/vhpl02 1790230066
+AR dflipflop behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/SIPO-ShiftRegister/DFlipFlop.vhd" sub00/vhpl05 1790231448
+EN shiftregister NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/SIPO-ShiftRegister/ShiftRegister.vhd" sub00/vhpl00 1790230064

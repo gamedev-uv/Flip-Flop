@@ -21,6 +21,7 @@ Computer Architecture assignments and lab work completed as part of my undergrad
 | 11.   | Ripple Carry Adder                     | [Link](#11-ripple-carry-adder)  					|
 | 12.   | BCD Adder                   	         | [Link](#12-bcd-adder)    						|
 | 13.   | Adder Subtractor                   	 | [Link](#13-adder-subtractor)    				    |
+| 14.   | SIPO Shift Register                    | [Link](#14-shift-register)    				    |
 
 ### 1. Half and Full Adders
 Create a Xilinx project and create and test a half adder and a full adder. Use VHDL Modules.
@@ -1478,3 +1479,106 @@ end Behavioral;
 
 #### Test Bench Waveform
 ![](.README/adderSubtractor/adderSubtractorWave.jpg)
+
+### 14. Shift Register 
+Create a SIPO (Serial Input Parallel Output) Shift Register utilizing D-flipflops using VHDL module(s) in Xilinx.
+
+The Xilinx project can be found [here](/Projects/SIPO-ShiftRegister/).
+
+#### Theory
+A SIPO shift register is used to take the serial input which is being provided and used to display the entire output at a time in parallel.
+
+It is generally created using a D-flipflop or delay flip-flop which is used to delay the input D till the next rising edge. 
+
+|$D$|$Q_{n+1}$|
+|:-:|   :-:   |
+| 0 |  	 0    | 
+| 1 |    1    |
+
+So for the VHDL module we use the ``rising_edge`` function to determine where the clock input we are using is currently rising and then we set the output equal to the value of D.
+
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity DFlipFlop is
+    Port ( D, Clk, Reset : in  STD_LOGIC;
+           Q : out  STD_LOGIC);
+end DFlipFlop;
+
+architecture Behavioral of DFlipFlop is
+SIGNAL t : STD_LOGIC := '0';
+begin
+	process(Clk, Reset)
+		begin 
+			if Reset = '1' then 
+				t <= '0';
+			elsif rising_edge(Clk) then
+				t <= D;
+			end if;
+			Q <= t;
+		end process;
+end Behavioral;
+```
+
+Using this flipflop, for a 4-bit SIPO Shift Register we can follow the diagram - 
+
+![](.README/shiftRegister/diagram.png)
+
+#### SIPO Shift Register Structural VHDL Module 
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity ShiftRegisterUsingDFF is
+    Port ( S_in, Reset, Clk : in  STD_LOGIC;
+           O : out  STD_LOGIC_VECTOR (3 downto 0));
+end ShiftRegisterUsingDFF;
+
+architecture Structural of ShiftRegisterUsingDFF is
+SIGNAL t : STD_LOGIC_VECTOR(3 downto 0) := "0000";
+begin
+	DFF0 : entity work.DFlipFlop Port Map(D => S_in, Clk => Clk, Reset => Reset, Q => t(3));
+	DFF1 : entity work.DFlipFlop Port Map(D => t(3), Clk => Clk, Reset => Reset, Q => t(2));
+	DFF2 : entity work.DFlipFlop Port Map(D => t(2), Clk => Clk, Reset => Reset, Q => t(1));
+	DFF3 : entity work.DFlipFlop Port Map(D => t(1), Clk => Clk, Reset => Reset, Q => t(0));
+	O <= t;
+end Structural;
+```
+
+The same behaviour can also be replicated using a behavioural approach without using D flip-flops.
+
+#### SIPO Shift Register Behavioural VHDL Module 
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity ShiftRegister is
+    Port ( S_in, Reset, clock : in  STD_LOGIC;
+           O : out  STD_LOGIC_VECTOR (3 downto 0));
+end ShiftRegister;
+
+architecture Behavioral of ShiftRegister is
+SIGNAL temp : STD_LOGIC_VECTOR (3 downto 0) := "0000";
+begin
+	process(Reset, clock) 
+	 begin 
+		if Reset = '1' then
+			temp <= "0000";
+		elsif rising_edge(clock) then
+			temp <= S_in & temp(3 downto 1);
+		end if;
+	 end process;
+	 O <= temp;
+end Behavioral;
+```
+
+> [!NOTE]
+> Here we are simply waiting for the rising clock pulse and shifting the bits one place right. 
+> So if the number was $A_3A_2A_1A_0$ then it transforms to $S_{in}A_3A_2A_1$ thus shifting all bits to the right and adding the new input on the left.
+
+####  RTL Circuit
+![](.README/shiftRegister/RTL_Structural.jpg)
+
+#### Test Bench Waveform
+![](.README/shiftRegister/TestBenchWave.jpg)

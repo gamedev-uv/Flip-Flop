@@ -1,0 +1,2 @@
+vhdl work "ShiftRegister.vhd"
+vhdl work ShiftRegisterWave.ant
