@@ -1,0 +1,1 @@
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/ALU" -intstyle ise -ifn ALU.xst -ofn ALU.syr

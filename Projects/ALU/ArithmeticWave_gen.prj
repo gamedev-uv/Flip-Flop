@@ -1,0 +1,3 @@
+vhdl work "MUX4x1.vhd"
+vhdl work "ArithmeticUnit4Bit.vhd"
+vhdl work ArithmeticWave.ant

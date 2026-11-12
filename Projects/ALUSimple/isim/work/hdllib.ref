@@ -1,0 +1,8 @@
+EN arithmeticunit NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALUSimple/ArithmeticUnit.vhd" sub00/vhpl00 1794449712
+EN alutest NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALUSimple/ALUTest.ant" sub00/vhpl06 1794449718
+AR alutest testbench_arch "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALUSimple/ALUTest.ant" sub00/vhpl07 1794449719
+AR alu structural "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALUSimple/ALU.vhd" sub00/vhpl05 1794449717
+AR arithmeticunit dataflow "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALUSimple/ArithmeticUnit.vhd" sub00/vhpl01 1794449713
+EN logicunit NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALUSimple/LogicUnit.vhd" sub00/vhpl02 1794449714
+AR logicunit dataflow "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALUSimple/LogicUnit.vhd" sub00/vhpl03 1794449715
+EN alu NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALUSimple/ALU.vhd" sub00/vhpl04 1794449716

@@ -22,6 +22,8 @@ Computer Architecture assignments and lab work completed as part of my undergrad
 | 12.   | BCD Adder                   	         | [Link](#12-bcd-adder)    						|
 | 13.   | Adder Subtractor                   	 | [Link](#13-adder-subtractor)    				    |
 | 14.   | SIPO Shift Register                    | [Link](#14-shift-register)    				    |
+| 15.   | Simple ALU                             | [Link](#15-simple-alu)    				    	|
+| 16.   | ALU				                     | [Link](#16-alu)    				    			|
 
 ### 1. Half and Full Adders
 Create a Xilinx project and create and test a half adder and a full adder. Use VHDL Modules.
@@ -1582,3 +1584,284 @@ end Behavioral;
 
 #### Test Bench Waveform
 ![](.README/shiftRegister/TestBenchWave.jpg)
+
+### 15. Simple ALU 
+Create a Simple 4 bit ALU which should have `ADD`, `SUB`, `AND` and `OR` using VHDL module(s) in Xilinx.
+
+The Xilinx project can be found [here](/Projects/simpleAdders/).
+
+### Theory 
+For this ALU we can create 2 parts one Arithmetic Unit and one Logic Unit. 
+
+We can use a selection line ($S_0$) to choose between `ADD` and `SUB` and the same selection line can be used to chooose between `AND` and `OR` and then we can choose between the outputs of the arithemetic and logic units using another selection line ($S_1$).
+
+So the truth table would look something like this - 
+
+|$S_1$|$S_0$|Operation|
+| :-: | :-: |   :-:   |
+|  0  |  0  |   ADD   |
+|  0  |  1  |   SUB   |
+|  1  |  0  |   AND   |
+|  1  |  1  |    OR   |
+
+Using this we can create the VHDL modules for the arithmetic and logic units. 
+
+#### Arithemetic Unit VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity ArithmeticUnit is
+    Port ( A, B : in  STD_LOGIC_VECTOR (3 downto 0);
+           S : in  STD_LOGIC;
+           O : out  STD_LOGIC_VECTOR (3 downto 0));
+end ArithmeticUnit;
+
+architecture Dataflow of ArithmeticUnit is
+begin
+	with S select 
+		O <= A + B when '0',
+			  A - B when '1',
+		     "0000" when others;
+end Dataflow;
+```
+
+#### Logic Unit VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity LogicUnit is
+    Port ( A, B : in  STD_LOGIC_VECTOR (3 downto 0);
+           S : in  STD_LOGIC;
+           O : out  STD_LOGIC_VECTOR (3 downto 0));
+end LogicUnit;
+
+architecture Dataflow of LogicUnit is
+begin
+	with S select 
+		O <= A AND B when '0',
+			  A OR B when '1',
+		     "0000" when others;
+end Dataflow;
+```
+
+And then using these we can create the ALU.
+#### ALU VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity ALU is
+    Port ( A, B : in  STD_LOGIC_VECTOR (3 downto 0);
+           S : in  STD_LOGIC_VECTOR (1 downto 0);
+           O : out  STD_LOGIC_VECTOR (3 downto 0));
+end ALU;
+
+architecture Structural of ALU is
+
+SIGNAL ARITHO : STD_LOGIC_VECTOR (3 downto 0);
+SIGNAL LOGICO : STD_LOGIC_VECTOR (3 downto 0);
+
+begin
+	ARITH : entity work.ArithmeticUnit Port Map(A => A, B => B, S => S(0), O => ARITHO);
+	LOGIC : entity work.LogicUnit Port Map(A => A, B => B, S => S(0), O => LOGICO);
+	with S(1) select 
+		O <= ARITHO when '0',
+		     LOGICO when '1',
+			  "0000" when others;
+end Structural;
+```
+
+####  RTL Circuit
+![](.README/simplifiedALU/RTL.jpg)
+
+#### Test Bench Waveform
+![](.README/simplifiedALU/TestBench.jpg)
+
+### 16. ALU 
+Create a 4 bit ALU using a 4-bit arithmetic unit, 4-bit logic unit and a 4 bit shifting unit using VHDL module(s) in Xilinx.
+
+The Xilinx project can be found [here](/Projects/ALU/).
+
+### Theory 
+We can create 3 separate units 
+- Arithmetic
+- Logical 
+- Shifting 
+
+#### Arithmetic Unit
+The arithmetic unit would be able to support several operations on 2 variables by using a 4x1 MUX to select from $B$, $B'$, $1$ and $0$, using 2 selection lines $S_1$ and $S_0$ We can then add it with $A$ and a carry bit $C_{in}$ which whch enable us to do several different operations. The truth table for the following would be - 
+
+|$S_1$|$S_0$|$C_{in}$|$Y$   |Operation ($A + Y + C_{in}$)|
+| :-: | :-: | :-:    |:-:   |     :-:                    |
+|  0  |  0  |  0     | $B$  |    A + B                   |
+|  0  |  0  |  1     | $B$  |    A + B + 1               |
+|  0  |  1  |  0     | $B'$ |    A + B'                  |
+|  0  |  1  |  1     | $B'$ |    A - B                   |
+|  1  |  0  |  0     | $1$  |    A - 1                   |
+|  1  |  0  |  1     | $1$  |    A                       |
+|  1  |  1  |  0     | $0$  |    A                       |
+|  1  |  1  |  1     | $0$  |    A + 1                   |
+
+
+### Logic Unit
+Similarly the logic unit would simply choose between `AND`, `OR`, `XOR` and `NOT` using Multiplexers. The truth table for it will look something like this - 
+
+|$S_1$|$S_0$|Operation        |
+| :-: | :-: |  :-:            |
+|  0  |  0  |   $A\cdot B$    |
+|  0  |  0  |   $A+B$         |
+|  0  |  1  |   $A\oplus B$   |
+|  0  |  1  |   $A'$		  |
+
+And the shifting unit would simply either left shift it or right shift using a selection line.
+Using these we can now create the VHDL Modules 
+
+#### Arithmetic Unit VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity ArithmeticUnit4Bit is
+    Port ( A, B : in  STD_LOGIC_VECTOR (3 downto 0);
+           S : in  STD_LOGIC_VECTOR (1 downto 0);
+           C : in  STD_LOGIC;
+			  VALUE : out STD_LOGIC_VECTOR (3 downto 0);
+			  CARRY : out STD_LOGIC 
+			);
+end ArithmeticUnit4Bit;
+
+architecture Structural of ArithmeticUnit4Bit is
+
+SIGNAL IB0 : STD_LOGIC_VECTOR (3 downto 0);
+SIGNAL IB1 : STD_LOGIC_VECTOR (3 downto 0);
+SIGNAL IB2 : STD_LOGIC_VECTOR (3 downto 0);
+SIGNAL IB3 : STD_LOGIC_VECTOR (3 downto 0);
+SIGNAL OB : STD_LOGIC_VECTOR (3 downto 0);
+SIGNAL O  : STD_LOGIC_VECTOR (4 downto 0);
+
+begin
+	IB0 <= '0' & '1' & NOT(B(0)) & B(0);
+	IB1 <= '0' & '1' & NOT(B(1)) & B(1);
+	IB2 <= '0' & '1' & NOT(B(2)) & B(2);
+	IB3 <= '0' & '1' & NOT(B(3)) & B(3);
+
+	BMUX0 : entity work.MUX4x1 Port Map(I => IB0, S => S, O => OB(0)); 
+	BMUX1 : entity work.MUX4x1 Port Map(I => IB1, S => S, O => OB(1)); 
+	BMUX2 : entity work.MUX4x1 Port Map(I => IB2, S => S, O => OB(2)); 
+	BMUX3 : entity work.MUX4x1 Port Map(I => IB3, S => S, O => OB(3)); 
+	
+	O <= ('0' & A) + ('0' & OB) + C;
+	VALUE <= O (3 downto 0);
+	CARRY <= O(4);
+end Structural;
+```
+
+#### Logic Unit VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity LogicUnit4Bit is
+    Port ( A, B : in  STD_LOGIC_VECTOR (3 downto 0);
+           S : in  STD_LOGIC_VECTOR (1 downto 0);
+           O : out  STD_LOGIC_VECTOR (3 downto 0));
+end LogicUnit4Bit;
+architecture Structural of LogicUnit4Bit is
+
+SIGNAL T_I0 : STD_LOGIC_VECTOR (3 downto 0);
+SIGNAL T_I1 : STD_LOGIC_VECTOR (3 downto 0);
+SIGNAL T_I2 : STD_LOGIC_VECTOR (3 downto 0);
+SIGNAL T_I3 : STD_LOGIC_VECTOR (3 downto 0);
+
+SIGNAL T : STD_LOGIC_VECTOR (3 downto 0);
+
+begin
+	T_I0 <= (A(0) AND B(0)) & (A(0) OR B(0)) & (NOT(A(0))) & (A(0) XOR B(0));
+	T_I1 <= (A(1) AND B(1)) & (A(1) OR B(1)) & (NOT(A(1))) & (A(1) XOR B(1));
+	T_I2 <= (A(2) AND B(2)) & (A(2) OR B(2)) & (NOT(A(2))) & (A(2) XOR B(2));
+	T_I3 <= (A(3) AND B(3)) & (A(3) OR B(3)) & (NOT(A(3))) & (A(3) XOR B(3));
+	
+	MUX0 : entity work.MUX4x1 Port Map(I => T_I0, S => S, O => T(0));
+	MUX1 : entity work.MUX4x1 Port Map(I => T_I1, S => S, O => T(1));
+	MUX2 : entity work.MUX4x1 Port Map(I => T_I2, S => S, O => T(2));
+	MUX3 : entity work.MUX4x1 Port Map(I => T_I3, S => S, O => T(3));
+	
+	O <= T;
+end Structural;
+```
+
+#### Shifting Unit VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity ShiftingUnit4Bit is
+    Port ( A : in  STD_LOGIC_VECTOR (3 downto 0);
+           S : in  STD_LOGIC; 
+			  O : out STD_LOGIC_VECTOR(3 downto 0));
+end ShiftingUnit4Bit;
+
+architecture Dataflow of ShiftingUnit4Bit is
+begin
+	with S select
+			O <= ('0' & A(3) & A(2) & A(1)) when '0',
+				  (A(2) & A(1) & A(0) & '0') when '1',
+				  "0000" when others;
+end Dataflow;
+```
+
+> [!NOTE]
+> The MUX was created using the methods discussed previously 
+
+Using these we can finally create the ALU.
+
+#### ALU VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity ALU is
+    Port ( A, B : in  STD_LOGIC_VECTOR (3 downto 0);
+           S : in  STD_LOGIC_VECTOR (3 downto 0);
+			  C : in STD_LOGIC;
+           O : out  STD_LOGIC_VECTOR (3 downto 0);
+           CARRY : out  STD_LOGIC);
+end ALU;
+
+architecture Structural of ALU is
+
+SIGNAL ARITHO : STD_LOGIC_VECTOR (3 downto 0);
+SIGNAL ARITHC : STD_LOGIC;
+
+SIGNAL LOGICO : STD_LOGIC_VECTOR (3 downto 0);
+
+SIGNAL SHIFTO : STD_LOGIC_VECTOR (3 downto 0);
+
+begin
+	ARITH : entity work.ArithmeticUnit4Bit Port Map(A => A, B => B, S => S(1 downto 0), C => C, VALUE => ARITHO(3 downto 0), CARRY => ARITHC);
+	LOGIC : entity work.LogicUnit4Bit Port Map(A => A, B => B, S => S(1 downto 0), O => LOGICO);
+	SHIFT : entity work.ShiftingUnit4Bit Port Map(A => A, S => S(0), O => SHIFTO);
+	
+	with S(3 downto 2) select 
+		O <= ARITHO when "00",
+			  LOGICO when "01",
+			  SHIFTO when "10",
+			  "0000" when others;
+			  
+	CARRY <= ARITHC AND NOT(S(3)) AND NOT(S(2));
+end Structural;
+```
+
+####  RTL Circuit
+![](.README/alu/RTL.jpg)
+
+#### Test Bench Waveform
+![](.README/alu/WaveForm.jpg)

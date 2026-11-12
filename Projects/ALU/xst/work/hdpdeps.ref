@@ -1,0 +1,36 @@
+V3 19
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/LogicUnit4Bit.vhd" 2026/11/12.07:23:26 I.24
+EN work/LogicUnit4Bit 1794457440 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/LogicUnit4Bit.vhd" \
+      PB ieee/std_logic_1164 1131108373 PB ieee/std_logic_arith 1131108375 \
+      PB ieee/STD_LOGIC_UNSIGNED 1131108379
+AR work/LogicUnit4Bit/Structural 1794457441 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/LogicUnit4Bit.vhd" \
+      EN work/LogicUnit4Bit 1794457440 CP work/MUX4x1
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/ArithmeticUnit4Bit.vhd" 2026/11/12.06:58:31 I.24
+EN work/ArithmeticUnit4Bit 1794457438 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/ArithmeticUnit4Bit.vhd" \
+      PB ieee/std_logic_1164 1131108373 PB ieee/std_logic_arith 1131108375 \
+      PB ieee/STD_LOGIC_UNSIGNED 1131108379
+AR work/ArithmeticUnit4Bit/Structural 1794457439 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/ArithmeticUnit4Bit.vhd" \
+      EN work/ArithmeticUnit4Bit 1794457438 CP work/MUX4x1
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/ShiftingUnit4Bit.vhd" 2026/11/12.07:23:29 I.24
+EN work/ShiftingUnit4Bit 1794457442 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/ShiftingUnit4Bit.vhd" \
+      PB ieee/std_logic_1164 1131108373
+AR work/ShiftingUnit4Bit/Dataflow 1794457443 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/ShiftingUnit4Bit.vhd" \
+      EN work/ShiftingUnit4Bit 1794457442
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/ALU.vhd" 2026/11/12.07:23:51 I.24
+EN work/ALU 1794457487             FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/ALU.vhd" \
+      PB ieee/std_logic_1164 1131108373
+AR work/ALU/Structural 1794457488 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/ALU.vhd" EN work/ALU 1794457487 \
+      CP work/ArithmeticUnit4Bit CP work/LogicUnit4Bit CP work/ShiftingUnit4Bit
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/MUX4x1.vhd" 2026/10/01.11:26:54 I.24
+EN work/MUX4x1 1794457436          FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/MUX4x1.vhd" \
+      PB ieee/std_logic_1164 1131108373
+AR work/MUX4x1/Dataflow 1794457437 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/MUX4x1.vhd" \
+      EN work/MUX4x1 1794457436

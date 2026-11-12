@@ -1,0 +1,3 @@
+MODULE ArithmeticWave
+SUBMODULE ArithmeticUnit4Bit
+INSTANCE UUT

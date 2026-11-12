@@ -1,0 +1,8 @@
+EN mux2x1 NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALUSimple/MUX2x1.vhd" sub00/vhpl00 1794448567
+EN arithmeticunit NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALUSimple/ArithmeticUnit.vhd" sub00/vhpl02 1794449556
+AR alu structural "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALUSimple/ALU.vhd" sub00/vhpl07 1794455835
+AR arithmeticunit dataflow "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALUSimple/ArithmeticUnit.vhd" sub00/vhpl03 1794449557
+AR mux2x1 dataflow "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALUSimple/MUX2x1.vhd" sub00/vhpl01 1794448568
+EN logicunit NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALUSimple/LogicUnit.vhd" sub00/vhpl04 1794449558
+AR logicunit dataflow "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALUSimple/LogicUnit.vhd" sub00/vhpl05 1794449559
+EN alu NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALUSimple/ALU.vhd" sub00/vhpl06 1794455834

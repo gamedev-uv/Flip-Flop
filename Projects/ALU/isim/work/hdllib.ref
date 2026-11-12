@@ -1,0 +1,14 @@
+AR logicunit4bit behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/LogicUnit4Bit.vhd" sub00/vhpl07 1794447226
+EN shiftingunit4bit NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/ShiftingUnit4Bit.vhd" sub00/vhpl08 1794447227
+AR arithmeticwave testbench_arch "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/ArithmeticWave.ant" sub00/vhpl05 1794446918
+EN arithmeticunit4bit NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/ArithmeticUnit4Bit.vhd" sub00/vhpl02 1794446915
+AR alubench testbench_arch "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/ALUBench.ant" sub00/vhpl13 1794447469
+AR alu behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/ALU.vhd" sub00/vhpl11 1794447230
+EN arithmeticwave NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/ArithmeticWave.ant" sub00/vhpl04 1794446917
+EN logicunit4bit NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/LogicUnit4Bit.vhd" sub00/vhpl06 1794447225
+AR arithmeticunit4bit structural "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/ArithmeticUnit4Bit.vhd" sub00/vhpl03 1794446916
+EN mux4x1 NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/MUX4x1.vhd" sub00/vhpl00 1790834772
+AR mux4x1 dataflow "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/MUX4x1.vhd" sub00/vhpl01 1790834773
+AR shiftingunit4bit dataflow "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/ShiftingUnit4Bit.vhd" sub00/vhpl09 1794447228
+EN alu NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/ALU.vhd" sub00/vhpl10 1794447229
+EN alubench NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/ALU/ALUBench.ant" sub00/vhpl12 1794447468

@@ -1,0 +1,5 @@
+vhdl work "MUX4x1.vhd"
+vhdl work "ShiftingUnit4Bit.vhd"
+vhdl work "LogicUnit4Bit.vhd"
+vhdl work "ArithmeticUnit4Bit.vhd"
+vhdl work "ALU.vhd"

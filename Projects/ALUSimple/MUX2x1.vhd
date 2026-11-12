@@ -1,0 +1,16 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity MUX2x1 is
+    Port ( I : in  STD_LOGIC_VECTOR (1 downto 0);
+           S : in  STD_LOGIC;
+           O : out  STD_LOGIC);
+end MUX2x1;
+
+architecture Dataflow of MUX2x1 is
+begin
+	with S select 
+		O <= I(0) when '0',
+			  I(1) when '1',
+			  '0'  when others;
+end Dataflow;

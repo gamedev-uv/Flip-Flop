@@ -5,4 +5,8 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
+<msg type="warning" file="Xst" num="819" delta="unknown" >&quot;<arg fmt="%s" index="1">C:/Projects/Xilinx Projects/Flip-Flop/Projects/SIPO-ShiftRegister/DFlipFlop.vhd</arg>&quot; line <arg fmt="%d" index="2">12</arg>: The following signals are missing in the process sensitivity list:
+<arg fmt="%s" index="3">t</arg>.
+</msg>
+
 </messages>
