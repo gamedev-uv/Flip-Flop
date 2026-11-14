@@ -1,0 +1,3 @@
+vhdl work "MUX4x1.vhd"
+vhdl work "FullAdderUsingMUX.vhd"
+vhdl work FullAdderWave.ant

@@ -1,22 +1,29 @@
-V3 12
+V3 14
 FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/FullAdder.vhd" 2026/08/27.14:11:45 I.24
-EN work/FullAdder 1788374336 \
+EN work/FullAdder 1794647222 \
       FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/FullAdder.vhd" \
       PB ieee/std_logic_1164 1131108373
-AR work/FullAdder/Behavioral 1788374337 \
+AR work/FullAdder/Behavioral 1794647223 \
       FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/FullAdder.vhd" \
-      EN work/FullAdder 1788374336
-FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdder.vhd" 2026/09/03.11:22:38 I.24
-EN work/BCDAdder 1788414899 \
+      EN work/FullAdder 1794647222
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdder.vhd" 2026/09/03.12:22:03 I.24
+EN work/BCDAdder 1794621744 \
       FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdder.vhd" \
       PB ieee/std_logic_1164 1131108373
-AR work/BCDAdder/Structural 1788414900 \
+AR work/BCDAdder/Structural 1794621745 \
       FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdder.vhd" \
-      EN work/BCDAdder 1788414899 CP work/RippleCarryAdder
+      EN work/BCDAdder 1794621744 CP work/RippleCarryAdder
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BDCCorrectionDetector.vhd" 2026/11/14.07:30:03 I.24
+EN work/BDCCorrectionDetector 1794647226 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BDCCorrectionDetector.vhd" \
+      PB ieee/std_logic_1164 1131108373
+AR work/BDCCorrectionDetector/Structural 1794647227 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BDCCorrectionDetector.vhd" \
+      EN work/BDCCorrectionDetector 1794647226 CP work/RippleCarryAdder
 FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/RippleCarryAdder.vhd" 2026/08/27.14:12:06 I.24
-EN work/RippleCarryAdder 1788374338 \
+EN work/RippleCarryAdder 1794647224 \
       FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/RippleCarryAdder.vhd" \
       PB ieee/std_logic_1164 1131108373
-AR work/RippleCarryAdder/Behavioral 1788374339 \
+AR work/RippleCarryAdder/Behavioral 1794647225 \
       FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/RippleCarryAdder.vhd" \
-      EN work/RippleCarryAdder 1788374338 CP work/FullAdder
+      EN work/RippleCarryAdder 1794647224 CP work/FullAdder

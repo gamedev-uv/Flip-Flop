@@ -5,7 +5,7 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="Xst" num="753" delta="unknown" >&quot;<arg fmt="%s" index="1">C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdder.vhd</arg>&quot; line <arg fmt="%d" index="2">25</arg>: Unconnected output port &apos;<arg fmt="%s" index="3">CARRY</arg>&apos; of component &apos;<arg fmt="%s" index="4">RippleCarryAdder</arg>&apos;.
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">SUM&lt;0&gt;</arg>&gt; is assigned but never used.
 </msg>
 
 </messages>

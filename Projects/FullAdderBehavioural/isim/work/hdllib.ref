@@ -1,0 +1,4 @@
+AR fulladder behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/FullAdderBehavioural/FullAdder.vhd" sub00/vhpl01 1794553153
+EN fulladderwave NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/FullAdderBehavioural/FullAdderWave.ant" sub00/vhpl02 1794553154
+EN fulladder NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/FullAdderBehavioural/FullAdder.vhd" sub00/vhpl00 1794553152
+AR fulladderwave testbench_arch "C:/Projects/Xilinx Projects/Flip-Flop/Projects/FullAdderBehavioural/FullAdderWave.ant" sub00/vhpl03 1794553155

@@ -24,6 +24,9 @@ Computer Architecture assignments and lab work completed as part of my undergrad
 | 14.   | SIPO Shift Register                    | [Link](#14-shift-register)    				    |
 | 15.   | Simple ALU                             | [Link](#15-simple-alu)    				    	|
 | 16.   | ALU				                     | [Link](#16-alu)    				    			|
+| 17.   | Behavioral Full Adder				     | [Link](#17-behavioural-full-adder)    			|
+| 18.   | Structural Decoder				     | [Link](#18-structural-decoders)    				|
+| 19.   | MUX Full Adder				         | [Link](#19-full-adder-using-mux)    				|
 
 ### 1. Half and Full Adders
 Create a Xilinx project and create and test a half adder and a full adder. Use VHDL Modules.
@@ -747,7 +750,7 @@ Use VHDL Modules in Xilinx.
 
 The project can be found [here](/Projects/Multiplexer8x1&16x1/).
 
-### Theory
+#### Theory
 We can divide the selection process and keep in the MUX in "layers" which will help select a smaller part of the currently selected inputs. We will use the same mental model throughout all the problems, even if the final implementation will be different.
 
 #### 2x1 and 4x1 MUX 
@@ -955,7 +958,7 @@ Create a 1x4 DEMUX and use it to create 1x8 and 1x16 DE-MUX using VHDL module(s)
 
 The Xilinx project can be found [here](/Projects/DeMUX/).
 
-### Theory
+#### Theory
 A demultiplexer is used to redirect a given input I between $2^n$ given output lines by utilizing n selection line inputs. A general DEMUX is defined as a 1x$2^n$. So, a 1x4 DEMUX has 2 selection line inputs and can be used to redirect the input between 4 output lines, let's call them $S_0$ | $O_0$ , $O_1$ , $O_2$ , $O_3$ respectively. And the selection line inputs are labelled as $S_0$ and $S_1$. We can form a truth table which looks like this –
 
 | $S_1$  | $S_0$ | $O_0$ | $O_1$ | $O_2$ | $O_3$ | 
@@ -1008,6 +1011,29 @@ begin
 		end process;
 end Behavioral;
 ```
+
+It can also be created using Dataflow 
+
+#### 1x4 DEMUX Dataflow VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity DEMUX1x4DF is
+    Port ( I : in  STD_LOGIC;
+           S : in  STD_LOGIC_VECTOR (1 downto 0);
+           O : out  STD_LOGIC_VECTOR (3 downto 0));
+end DEMUX1x4DF;
+
+architecture Dataflow of DEMUX1x4DF is
+begin
+	O(0) <= I AND NOT(S(1)) AND NOT(S(0));
+	O(1) <= I AND NOT(S(1)) AND    (S(0));
+	O(2) <= I AND    (S(1)) AND NOT(S(0));
+	O(3) <= I AND    (S(1)) AND    (S(0));
+end Dataflow;
+```
+
 ####  RTL Circuit
 ![](.README/demux/1x4RTL.jpg)
 
@@ -1147,6 +1173,9 @@ O_6 &= I_2 \cdot I_1 \cdot I_0' \\
 O_7 &= I_2 \cdot I_1 \cdot I_0 \\
 \end{align*}
 ```
+
+> [!TIP]
+> As we will see later Decoders can have enable input which is used to toggle all the outputs on or off. 
 
 #### Encoder VHDL Module
 ```vhdl
@@ -1362,7 +1391,37 @@ The Xilinx project can be found [here](/Projects/BCDAdder/).
 If $A = A_3A_2A_1A_0$ and $B = B_3B_2B_1B_0$. They are added using a ripple carry adder then the output is to be added with $0110$ if it exceeds $9$. 
 We can check if it exceeds $9$ if $C$ + $S_3S_2$ + $S_3S_1$ yields a $1$.
 
-So using the Ripple Carry Module we created [earlier](#ripple-carry-adder-vhdl-module).
+We can create a detector which tells us whether the sum exceeds 9. So using the Ripple Carry Module we created [earlier](#ripple-carry-adder-vhdl-module).
+
+
+#### BCD Correction Detector VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity BDCCorrectionDetector is
+    Port ( A, B : in  STD_LOGIC_VECTOR (3 downto 0);
+           O : out  STD_LOGIC);
+end BDCCorrectionDetector;
+
+architecture Structural of BDCCorrectionDetector is
+
+SIGNAL SUM : STD_LOGIC_VECTOR (3 downto 0);
+SIGNAL CAR : STD_LOGIC;
+
+begin
+	RCA : entity work.RippleCarryAdder Port Map(A => A, B => B, SUM => SUM, CARRY => CAR);
+	O <= (SUM(3) AND SUM(2)) OR 
+        (SUM(3) AND SUM(1)) OR 
+		  CAR;
+end Structural;
+```
+
+####  RTL Circuit
+![](.README/BCDAdder/detectorRTL.jpg)
+
+#### Test Bench Waveform
+![](.README/BCDAdder/detectorWave.jpg)
 
 #### BCD Adder VHDL Module
 ```vhdl
@@ -1590,10 +1649,10 @@ Create a Simple 4 bit ALU which should have `ADD`, `SUB`, `AND` and `OR` using V
 
 The Xilinx project can be found [here](/Projects/simpleAdders/).
 
-### Theory 
+#### Theory 
 For this ALU we can create 2 parts one Arithmetic Unit and one Logic Unit. 
 
-We can use a selection line ($S_0$) to choose between `ADD` and `SUB` and the same selection line can be used to chooose between `AND` and `OR` and then we can choose between the outputs of the arithemetic and logic units using another selection line ($S_1$).
+We can use a selection line ($S_0$) to choose between `ADD` and `SUB` and the same selection line can be used to choose between `AND` and `OR` and then we can choose between the outputs of the arithmetic and logic units using another selection line ($S_1$).
 
 So the truth table would look something like this - 
 
@@ -1606,7 +1665,7 @@ So the truth table would look something like this -
 
 Using this we can create the VHDL modules for the arithmetic and logic units. 
 
-#### Arithemetic Unit VHDL Module
+#### Arithmetic Unit VHDL Module
 ```vhdl
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -1686,7 +1745,7 @@ Create a 4 bit ALU using a 4-bit arithmetic unit, 4-bit logic unit and a 4 bit s
 
 The Xilinx project can be found [here](/Projects/ALU/).
 
-### Theory 
+#### Theory 
 We can create 3 separate units 
 - Arithmetic
 - Logical 
@@ -1865,3 +1924,250 @@ end Structural;
 
 #### Test Bench Waveform
 ![](.README/alu/WaveForm.jpg)
+
+
+### 17. Behavioural Full Adder
+Create a full adder using behavioural modelling utilizing VHDL module(s) in Xilinx.
+
+The Xilinx project can be found [here](/Projects/FullAdderBehavioural/).
+
+#### Theory 
+We are creating a simple full adder the theory has already been discussed before and can be found [here](#full-adder).
+
+#### Full Adder Behavioural VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity FullAdder is
+    Port ( A, B, C : in  STD_LOGIC;
+           SUM, CARRY : out  STD_LOGIC);
+end FullAdder;
+
+architecture Behavioral of FullAdder is
+
+SIGNAL I : STD_LOGIC_VECTOR (2 downto 0);
+
+begin
+	I <= A & B & C;
+	process(I)
+		begin 
+			if I = "000" then 
+				SUM   <= '0';
+				CARRY <= '0';
+				
+			elsif I = "001" then 
+				SUM   <= '1';
+				CARRY <= '0';
+				
+			elsif I = "010" then 
+				SUM   <= '1';
+				CARRY <= '0';
+				
+			elsif I = "011" then 
+				SUM   <= '0';
+				CARRY <= '1';
+				
+			elsif I = "100" then 
+				SUM   <= '1';
+				CARRY <= '0';
+				
+			elsif I = "101" then 
+				SUM   <= '0';
+				CARRY <= '1';
+				
+			elsif I = "110" then 
+				SUM   <= '0';
+				CARRY <= '1';
+				
+			elsif I = "111" then 
+				SUM   <= '1';
+				CARRY <= '1';
+				
+			else 
+				SUM <= '0';
+				CARRY <= '0';
+			end if;
+		end process;
+end Behavioral;
+```
+
+> [!NOTE]
+> This uses `if` statements but the same can be done using `case` statements.
+
+####  RTL Circuit
+![](.README/fullAdderBehavioural/RTL.jpg)
+
+#### Test Bench Waveform
+![](.README/fullAdderBehavioural/TestBench.jpg)
+
+### 18. Structural Decoders
+Create a 4to16 decoder using 3to8 decoders and a not gate using VHDL module(s) in Xilinx.
+
+The Xilinx project can be found [here](/Projects/EncoderDecoder/).
+
+#### Theory 
+As we know a decoder is used to decode binary input to decimal output. Read more [here](#9-encoder--decoder). The truth table for a 4 to 16 decoder looks like - 
+
+| A | B | C | D | Decimal|
+|:-:|:-:|:-:|:-:|  :-:   |
+| 0 | 0 | 0 | 0 |   0	 |
+| 0 | 0 | 0 | 1 |   1	 |
+| 0 | 0 | 1 | 0 |   2	 |
+| 0 | 0 | 1 | 1 |   3	 |
+| 0 | 1 | 0 | 0 |   4	 |
+| 0 | 1 | 0 | 1 |   5	 |
+| 0 | 1 | 1 | 0 |   6	 |
+| 0 | 1 | 1 | 1 |   7	 |
+| 1 | 0 | 0 | 0 |   8    |
+| 1 | 0 | 0 | 1 |   9    |
+| 1 | 0 | 1 | 0 |   10   |
+| 1 | 0 | 1 | 1 |   11   |
+| 1 | 1 | 0 | 0 |   12   |  
+| 1 | 1 | 0 | 1 |   13   |
+| 1 | 1 | 1 | 0 |   14   |
+| 1 | 1 | 1 | 1 |   15   |
+
+This can be split into 2 3to8 decoders where the first decoder decodes 0 to 7 and the next deocodes 8 to 15. We can do this split utilizing the $A'$ as the enable input for the first and $A$ as the enable input for the second decoder.
+
+#### 3to8 Decoder With enable VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity Decoder3to8Enable is
+    Port ( I : in  STD_LOGIC_VECTOR (2 downto 0);
+           E : in  STD_LOGIC;
+           O : out  STD_LOGIC_VECTOR (7 downto 0));
+end Decoder3to8Enable;
+
+architecture Behavioral of Decoder3to8Enable is
+begin
+	process(I, E)
+		begin 
+			O <= "00000000";
+			case I is 
+				when "000" => O(0) <= E;
+				when "001" => O(1) <= E;
+				when "010" => O(2) <= E;
+				when "011" => O(3) <= E;
+				when "100" => O(4) <= E;
+				when "101" => O(5) <= E;
+				when "110" => O(6) <= E;
+				when "111" => O(7) <= E;
+				when others => O <= "00000000";
+			end case;
+		end process; 
+end Behavioral;
+```
+
+#### 4to16 Decoder using 3to8 VHDL Module 
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity Decoder4to16Using3to8 is
+    Port ( I : in  STD_LOGIC_VECTOR (3 downto 0);
+           E : in  STD_LOGIC;
+           O : out  STD_LOGIC_VECTOR (15 downto 0));
+end Decoder4to16Using3to8;
+
+architecture Structural of Decoder4to16Using3to8 is
+
+SIGNAL ENABLE0 : STD_LOGIC;
+SIGNAL ENABLE1 : STD_LOGIC;
+
+begin
+	ENABLE0 <= E AND NOT(I(3));
+	ENABLE1 <= E AND    (I(3));
+
+	DEC0 : entity work.Decoder3to8Enable Port Map(I => I(2 downto 0), E => ENABLE0, O => O(7 downto 0));
+	DEC1 : entity work.Decoder3to8Enable Port Map(I => I(2 downto 0), E => ENABLE1, O => O(15 downto 8));
+end Structural;
+```
+
+####  RTL Circuit
+![](.README/encoderDecoder/decoder4to16WRTL.jpg)
+
+#### Test Bench Waveform
+![](.README/encoderDecoder/decoder4to16Wave.jpg)
+
+### 19. Full Adder using MUX
+Create a Full Adder using 4x1 MUX using VHDL module(s) in Xilinx.
+
+The Xilinx project can be found [here](/Projects/FullAdderUsingMUX/).
+
+#### Theory 
+A MUX can be seen as machine which gives the sum of all the min terms and the input which can be created using the selection line(s) and inputs $\Sigma{(minterms)}$.
+
+In this case a 4x1 MUX has 2 selection lines $S_1$ and $S_0$ and 4 inputs $I_3$, $I_2$, $I_1$ and $I_0$, and the output is defined as - 
+
+```math
+\begin{align*}
+O &= I_0S_1'S_0' \\
+  &+ I_1S_1'S_0  \\
+  &+ I_2S_1S_0'  \\
+  &+ I_3S_1S_0   
+\end{align*}
+```
+
+Which can be represented as $F(I, S_1, S_0) = \Sigma{I_i * i}$. Thus we can easily change $I_i$ to create different functions using a MUX.
+
+In order to create a full adder using 4x1 MUX we need to first write down the equations for the Sum and Carry which are - 
+
+```math
+\begin{align*}
+\text{Sum} = \Sigma{(1, 2, 4, 7)} \\
+\text{Carry} = \Sigma{(3, 5, 6, 7)}
+\end{align*}
+```
+
+We can then write them in their Canonical SOP forms as - 
+```math
+\begin{align*}
+\text{Sum} &= AB'C' + A'B'C + A'BC' + ABC\\
+\text{Carry} &= A'BC + AB'C + ABC' + ABC
+\end{align*}
+```
+
+So for each output we need a MUX as each MUX produces only one output.
+For the first MUX which will be used for the Sum we can connect $B$ and $C$ as the selection lines and the inputs can be $A$, $A'$, $A'$ and $A$. This can be done using the canonical SOP equation for sum.
+
+Similarly for the Carry MUX we can see that $BC$ has both $A'$ and $A$ so we can connect it with $1$ and the rest according to the SOP.
+
+Using all this we can finnaly create the full adder.
+
+#### Full Adder MUX VHDL Module
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity FullAdderUsingMUX is
+    Port ( A, B, C : in  STD_LOGIC;
+           SUM, CARRY : out  STD_LOGIC);
+end FullAdderUsingMUX;
+
+architecture Structural of FullAdderUsingMUX is
+
+SIGNAL SI : STD_LOGIC_VECTOR (3 downto 0);
+SIGNAL CI : STD_LOGIC_VECTOR (3 downto 0);
+
+SIGNAL SE : STD_LOGIC_VECTOR (1 downto 0);
+
+begin
+	SI <= A & NOT(A) & NOT(A) & A;
+	CI <= '1' & A & A & '0';
+	SE <= B & C;
+	
+	MUXSUM : entity work.MUX4x1 Port Map(I => SI, S => SE, O => SUM);
+	MUXCAR : entity work.MUX4x1 Port Map(I => CI, S => SE, O => CARRY);
+end Structural;
+```
+
+where the MUX could be made with any of the techniques we have discussed [earlier](#multiplexer-mux).
+
+####  RTL Circuit
+![](.README/fullAdderUsingMUX/RTL.jpg)
+
+#### Test Bench Waveform
+![](.README/fullAdderUsingMUX/Wave.jpg)

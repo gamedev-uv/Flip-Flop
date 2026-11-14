@@ -1,7 +1,9 @@
-AR bcdadder structural "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdder.vhd" sub00/vhpl06 1788414900
-AR fulladder behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/FullAdder.vhd" sub00/vhpl02 1788374337
-EN fulladder NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/FullAdder.vhd" sub00/vhpl01 1788374336
-EN ripplecarryadder NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/RippleCarryAdder.vhd" sub00/vhpl03 1788374338
-AR ripplecarryadder behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/RippleCarryAdder.vhd" sub00/vhpl04 1788374339
+AR bcdadder structural "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdder.vhd" sub00/vhpl06 1794621745
+AR fulladder behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/FullAdder.vhd" sub00/vhpl02 1794647223
+EN fulladder NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/FullAdder.vhd" sub00/vhpl01 1794647222
+EN ripplecarryadder NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/RippleCarryAdder.vhd" sub00/vhpl03 1794647224
+AR ripplecarryadder behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/RippleCarryAdder.vhd" sub00/vhpl04 1794647225
+EN bdccorrectiondetector NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BDCCorrectionDetector.vhd" sub00/vhpl07 1794647226
+AR bdccorrectiondetector structural "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BDCCorrectionDetector.vhd" sub00/vhpl08 1794647227
 AR bcdadder behavioral "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdder.vhd" sub00/vhpl05 1788374381
-EN bcdadder NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdder.vhd" sub00/vhpl00 1788414899
+EN bcdadder NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdder.vhd" sub00/vhpl00 1794621744

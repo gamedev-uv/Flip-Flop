@@ -1,0 +1,82 @@
+Release 8.1i - xst I.24
+Copyright (c) 1995-2005 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to ./xst/projnav.tmp
+CPU : 0.00 / 0.15 s | Elapsed : 0.00 / 0.00 s
+ 
+--> Parameter xsthdpdir set to ./xst
+CPU : 0.00 / 0.15 s | Elapsed : 0.00 / 0.00 s
+ 
+--> Reading design: MUX4x1.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) HDL Analysis
+  4) HDL Synthesis
+     4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+     5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Final Report
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "MUX4x1.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "MUX4x1"
+Output Format                      : NGC
+Target Device                      : Automotive CoolRunner2
+
+---- Source Options
+Top Module Name                    : MUX4x1
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Mux Extraction                     : YES
+Resource Sharing                   : YES
+
+---- Target Options
+Add IO Buffers                     : YES
+MACRO Preserve                     : YES
+XOR Preserve                       : YES
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : YES
+RTL Output                         : Yes
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : maintain
+
+---- Other Options
+lso                                : MUX4x1.lso
+verilog2001                        : YES
+safe_implementation                : No
+wysiwyg                            : NO
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "C:/Projects/Xilinx Projects/Flip-Flop/Projects/FullAdderUsingMUX/MUX4x1.vhd" in Library work.
+Entity <mux4x1> compiled.
+ERROR:HDLParsers:164 - "C:/Projects/Xilinx Projects/Flip-Flop/Projects/FullAdderUsingMUX/MUX4x1.vhd" Line 20. parse error, unexpected COLON
+ERROR:HDLParsers:3313 - "C:/Projects/Xilinx Projects/Flip-Flop/Projects/FullAdderUsingMUX/MUX4x1.vhd" Line 29. Undefined symbol 'endif'.  Should it be: 'end if'?
+ERROR:HDLParsers:1209 - "C:/Projects/Xilinx Projects/Flip-Flop/Projects/FullAdderUsingMUX/MUX4x1.vhd" Line 29. endif: Undefined symbol (last report in this block)
+ERROR:HDLParsers:164 - "C:/Projects/Xilinx Projects/Flip-Flop/Projects/FullAdderUsingMUX/MUX4x1.vhd" Line 30. parse error, unexpected PROCESS, expecting SEMICOLON
+--> 
+
+Total memory usage is 155096 kilobytes
+
+Number of errors   :    4 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

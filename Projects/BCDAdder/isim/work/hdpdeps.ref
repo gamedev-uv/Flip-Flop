@@ -1,4 +1,4 @@
-V3 15
+V3 22
 FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/FullAdder.vhd" 2026/08/27.14:11:45 I.24
 EN work/FullAdder 1787821505 \
       FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/FullAdder.vhd" \
@@ -6,13 +6,30 @@ EN work/FullAdder 1787821505 \
 AR work/FullAdder/Behavioral 1787821506 \
       FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/FullAdder.vhd" \
       EN work/FullAdder 1787821505
-FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdder.vhd" 2026/08/27.14:40:51 I.24
-EN work/BCDAdder 1787821856 \
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdder.vhd" 2026/09/03.12:22:03 I.24
+EN work/BCDAdder 1794621739 \
       FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdder.vhd" \
       PB ieee/std_logic_1164 1132105529
-AR work/BCDAdder/Behavioral 1787821857 \
+AR work/BCDAdder/Structural 1794621740 \
       FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdder.vhd" \
-      EN work/BCDAdder 1787821856 CP work/RippleCarryAdder
+      EN work/BCDAdder 1794621739 CP work/RippleCarryAdder
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BDCCorrectionDetector.vhd" 2026/11/14.07:30:03 I.24
+EN work/BDCCorrectionDetector 1794621761 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BDCCorrectionDetector.vhd" \
+      PB ieee/std_logic_1164 1132105529
+AR work/BDCCorrectionDetector/Structural 1794621762 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BDCCorrectionDetector.vhd" \
+      EN work/BDCCorrectionDetector 1794621761 CP work/RippleCarryAdder
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/CorrectorWave.ant" 2026/11/14.07:33:34 I.24
+EN work/CorrectorWave 1794621814 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/CorrectorWave.ant" \
+      PB ieee/std_logic_1164 1132105529 PB ieee/STD_LOGIC_TEXTIO 1132105539 \
+      PB ieee/std_logic_arith 1132105531 PB ieee/STD_LOGIC_UNSIGNED 1132105537 \
+      PB std/textio 1132105521
+AR work/CorrectorWave/testbench_arch 1794621815 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/CorrectorWave.ant" \
+      EN work/CorrectorWave 1794621814 CP BDCCorrectionDetector \
+      PB ieee/STD_LOGIC_TEXTIO 1132105539
 FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/RippleCarryAdder.vhd" 2026/08/27.14:12:06 I.24
 EN work/RippleCarryAdder 1787821507 \
       FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/RippleCarryAdder.vhd" \
@@ -20,12 +37,12 @@ EN work/RippleCarryAdder 1787821507 \
 AR work/RippleCarryAdder/Behavioral 1787821508 \
       FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/RippleCarryAdder.vhd" \
       EN work/RippleCarryAdder 1787821507 CP work/FullAdder
-FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdderWave.ant" 2026/08/27.14:40:55 I.24
-EN work/BCDAdderWave 1787821858 \
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdderWave.ant" 2026/11/14.07:32:19 I.24
+EN work/BCDAdderWave 1794621741 \
       FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdderWave.ant" \
       PB ieee/std_logic_1164 1132105529 PB ieee/STD_LOGIC_TEXTIO 1132105539 \
       PB ieee/std_logic_arith 1132105531 PB ieee/STD_LOGIC_UNSIGNED 1132105537 \
       PB std/textio 1132105521
-AR work/BCDAdderWave/testbench_arch 1787821859 \
+AR work/BCDAdderWave/testbench_arch 1794621742 \
       FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdderWave.ant" \
-      EN work/BCDAdderWave 1787821858 CP BCDAdder PB ieee/STD_LOGIC_TEXTIO 1132105539
+      EN work/BCDAdderWave 1794621741 CP BCDAdder PB ieee/STD_LOGIC_TEXTIO 1132105539

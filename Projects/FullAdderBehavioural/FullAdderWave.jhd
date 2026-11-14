@@ -1,0 +1,3 @@
+MODULE FullAdderWave
+SUBMODULE FullAdder
+INSTANCE UUT

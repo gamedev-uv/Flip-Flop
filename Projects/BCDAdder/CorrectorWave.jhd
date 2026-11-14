@@ -1,0 +1,3 @@
+MODULE CorrectorWave
+SUBMODULE BDCCorrectionDetector
+INSTANCE UUT

@@ -1,0 +1,15 @@
+V3 7
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/FullAdderUsingMUX/MUX4x1.vhd" 2026/11/13.11:47:15 I.24
+EN work/MUX4x1 1794649906 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/FullAdderUsingMUX/MUX4x1.vhd" \
+      PB ieee/std_logic_1164 1131108373
+AR work/MUX4x1/Dataflow 1794649907 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/FullAdderUsingMUX/MUX4x1.vhd" \
+      EN work/MUX4x1 1794649906
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/FullAdderUsingMUX/FullAdderUsingMUX.vhd" 2026/11/13.11:57:07 I.24
+EN work/FullAdderUsingMUX 1794649943 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/FullAdderUsingMUX/FullAdderUsingMUX.vhd" \
+      PB ieee/std_logic_1164 1131108373
+AR work/FullAdderUsingMUX/Structural 1794649944 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/FullAdderUsingMUX/FullAdderUsingMUX.vhd" \
+      EN work/FullAdderUsingMUX 1794649943 CP work/MUX4x1

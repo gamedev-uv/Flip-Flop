@@ -1,0 +1,6 @@
+EN fulladderwave NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/FullAdderUsingMUX/FullAdderWave.ant" sub00/vhpl04 1794551238
+AR fulladderusingmux structural "C:/Projects/Xilinx Projects/Flip-Flop/Projects/FullAdderUsingMUX/FullAdderUsingMUX.vhd" sub00/vhpl03 1794551237
+EN mux4x1 NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/FullAdderUsingMUX/MUX4x1.vhd" sub00/vhpl00 1794551052
+AR fulladderwave testbench_arch "C:/Projects/Xilinx Projects/Flip-Flop/Projects/FullAdderUsingMUX/FullAdderWave.ant" sub00/vhpl05 1794551239
+EN fulladderusingmux NULL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/FullAdderUsingMUX/FullAdderUsingMUX.vhd" sub00/vhpl02 1794551236
+AR mux4x1 dataflow "C:/Projects/Xilinx Projects/Flip-Flop/Projects/FullAdderUsingMUX/MUX4x1.vhd" sub00/vhpl01 1794551053

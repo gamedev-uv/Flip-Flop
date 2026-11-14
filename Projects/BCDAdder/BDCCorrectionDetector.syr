@@ -1,0 +1,181 @@
+Release 8.1i - xst I.24
+Copyright (c) 1995-2005 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to ./xst/projnav.tmp
+CPU : 0.00 / 0.14 s | Elapsed : 0.00 / 0.00 s
+ 
+--> Parameter xsthdpdir set to ./xst
+CPU : 0.00 / 0.14 s | Elapsed : 0.00 / 0.00 s
+ 
+--> Reading design: BDCCorrectionDetector.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) HDL Analysis
+  4) HDL Synthesis
+     4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+     5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Final Report
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "BDCCorrectionDetector.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "BDCCorrectionDetector"
+Output Format                      : NGC
+Target Device                      : Automotive CoolRunner2
+
+---- Source Options
+Top Module Name                    : BDCCorrectionDetector
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Mux Extraction                     : YES
+Resource Sharing                   : YES
+
+---- Target Options
+Add IO Buffers                     : YES
+MACRO Preserve                     : YES
+XOR Preserve                       : YES
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : YES
+RTL Output                         : Yes
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : maintain
+
+---- Other Options
+lso                                : BDCCorrectionDetector.lso
+verilog2001                        : YES
+safe_implementation                : No
+wysiwyg                            : NO
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/FullAdder.vhd" in Library work.
+Architecture behavioral of Entity fulladder is up to date.
+Compiling vhdl file "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/RippleCarryAdder.vhd" in Library work.
+Architecture behavioral of Entity ripplecarryadder is up to date.
+Compiling vhdl file "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BDCCorrectionDetector.vhd" in Library work.
+Architecture structural of Entity bdccorrectiondetector is up to date.
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <BDCCorrectionDetector> (Architecture <structural>).
+Entity <BDCCorrectionDetector> analyzed. Unit <BDCCorrectionDetector> generated.
+
+Analyzing Entity <RippleCarryAdder> (Architecture <behavioral>).
+Entity <RippleCarryAdder> analyzed. Unit <RippleCarryAdder> generated.
+
+Analyzing Entity <FullAdder> (Architecture <behavioral>).
+Entity <FullAdder> analyzed. Unit <FullAdder> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <FullAdder>.
+    Related source file is "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/FullAdder.vhd".
+    Found 1-bit xor3 for signal <SUM>.
+Unit <FullAdder> synthesized.
+
+
+Synthesizing Unit <RippleCarryAdder>.
+    Related source file is "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/RippleCarryAdder.vhd".
+Unit <RippleCarryAdder> synthesized.
+
+
+Synthesizing Unit <BDCCorrectionDetector>.
+    Related source file is "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BDCCorrectionDetector.vhd".
+WARNING:Xst:646 - Signal <SUM<0>> is assigned but never used.
+Unit <BDCCorrectionDetector> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Xors                                                 : 4
+ 1-bit xor3                                            : 4
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Xors                                                 : 4
+ 1-bit xor3                                            : 4
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <BDCCorrectionDetector> ...
+
+Optimizing unit <FullAdder> ...
+
+Optimizing unit <RippleCarryAdder> ...
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : BDCCorrectionDetector.ngr
+Top Level Output File Name         : BDCCorrectionDetector
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : YES
+Target Technology                  : Automotive CoolRunner2
+Macro Preserve                     : YES
+XOR Preserve                       : YES
+wysiwyg                            : NO
+
+Design Statistics
+# IOs                              : 9
+
+Cell Usage :
+# BELS                             : 38
+#      AND2                        : 14
+#      GND                         : 1
+#      INV                         : 5
+#      OR2                         : 9
+#      OR3                         : 1
+#      XOR2                        : 8
+# IO Buffers                       : 9
+#      IBUF                        : 8
+#      OBUF                        : 1
+=========================================================================
+CPU : 1.49 / 1.64 s | Elapsed : 1.00 / 1.00 s
+ 
+--> 
+
+Total memory usage is 158872 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    1 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

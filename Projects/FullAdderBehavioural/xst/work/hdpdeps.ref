@@ -1,0 +1,8 @@
+V3 3
+FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/FullAdderBehavioural/FullAdder.vhd" 2026/11/13.12:29:06 I.24
+EN work/FullAdder 1794646900 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/FullAdderBehavioural/FullAdder.vhd" \
+      PB ieee/std_logic_1164 1131108373
+AR work/FullAdder/Behavioral 1794646901 \
+      FL "C:/Projects/Xilinx Projects/Flip-Flop/Projects/FullAdderBehavioural/FullAdder.vhd" \
+      EN work/FullAdder 1794646900

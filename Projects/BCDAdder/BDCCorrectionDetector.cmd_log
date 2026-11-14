@@ -1,0 +1,1 @@
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/BCDAdder/BCDAdder" -intstyle ise -ifn BDCCorrectionDetector.xst -ofn BDCCorrectionDetector.syr

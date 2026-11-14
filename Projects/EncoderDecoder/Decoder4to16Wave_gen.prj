@@ -1,0 +1,3 @@
+vhdl work "Decoder3to8Enable.vhd"
+vhdl work "Decoder4to16Using3to8.vhd"
+vhdl work Decoder4to16Wave.ant

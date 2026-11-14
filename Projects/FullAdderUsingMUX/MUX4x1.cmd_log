@@ -1,0 +1,1 @@
+xst -ise "C:/Projects/Xilinx Projects/Flip-Flop/Projects/FullAdderUsingMUX/FullAdderUsingMUX" -intstyle ise -ifn MUX4x1.xst -ofn MUX4x1.syr
